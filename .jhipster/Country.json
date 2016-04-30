@@ -1,0 +1,37 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "band",
+      "otherEntityName": "band",
+      "otherEntityRelationshipName": "country"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "label",
+      "otherEntityName": "label",
+      "otherEntityRelationshipName": "country"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "artist",
+      "otherEntityName": "artist",
+      "otherEntityRelationshipName": "country"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113549",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "country"
+}

@@ -1,0 +1,23 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "artist",
+      "otherEntityName": "artist",
+      "otherEntityRelationshipName": "sex"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113551",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "sex"
+}

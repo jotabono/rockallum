@@ -1,0 +1,30 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "review",
+      "otherEntityName": "band",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "otherEntityField": "email"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "liked",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20160420113556",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "favourite_review"
+}

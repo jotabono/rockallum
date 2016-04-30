@@ -1,0 +1,39 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "album",
+      "otherEntityName": "album",
+      "otherEntityField": "title"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "duration",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "lyrics",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113503",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "song"
+}

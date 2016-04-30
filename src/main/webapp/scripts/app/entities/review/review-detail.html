@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="therockbibleApp.review.detail.title">Review</span> {{review.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{review.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.mark">Mark</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{review.mark}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.reviewDate">ReviewDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{review.reviewDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.reviewText">ReviewText</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{review.reviewText}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.album">album</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="album.detail({id:review.album.id})">{{review.album.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.user">user</span>
+                </td>
+                <td>
+                    {{review.user.email}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

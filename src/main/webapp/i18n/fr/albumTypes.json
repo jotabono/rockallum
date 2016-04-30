@@ -1,0 +1,24 @@
+{
+    "therockbibleApp": {
+        "albumTypes" : {
+            "home": {
+                "title": "AlbumTypess",
+                "createLabel": "Créer un nouveau AlbumTypes",
+                "createOrEditLabel": "Créer ou éditer un AlbumTypes",
+                "search": "Search for AlbumTypes"
+            },
+            "created": "Un nouveau AlbumTypes a été créé avec l'identifiant {{ param }}",
+            "updated": "Le AlbumTypes avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le AlbumTypes avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le AlbumTypes {{ id }} ?"
+            },
+            "detail": {
+                "title": "AlbumTypes"
+            },
+            "name": "Name",
+            "album": "Album"
+        }
+    }
+}
+

@@ -1,0 +1,212 @@
+ <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="clear()">&times;</button>
+                    <h4 class="modal-title" id="myBandLabel" translate="therockbibleApp.band.home.createOrEditLabel">Create or edit a Band</h4>
+                </div>
+                <div class="modal-body">
+                    <jh-alert-error></jh-alert-error>
+                    <div class="form-group">
+                        <label for="id" translate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id"
+                               ng-model="band.id" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.name" for="field_name">Name</label>
+                        <input type="text" class="form-control" name="name" id="field_name"
+                               ng-model="band.name"
+                               required />
+                        <div ng-show="editForm.name.$invalid">
+                            <p class="help-block"
+                               ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.location" for="field_location">Location</label>
+                        <input type="text" class="form-control" name="location" id="field_location"
+                               ng-model="band.location"
+                               required />
+                        <div ng-show="editForm.location.$invalid">
+                            <p class="help-block"
+                               ng-show="editForm.location.$error.required" translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.latitude" for="field_latitude">Latitude</label>
+                        <input type="number" class="form-control" name="latitude" id="field_latitude"
+                               ng-model="band.latitude"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.longitude" for="field_longitude">Longitude</label>
+                        <input type="number" class="form-control" name="longitude" id="field_longitude"
+                               ng-model="band.longitude"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.foundingDate" for="field_foundingDate">FoundingDate</label>
+                        <div class="input-group">
+                            <input id="field_foundingDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="band.foundingDate" is-open="datePickerForFoundingDate.status.opened"
+                            />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForFoundingDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.yearsActive" for="field_yearsActive">YearsActive</label>
+                        <input type="text" class="form-control" name="yearsActive" id="field_yearsActive"
+                               ng-model="band.yearsActive"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.lyricalThemes" for="field_lyricalThemes">LyricalThemes</label>
+                        <input type="text" class="form-control" name="lyricalThemes" id="field_lyricalThemes"
+                               ng-model="band.lyricalThemes"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.independent" for="field_independent">Independent</label>
+                        <input type="checkbox" class="form-control" name="independent" id="field_independent"
+                               ng-model="band.independent"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="therockbibleApp.band.picture" for="field_picture">Picture</label>
+                        <input type="text" class="form-control" name="picture" id="field_picture"
+                               ng-model="band.picture"
+                        />
+
+                        <div id="dragContainer">
+                            <style>
+                                #dragContainer {
+                                    padding:10px;
+                                    color: grey;
+                                }
+                                #dragContainer button {
+                                    pointer: cursor;
+                                }
+                                #dragContainer input[type=file] {
+                                    width: 100%;
+                                    height: 150px;
+                                    border: 1px solid #ccc;
+                                    border-radius: 10px;
+                                    padding:20px;
+                                }
+                            </style>
+                            <!--<div ng-controller="dragImages">
+                                <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]"
+                                     file="image" file-name="imageFileName" data-max-file-size="3">
+                                    <span>Drop Image Here</span>
+                                </div>
+                                <div class="image-container">
+                                    <img ng-src={{image}} />
+                                    <span class="file-name">{{imageFileName}}</span>
+                                </div>
+                            </div>
+                            <form action>
+                                <input class="btn btn-default btn-file" type="file" fileread="uploadme.src">
+                                <img ng-src="{{ uploadme.src }}">
+                            </form>
+                        </div>-->
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate="therockbibleApp.band.links" for="field_links">Links</label>
+                            <input type="text" class="form-control" name="links" id="field_links"
+                                   ng-model="band.links"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate="therockbibleApp.band.logo" for="field_logo">Logo</label>
+                            <input type="text" class="form-control" name="logo" id="field_logo"
+                                   ng-model="band.logo"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="therockbibleApp.band.genre" for="field_genre">genre</label>
+                            <ui-select ng-model="band.genres" multiple title="Choose a genre">
+                                <ui-select-match placeholder="Select or search a genre in the list...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="genre in genres | filter: $select.search">
+                                    <span id="field_genre" ng-bind-html="genre.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <!--        <div class="form-group">
+                                    <label translate="therockbibleApp.band.genre" for="field_genre">genre</label>
+                                    <select class="form-control" id="field_genre" multiple name="genre" ng-model="band.genres" ng-options="genre as genre.name for genre in genres track by genre.id"></select>
+                                </div>-->
+                        <div class="form-group">
+                            <label translate="therockbibleApp.band.artist" for="field_artist">artist</label>
+                            <ui-select ng-model="band.artists" multiple title="Choose a artist">
+                                <ui-select-match placeholder="Select or search a artist in the list...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="artist in artists | filter: $select.search">
+                                    <span id="field_artist" ng-bind-html="artist.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <a ui-sref="artist.new" class="link">
+                                Add a new member
+                                <i class="material-icons" style="font-size:10px;">add</i>
+                            </a>
+                        </div>
+
+                        <!--        <div class="form-group">
+                                    <label translate="therockbibleApp.band.artist" for="field_artist">artist</label>
+                                    <select class="form-control" id="field_artist" multiple name="artist" ng-model="band.artists" ng-options="artist as artist.name for artist in artists track by artist.id"></select>
+                                </div>-->
+                        <div class="form-group">
+                            <label translate="therockbibleApp.band.country" for="field_country">country</label>
+                            <ui-select ng-model="band.country" title="Choose a country">
+                                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="country in countrys | filter: $select.search">
+                                    <span id="field_country" ng-bind-html="country.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="therockbibleApp.band.label" for="field_label">label</label>
+                            <ui-select ng-model="band.label" title="Choose a label">
+                                <ui-select-match placeholder="Select or search a label in the list...">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="label in labels | filter: $select.search">
+                                    <span id="field_label" ng-bind-html="label.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <a ui-sref="label.new" class="link">
+                                Add a new label
+                                <i class="material-icons" style="font-size:10px;">add</i>
+                            </a>
+                        </div>
+                        <!--        <div class="form-group">
+                                    <label translate="therockbibleApp.band.label" for="field_label">label</label>
+                                    <select class="form-control" id="field_label" name="label" ng-model="band.label" ng-options="label as label.name for label in labels track by label.id">
+                                        <option value=""></option>
+                                    </select>
+                                </div>-->
+                        <div class="form-group">
+                            <label translate="therockbibleApp.band.status" for="field_status">status</label>
+                            <select class="form-control" id="field_status" name="status" ng-model="band.status" ng-options="status as status.status for status in statuss track by status.id">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate="therockbibleApp.band.bio" for="field_bio">Bio</label>
+                            <input type="text" class="form-control" name="bio" id="field_bio"
+                                   ng-model="band.bio"
+                            />
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+            </form>

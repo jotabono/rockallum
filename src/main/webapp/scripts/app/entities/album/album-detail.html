@@ -1,0 +1,110 @@
+
+<div>
+    <h2><span translate="therockbibleApp.album.detail.title">Album</span> {{album.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.releaseDate">ReleaseDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.releaseDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.catalogId">CatalogId</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.catalogId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.numCopies">NumCopies</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.numCopies}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.format">Format</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.format}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.addNotes">AddNotes</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.addNotes}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.recInfo">RecInfo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.recInfo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.independent">Independent</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.independent}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.picture">Picture</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{album.picture}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.label">label</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="label.detail({id:album.label.id})">{{album.label.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.album.albumTypes">albumTypes</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="albumTypes.detail({id:album.albumTypes.id})">{{album.albumTypes.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,101 @@
+<div>
+    <h2 translate="therockbibleApp.label.home.title">Labels</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="label.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="therockbibleApp.label.home.createLabel">Create new Label
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.label.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="therockbibleApp.label.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="foundingDate"><span translate="therockbibleApp.label.foundingDate">FoundingDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="location"><span translate="therockbibleApp.label.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="therockbibleApp.label.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="genres"><span translate="therockbibleApp.label.genres">Genres</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="therockbibleApp.label.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="addNotes"><span translate="therockbibleApp.label.addNotes">AddNotes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="links"><span translate="therockbibleApp.label.links">Links</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone"><span translate="therockbibleApp.label.phone">Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span translate="therockbibleApp.label.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="onlineshop"><span translate="therockbibleApp.label.onlineshop">Onlineshop</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="picture"><span translate="therockbibleApp.label.picture">Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.email"><span translate="therockbibleApp.label.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="country.name"><span translate="therockbibleApp.label.country">country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="label in labels track by label.id">
+                    <td><a ui-sref="label.detail({id:label.id})">{{label.id}}</a></td>
+                    <td>{{label.name}}</td>
+                    <td>{{label.foundingDate}}</td>
+                    <td>{{label.location}}</td>
+                    <td>{{label.status}}</td>
+                    <td>{{label.genres}}</td>
+                    <td>{{label.description}}</td>
+                    <td>{{label.addNotes}}</td>
+                    <td>{{label.links}}</td>
+                    <td>{{label.phone}}</td>
+                    <td>{{label.address}}</td>
+                    <td>{{label.onlineshop}}</td>
+                    <td>{{label.picture}}</td>
+                    <td>
+                        {{label.user.email}}
+                    </td>
+                    <td>
+                        <a ui-sref="country.detail({id:label.country.id})">{{label.country.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="label.detail({id:label.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="label.edit({id:label.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="label.delete({id:label.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

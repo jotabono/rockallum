@@ -1,0 +1,24 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-many",
+      "relationshipName": "band",
+      "otherEntityName": "band",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "genre"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113550",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "genre"
+}

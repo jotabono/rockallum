@@ -1,0 +1,26 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "album",
+      "otherEntityName": "album",
+      "otherEntityRelationshipName": "albumTypes"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160420113500",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "album_types"
+}

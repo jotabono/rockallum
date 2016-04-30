@@ -1,0 +1,36 @@
+{
+    "therockbibleApp": {
+        "artist" : {
+            "home": {
+                "title": "Artists",
+                "createLabel": "Créer un nouveau Artist",
+                "createOrEditLabel": "Créer ou éditer un Artist",
+                "search": "Search for Artist"
+            },
+            "created": "Un nouveau Artist a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Artist avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Artist avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Artist {{ id }} ?"
+            },
+            "detail": {
+                "title": "Artist"
+            },
+            "name": "Name",
+            "realName": "RealName",
+            "bornIn": "BornIn",
+            "age": "Age",
+            "bio": "Bio",
+            "role": "Role",
+            "yearsActive": "YearsActive",
+            "links": "Links",
+            "picture": "Picture",
+            "band": "Band",
+            "user": "User",
+            "country": "Country",
+            "sex": "Sex",
+            "status": "Status"
+        }
+    }
+}
+

@@ -1,0 +1,58 @@
+<div>
+    <h2 translate="therockbibleApp.band.home.title">Bands</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="band.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span
+                        class="hidden-xs"                        translate="therockbibleApp.band.home.createLabel">Create new Band
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.band.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <table class="table band" style="text-align: center;">
+        <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+            <th jh-sort-by="name"><span translate="therockbibleApp.band.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th jh-sort-by="name"><span translate="therockbibleApp.band.genre">Genre/s</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th jh-sort-by="country.name"><span translate="therockbibleApp.band.country">Country</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th jh-sort-by="status.status"><span translate="therockbibleApp.band.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th></th>
+        </tr>
+    </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3 bands" ng-repeat="band in bands | filter:searchQuery">
+            <div ui-sref="band.detail({id:band.id})" class="thumbnail">
+
+                <img data-ng-src="{{'data:' + band.bandContentType + ';base64,' + band.picture}}" style="max-height: 100px; min-width: 100%;" ng-if="band.picture"/>
+                <img data-ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/>
+
+                <div class="caption">
+                    <h3>{{ band.name }}</h3>
+                    <p><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
+                    <p><b>Country:</b> {{band.country.name}}</p>
+                    <p><b>Status:</b> {{band.status.status}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+
+<div>
+    <h2><span translate="therockbibleApp.label.detail.title">Label</span> {{label.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.foundingDate">FoundingDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.foundingDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.location">Location</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.location}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.genres">Genres</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.genres}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.addNotes">AddNotes</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.addNotes}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.links">Links</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.links}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.phone">Phone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.phone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.address">Address</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.address}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.onlineshop">Onlineshop</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.onlineshop}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.picture">Picture</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{label.picture}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.user">user</span>
+                </td>
+                <td>
+                    {{label.user.email}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.label.country">country</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="country.detail({id:label.country.id})">{{label.country.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

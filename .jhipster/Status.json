@@ -1,0 +1,30 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "band",
+      "otherEntityName": "band",
+      "otherEntityRelationshipName": "status"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "artist",
+      "otherEntityName": "artist",
+      "otherEntityRelationshipName": "status"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113552",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "status"
+}

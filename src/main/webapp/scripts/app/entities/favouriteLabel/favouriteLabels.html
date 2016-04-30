@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="therockbibleApp.favouriteLabel.home.title">FavouriteLabels</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="favouriteLabel.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="therockbibleApp.favouriteLabel.home.createLabel">Create new FavouriteLabel
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.favouriteLabel.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="therockbibleApp.favouriteLabel.liked">Liked</span></th>
+                    <th><span translate="therockbibleApp.favouriteLabel.label">label</span></th>
+                    <th><span translate="therockbibleApp.favouriteLabel.user">user</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="favouriteLabel in favouriteLabels track by favouriteLabel.id">
+                    <td><a ui-sref="favouriteLabel.detail({id:favouriteLabel.id})">{{favouriteLabel.id}}</a></td>
+                    <td>{{favouriteLabel.liked}}</td>
+                    <td>
+                        <a ui-sref="band.detail({id:favouriteLabel.label.id})">{{favouriteLabel.label.name}}</a>
+                    </td>
+                    <td>
+                        {{favouriteLabel.user.email}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="favouriteLabel.detail({id:favouriteLabel.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="favouriteLabel.edit({id:favouriteLabel.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="favouriteLabel.delete({id:favouriteLabel.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

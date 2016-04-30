@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="therockbibleApp.favouriteReview.home.title">FavouriteReviews</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="favouriteReview.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="therockbibleApp.favouriteReview.home.createLabel">Create new FavouriteReview
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.favouriteReview.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="therockbibleApp.favouriteReview.liked">Liked</span></th>
+                    <th><span translate="therockbibleApp.favouriteReview.review">review</span></th>
+                    <th><span translate="therockbibleApp.favouriteReview.user">user</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="favouriteReview in favouriteReviews track by favouriteReview.id">
+                    <td><a ui-sref="favouriteReview.detail({id:favouriteReview.id})">{{favouriteReview.id}}</a></td>
+                    <td>{{favouriteReview.liked}}</td>
+                    <td>
+                        <a ui-sref="band.detail({id:favouriteReview.review.id})">{{favouriteReview.review.title}}</a>
+                    </td>
+                    <td>
+                        {{favouriteReview.user.email}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="favouriteReview.detail({id:favouriteReview.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="favouriteReview.edit({id:favouriteReview.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="favouriteReview.delete({id:favouriteReview.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

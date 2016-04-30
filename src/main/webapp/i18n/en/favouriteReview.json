@@ -1,0 +1,24 @@
+{
+    "therockbibleApp": {
+        "favouriteReview" : {
+            "home": {
+                "title": "FavouriteReviews",
+                "createLabel": "Create a new FavouriteReview",
+                "createOrEditLabel": "Create or edit a FavouriteReview",
+                "search": "Search for FavouriteReview"
+            },
+            "created": "A new FavouriteReview is created with identifier {{ param }}",
+            "updated": "A FavouriteReview is updated with identifier {{ param }}",
+            "deleted": "A FavouriteReview is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete FavouriteReview {{ id }}?"
+            },
+            "detail": {
+                "title": "FavouriteReview"
+            },
+            "liked": "Liked",
+            "review": "Review",
+            "user": "User"
+        }
+    }
+}

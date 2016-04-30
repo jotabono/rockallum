@@ -1,0 +1,108 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myAlbumLabel" translate="therockbibleApp.album.home.createOrEditLabel">Create or edit a Album</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="album.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="album.title"
+                    required />
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.releaseDate" for="field_releaseDate">ReleaseDate</label>
+                <div class="input-group">
+                    <input id="field_releaseDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="album.releaseDate" is-open="datePickerForReleaseDate.status.opened"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForReleaseDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.releaseDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.releaseDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.catalogId" for="field_catalogId">CatalogId</label>
+            <input type="text" class="form-control" name="catalogId" id="field_catalogId"
+                    ng-model="album.catalogId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.numCopies" for="field_numCopies">NumCopies</label>
+            <input type="text" class="form-control" name="numCopies" id="field_numCopies"
+                    ng-model="album.numCopies"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.format" for="field_format">Format</label>
+            <input type="text" class="form-control" name="format" id="field_format"
+                    ng-model="album.format"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.addNotes" for="field_addNotes">AddNotes</label>
+            <input type="text" class="form-control" name="addNotes" id="field_addNotes"
+                    ng-model="album.addNotes"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.recInfo" for="field_recInfo">RecInfo</label>
+            <input type="text" class="form-control" name="recInfo" id="field_recInfo"
+                    ng-model="album.recInfo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.independent" for="field_independent">Independent</label>
+            <input type="checkbox" class="form-control" name="independent" id="field_independent"
+                    ng-model="album.independent"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.picture" for="field_picture">Picture</label>
+            <input type="text" class="form-control" name="picture" id="field_picture"
+                    ng-model="album.picture"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="therockbibleApp.album.label" for="field_label">label</label>
+            <select class="form-control" id="field_label" name="label" ng-model="album.label" ng-options="label as label.name for label in labels track by label.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.album.albumTypes" for="field_albumTypes">albumTypes</label>
+            <select class="form-control" id="field_albumTypes" name="albumTypes" ng-model="album.albumTypes" ng-options="albumTypes as albumTypes.name for albumTypes in albumtypess track by albumTypes.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

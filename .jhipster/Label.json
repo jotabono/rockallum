@@ -1,0 +1,102 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "band",
+      "otherEntityName": "band",
+      "otherEntityRelationshipName": "label"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "album",
+      "otherEntityName": "album",
+      "otherEntityRelationshipName": "label"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "many-to-one",
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "otherEntityField": "email"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "many-to-one",
+      "relationshipName": "country",
+      "otherEntityName": "country",
+      "otherEntityField": "name"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "foundingDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "genres",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "addNotes",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "links",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 10,
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 11,
+      "fieldName": "onlineshop",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 12,
+      "fieldName": "picture",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113501",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "label"
+}

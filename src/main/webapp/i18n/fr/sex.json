@@ -1,0 +1,24 @@
+{
+    "therockbibleApp": {
+        "sex" : {
+            "home": {
+                "title": "Sexs",
+                "createLabel": "Créer un nouveau Sex",
+                "createOrEditLabel": "Créer ou éditer un Sex",
+                "search": "Search for Sex"
+            },
+            "created": "Un nouveau Sex a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Sex avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Sex avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Sex {{ id }} ?"
+            },
+            "detail": {
+                "title": "Sex"
+            },
+            "name": "Name",
+            "artist": "Artist"
+        }
+    }
+}
+

@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="therockbibleApp.favouriteAlbum.detail.title">FavouriteAlbum</span> {{favouriteAlbum.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.favouriteAlbum.liked">Liked</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{favouriteAlbum.liked}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.favouriteAlbum.album">album</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="band.detail({id:favouriteAlbum.album.id})">{{favouriteAlbum.album.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.favouriteAlbum.user">user</span>
+                </td>
+                <td>
+                    {{favouriteAlbum.user.email}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,126 @@
+
+<div>
+    <h2><span translate="therockbibleApp.artist.detail.title">Artist</span> {{artist.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.realName">RealName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.realName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.bornIn">BornIn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.bornIn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.age">Age</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.age}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.bio">Bio</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.bio}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.role">Role</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.role}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.yearsActive">YearsActive</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.yearsActive}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.links">Links</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.links}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.picture">Picture</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{artist.picture}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.user">user</span>
+                </td>
+                <td>
+                    {{artist.user.email}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.country">country</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="country.detail({id:artist.country.id})">{{artist.country.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.sex">sex</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="sex.detail({id:artist.sex.id})">{{artist.sex.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.status">status</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="status.detail({id:artist.status.id})">{{artist.status.status}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

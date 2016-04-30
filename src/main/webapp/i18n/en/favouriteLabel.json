@@ -1,0 +1,24 @@
+{
+    "therockbibleApp": {
+        "favouriteLabel" : {
+            "home": {
+                "title": "FavouriteLabels",
+                "createLabel": "Create a new FavouriteLabel",
+                "createOrEditLabel": "Create or edit a FavouriteLabel",
+                "search": "Search for FavouriteLabel"
+            },
+            "created": "A new FavouriteLabel is created with identifier {{ param }}",
+            "updated": "A FavouriteLabel is updated with identifier {{ param }}",
+            "deleted": "A FavouriteLabel is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete FavouriteLabel {{ id }}?"
+            },
+            "detail": {
+                "title": "FavouriteLabel"
+            },
+            "liked": "Liked",
+            "label": "Label",
+            "user": "User"
+        }
+    }
+}

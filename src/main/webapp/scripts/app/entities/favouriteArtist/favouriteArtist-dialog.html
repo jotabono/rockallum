@@ -1,0 +1,44 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myFavouriteArtistLabel" translate="therockbibleApp.favouriteArtist.home.createOrEditLabel">Create or edit a FavouriteArtist</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="favouriteArtist.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.favouriteArtist.liked" for="field_liked">Liked</label>
+            <input type="checkbox" class="form-control" name="liked" id="field_liked"
+                    ng-model="favouriteArtist.liked"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="therockbibleApp.favouriteArtist.artist" for="field_artist">artist</label>
+            <select class="form-control" id="field_artist" name="artist" ng-model="favouriteArtist.artist" ng-options="band as band.name for band in bands track by band.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.favouriteArtist.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="favouriteArtist.user" ng-options="user as user.email for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

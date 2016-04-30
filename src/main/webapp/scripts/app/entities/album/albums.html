@@ -1,0 +1,95 @@
+<div>
+    <h2 translate="therockbibleApp.album.home.title">Albums</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="album.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="therockbibleApp.album.home.createLabel">Create new Album
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.album.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="title"><span translate="therockbibleApp.album.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="releaseDate"><span translate="therockbibleApp.album.releaseDate">ReleaseDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="catalogId"><span translate="therockbibleApp.album.catalogId">CatalogId</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numCopies"><span translate="therockbibleApp.album.numCopies">NumCopies</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="format"><span translate="therockbibleApp.album.format">Format</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="addNotes"><span translate="therockbibleApp.album.addNotes">AddNotes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="recInfo"><span translate="therockbibleApp.album.recInfo">RecInfo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="independent"><span translate="therockbibleApp.album.independent">Independent</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="picture"><span translate="therockbibleApp.album.picture">Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="label.name"><span translate="therockbibleApp.album.label">label</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="albumTypes.name"><span translate="therockbibleApp.album.albumTypes">albumTypes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="album in albums track by album.id">
+                    <td><a ui-sref="album.detail({id:album.id})">{{album.id}}</a></td>
+                    <td>{{album.title}}</td>
+                        <td>{{album.releaseDate | date:'mediumDate'}}</td>
+                    <td>{{album.catalogId}}</td>
+                    <td>{{album.numCopies}}</td>
+                    <td>{{album.format}}</td>
+                    <td>{{album.addNotes}}</td>
+                    <td>{{album.recInfo}}</td>
+                    <td>{{album.independent}}</td>
+                    <td>{{album.picture}}</td>
+                    <td>
+                        <a ui-sref="label.detail({id:album.label.id})">{{album.label.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="albumTypes.detail({id:album.albumTypes.id})">{{album.albumTypes.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="album.detail({id:album.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="album.edit({id:album.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="album.delete({id:album.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

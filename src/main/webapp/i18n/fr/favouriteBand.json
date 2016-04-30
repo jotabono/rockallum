@@ -1,0 +1,25 @@
+{
+    "therockbibleApp": {
+        "favouriteBand" : {
+            "home": {
+                "title": "FavouriteBands",
+                "createLabel": "Créer un nouveau FavouriteBand",
+                "createOrEditLabel": "Créer ou éditer un FavouriteBand",
+                "search": "Search for FavouriteBand"
+            },
+            "created": "Un nouveau FavouriteBand a été créé avec l'identifiant {{ param }}",
+            "updated": "Le FavouriteBand avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le FavouriteBand avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le FavouriteBand {{ id }} ?"
+            },
+            "detail": {
+                "title": "FavouriteBand"
+            },
+            "liked": "Liked",
+            "band": "Band",
+            "user": "User"
+        }
+    }
+}
+

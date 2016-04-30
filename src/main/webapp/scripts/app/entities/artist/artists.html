@@ -1,0 +1,100 @@
+<div>
+    <h2 translate="therockbibleApp.artist.home.title">Artists</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="artist.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="therockbibleApp.artist.home.createLabel">Create new Artist
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.artist.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="therockbibleApp.artist.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="realName"><span translate="therockbibleApp.artist.realName">RealName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bornIn"><span translate="therockbibleApp.artist.bornIn">BornIn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="age"><span translate="therockbibleApp.artist.age">Age</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bio"><span translate="therockbibleApp.artist.bio">Bio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="role"><span translate="therockbibleApp.artist.role">Role</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="yearsActive"><span translate="therockbibleApp.artist.yearsActive">YearsActive</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="links"><span translate="therockbibleApp.artist.links">Links</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="picture"><span translate="therockbibleApp.artist.picture">Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.email"><span translate="therockbibleApp.artist.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="country.name"><span translate="therockbibleApp.artist.country">country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sex.name"><span translate="therockbibleApp.artist.sex">sex</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status.status"><span translate="therockbibleApp.artist.status">status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="artist in artists track by artist.id">
+                    <td><a ui-sref="artist.detail({id:artist.id})">{{artist.id}}</a></td>
+                    <td>{{artist.name}}</td>
+                    <td>{{artist.realName}}</td>
+                    <td>{{artist.bornIn}}</td>
+                    <td>{{artist.age}}</td>
+                    <td>{{artist.bio}}</td>
+                    <td>{{artist.role}}</td>
+                    <td>{{artist.yearsActive}}</td>
+                    <td>{{artist.links}}</td>
+                    <td>{{artist.picture}}</td>
+                    <td>
+                        {{artist.user.email}}
+                    </td>
+                    <td>
+                        <a ui-sref="country.detail({id:artist.country.id})">{{artist.country.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="sex.detail({id:artist.sex.id})">{{artist.sex.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="status.detail({id:artist.status.id})">{{artist.status.status}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="artist.detail({id:artist.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="artist.edit({id:artist.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="artist.delete({id:artist.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

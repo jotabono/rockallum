@@ -1,0 +1,170 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-many",
+      "relationshipName": "genre",
+      "otherEntityName": "genre",
+      "otherEntityField": "name",
+      "ownerSide": true
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-many",
+      "relationshipName": "artist",
+      "otherEntityName": "artist",
+      "otherEntityField": "name",
+      "ownerSide": true
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "favouriteband",
+      "otherEntityName": "favouriteBand",
+      "otherEntityRelationshipName": "band"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "one-to-many",
+      "relationshipName": "favouritealbum",
+      "otherEntityName": "favouriteAlbum",
+      "otherEntityRelationshipName": "album"
+    },
+    {
+      "relationshipId": 5,
+      "relationshipType": "one-to-many",
+      "relationshipName": "favouritesong",
+      "otherEntityName": "favouriteSong",
+      "otherEntityRelationshipName": "song"
+    },
+    {
+      "relationshipId": 6,
+      "relationshipType": "one-to-many",
+      "relationshipName": "favouritelabel",
+      "otherEntityName": "favouriteLabel",
+      "otherEntityRelationshipName": "label"
+    },
+    {
+      "relationshipId": 7,
+      "relationshipType": "one-to-many",
+      "relationshipName": "favouriteartist",
+      "otherEntityName": "favouriteArtist",
+      "otherEntityRelationshipName": "artist"
+    },
+    {
+      "relationshipId": 8,
+      "relationshipType": "one-to-many",
+      "relationshipName": "favouritereview",
+      "otherEntityName": "favouriteReview",
+      "otherEntityRelationshipName": "review"
+    },
+    {
+      "relationshipId": 9,
+      "relationshipType": "one-to-many",
+      "relationshipName": "collection",
+      "otherEntityName": "collection",
+      "otherEntityRelationshipName": "album"
+    },
+    {
+      "relationshipId": 10,
+      "relationshipType": "many-to-one",
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "otherEntityField": "email"
+    },
+    {
+      "relationshipId": 11,
+      "relationshipType": "many-to-one",
+      "relationshipName": "country",
+      "otherEntityName": "country",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipId": 12,
+      "relationshipType": "many-to-one",
+      "relationshipName": "label",
+      "otherEntityName": "label",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipId": 13,
+      "relationshipType": "many-to-one",
+      "relationshipName": "status",
+      "otherEntityName": "status",
+      "otherEntityField": "status"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "location",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "latitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "longitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "foundingDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "yearsActive",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "lyricalThemes",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "independent",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "picture",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 10,
+      "fieldName": "links",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 11,
+      "fieldName": "logo",
+      "fieldType": "String"
+    },
+      {
+          "fieldId": 12,
+          "fieldName": "bio",
+          "fieldType": "String"
+      }
+  ],
+  "changelogDate": "20160420113506",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "band"
+}

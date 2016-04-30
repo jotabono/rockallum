@@ -1,0 +1,25 @@
+{
+    "therockbibleApp": {
+        "favouriteArtist" : {
+            "home": {
+                "title": "FavouriteArtists",
+                "createLabel": "Créer un nouveau FavouriteArtist",
+                "createOrEditLabel": "Créer ou éditer un FavouriteArtist",
+                "search": "Search for FavouriteArtist"
+            },
+            "created": "Un nouveau FavouriteArtist a été créé avec l'identifiant {{ param }}",
+            "updated": "Le FavouriteArtist avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le FavouriteArtist avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le FavouriteArtist {{ id }} ?"
+            },
+            "detail": {
+                "title": "FavouriteArtist"
+            },
+            "liked": "Liked",
+            "artist": "Artist",
+            "user": "User"
+        }
+    }
+}
+

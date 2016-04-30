@@ -1,0 +1,47 @@
+{
+    "therockbibleApp": {
+        "band" : {
+            "home": {
+                "title": "Bands",
+                "createLabel": "Créer un nouveau Band",
+                "createOrEditLabel": "Créer ou éditer un Band",
+                "search": "Search for Band"
+            },
+            "created": "Un nouveau Band a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Band avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Band avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Band {{ id }} ?"
+            },
+            "detail": {
+                "title": "Band"
+            },
+            "name": "Name",
+            "location": "Location",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "foundingDate": "FoundingDate",
+            "yearsActive": "YearsActive",
+            "lyricalThemes": "LyricalThemes",
+            "independent": "Independent",
+            "picture": "Picture",
+            "links": "Links",
+            "logo": "Logo",
+            "bio": "Bio",
+            "genre": "Genre",
+            "artist": "Artist",
+            "favouriteband": "Favouriteband",
+            "favouritealbum": "Favouritealbum",
+            "favouritesong": "Favouritesong",
+            "favouritelabel": "Favouritelabel",
+            "favouriteartist": "Favouriteartist",
+            "favouritereview": "Favouritereview",
+            "collection": "Collection",
+            "user": "User",
+            "country": "Country",
+            "label": "Label",
+            "status": "Status"
+        }
+    }
+}
+

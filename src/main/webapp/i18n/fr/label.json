@@ -1,0 +1,38 @@
+{
+    "therockbibleApp": {
+        "label" : {
+            "home": {
+                "title": "Labels",
+                "createLabel": "Créer un nouveau Label",
+                "createOrEditLabel": "Créer ou éditer un Label",
+                "search": "Search for Label"
+            },
+            "created": "Un nouveau Label a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Label avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Label avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Label {{ id }} ?"
+            },
+            "detail": {
+                "title": "Label"
+            },
+            "name": "Name",
+            "foundingDate": "FoundingDate",
+            "location": "Location",
+            "status": "Status",
+            "genres": "Genres",
+            "description": "Description",
+            "addNotes": "AddNotes",
+            "links": "Links",
+            "phone": "Phone",
+            "address": "Address",
+            "onlineshop": "Onlineshop",
+            "picture": "Picture",
+            "band": "Band",
+            "album": "Album",
+            "user": "User",
+            "country": "Country"
+        }
+    }
+}
+

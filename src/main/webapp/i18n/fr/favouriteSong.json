@@ -1,0 +1,25 @@
+{
+    "therockbibleApp": {
+        "favouriteSong" : {
+            "home": {
+                "title": "FavouriteSongs",
+                "createLabel": "Créer un nouveau FavouriteSong",
+                "createOrEditLabel": "Créer ou éditer un FavouriteSong",
+                "search": "Search for FavouriteSong"
+            },
+            "created": "Un nouveau FavouriteSong a été créé avec l'identifiant {{ param }}",
+            "updated": "Le FavouriteSong avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le FavouriteSong avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le FavouriteSong {{ id }} ?"
+            },
+            "detail": {
+                "title": "FavouriteSong"
+            },
+            "liked": "Liked",
+            "song": "Song",
+            "user": "User"
+        }
+    }
+}
+

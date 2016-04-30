@@ -1,0 +1,24 @@
+{
+    "therockbibleApp": {
+        "status" : {
+            "home": {
+                "title": "Statuss",
+                "createLabel": "Create a new Status",
+                "createOrEditLabel": "Create or edit a Status",
+                "search": "Search for Status"
+            },
+            "created": "A new Status is created with identifier {{ param }}",
+            "updated": "A Status is updated with identifier {{ param }}",
+            "deleted": "A Status is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Status"
+            },
+            "status": "Status",
+            "band": "Band",
+            "artist": "Artist"
+        }
+    }
+}

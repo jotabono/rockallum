@@ -1,0 +1,116 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myLabelLabel" translate="therockbibleApp.label.home.createOrEditLabel">Create or edit a Label</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="label.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="label.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.foundingDate" for="field_foundingDate">FoundingDate</label>
+            <input type="text" class="form-control" name="foundingDate" id="field_foundingDate"
+                    ng-model="label.foundingDate"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                    ng-model="label.location"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                    ng-model="label.status"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.genres" for="field_genres">Genres</label>
+            <input type="text" class="form-control" name="genres" id="field_genres"
+                    ng-model="label.genres"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="label.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.addNotes" for="field_addNotes">AddNotes</label>
+            <input type="text" class="form-control" name="addNotes" id="field_addNotes"
+                    ng-model="label.addNotes"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.links" for="field_links">Links</label>
+            <input type="text" class="form-control" name="links" id="field_links"
+                    ng-model="label.links"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                    ng-model="label.phone"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="label.address"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.onlineshop" for="field_onlineshop">Onlineshop</label>
+            <input type="text" class="form-control" name="onlineshop" id="field_onlineshop"
+                    ng-model="label.onlineshop"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.label.picture" for="field_picture">Picture</label>
+            <input type="text" class="form-control" name="picture" id="field_picture"
+                    ng-model="label.picture"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="therockbibleApp.label.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="label.user" ng-options="user as user.email for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.label.country" for="field_country">country</label>
+            <select class="form-control" id="field_country" name="country" ng-model="label.country" ng-options="country as country.name for country in countrys track by country.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

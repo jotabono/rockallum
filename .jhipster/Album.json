@@ -1,0 +1,90 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "song",
+      "otherEntityName": "song",
+      "otherEntityRelationshipName": "album"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "review",
+      "otherEntityName": "review",
+      "otherEntityRelationshipName": "album"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "many-to-one",
+      "relationshipName": "label",
+      "otherEntityName": "label",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "many-to-one",
+      "relationshipName": "albumTypes",
+      "otherEntityName": "albumTypes",
+      "otherEntityField": "name"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "releaseDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "catalogId",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "numCopies",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "format",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "addNotes",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "recInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "independent",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "picture",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160420113502",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "album"
+}

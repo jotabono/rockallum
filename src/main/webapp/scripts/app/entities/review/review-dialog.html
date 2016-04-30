@@ -1,0 +1,94 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myReviewLabel" translate="therockbibleApp.review.home.createOrEditLabel">Create or edit a Review</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="review.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.review.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="review.title"
+                    required />
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.review.mark" for="field_mark">Mark</label>
+            <input type="number" class="form-control" name="mark" id="field_mark"
+                    ng-model="review.mark"
+                    required />
+            <div ng-show="editForm.mark.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mark.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mark.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.review.reviewDate" for="field_reviewDate">ReviewDate</label>
+            <input type="datetime-local" class="form-control" name="reviewDate" id="field_reviewDate"
+                    ng-model="review.reviewDate"
+                    required />
+            <div ng-show="editForm.reviewDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.reviewDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.reviewDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.review.reviewText" for="field_reviewText">ReviewText</label>
+            <input type="text" class="form-control" name="reviewText" id="field_reviewText"
+                    ng-model="review.reviewText"
+                    required />
+            <div ng-show="editForm.reviewText.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.reviewText.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="therockbibleApp.review.album" for="field_album">album</label>
+            <select class="form-control" id="field_album" name="album" ng-model="review.album" ng-options="album as album.title for album in albums track by album.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.review.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="review.user" ng-options="user as user.email for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
