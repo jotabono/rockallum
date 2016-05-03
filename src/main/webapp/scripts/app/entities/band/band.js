@@ -56,7 +56,7 @@ angular.module('therockbibleApp')
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
                         templateUrl: 'scripts/app/entities/band/band-dialog.html',
-                        controller: 'BandDialogController',
+                        controller: 'BandDialogController as vm',
                         size: 'lg',
                         resolve: {
                             entity: function () {

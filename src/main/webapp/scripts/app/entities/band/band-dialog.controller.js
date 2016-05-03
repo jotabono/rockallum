@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('BandDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status',
-        function($scope, $stateParams, $uibModalInstance, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'NgMap',
+        function($scope, $stateParams, $uibModalInstance, $rootScope, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, NgMap) {
 
         $scope.band = entity;
         $scope.genres = Genre.query();
@@ -34,7 +34,19 @@ angular.module('therockbibleApp').controller('BandDialogController',
             $scope.isSaving = false;
         };
 
+        var unsubscribe = $rootScope.$on('therockbibleApp:artistUpdate', function(event, result) {
+            $scope.artists = Artist.query();
+        });
+
+        var unsubscribe2 = $rootScope.$on('therockbibleApp:labelUpdate', function(event, result) {
+            $scope.labels = Label.query();
+        });
+
         $scope.save = function () {
+            $scope.band.location = $scope.loc;
+            $scope.band.latitude = $scope.lat;
+            $scope.band.longitude = $scope.lng;
+
             $scope.isSaving = true;
             if ($scope.band.id != null) {
                 Band.update($scope.band, onSaveSuccess, onSaveError);
@@ -55,5 +67,21 @@ angular.module('therockbibleApp').controller('BandDialogController',
         $scope.datePickerForFoundingDateOpen = function($event) {
             $scope.datePickerForFoundingDate.status.opened = true;
         };
+
+            $scope.lat = [];
+            $scope.lng = [];
+        var vm = this;
+        vm.placeChanged = function() {
+            vm.place = this.getPlace();
+            console.log('location', vm.place.geometry.location);
+            vm.map.setCenter(vm.place.geometry.location);
+            $scope.loc = vm.address;
+            $scope.lat = vm.place.geometry.location.lat();
+            $scope.lng = vm.place.geometry.location.lng();
+        }
+
+        NgMap.getMap().then(function(map) {
+            vm.map = map;
+        });
 
         }]);

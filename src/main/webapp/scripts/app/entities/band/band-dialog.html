@@ -1,5 +1,4 @@
  <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
-
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             ng-click="clear()">&times;</button>
@@ -24,7 +23,19 @@
                             </p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    Enter an address: <br/>
+                    <input places-auto-complete size=80
+                           ng-model="vm.address"
+                           types="{{types}}"
+                           on-place-changed="vm.placeChanged()" /> <br/>
+                    <div ng-show="vm.place">
+                        Address = {{vm.place.formatted_address}} <br/>
+                        Location: {{vm.place.geometry.location}}<br/>
+                    </div>
+                    address : {{vm.address}}
+                    <ng-map><marker position="{{vm.place.geometry.location}}"></marker></ng-map>
+
+                    <!--<div class="form-group">
                         <label class="control-label" translate="therockbibleApp.band.location" for="field_location">Location</label>
                         <input type="text" class="form-control" name="location" id="field_location"
                                ng-model="band.location"
@@ -47,7 +58,7 @@
                         <input type="number" class="form-control" name="longitude" id="field_longitude"
                                ng-model="band.longitude"
                         />
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <label class="control-label" translate="therockbibleApp.band.foundingDate" for="field_foundingDate">FoundingDate</label>
                         <div class="input-group">
@@ -81,40 +92,6 @@
                         <input type="text" class="form-control" name="picture" id="field_picture"
                                ng-model="band.picture"
                         />
-
-                        <div id="dragContainer">
-                            <style>
-                                #dragContainer {
-                                    padding:10px;
-                                    color: grey;
-                                }
-                                #dragContainer button {
-                                    pointer: cursor;
-                                }
-                                #dragContainer input[type=file] {
-                                    width: 100%;
-                                    height: 150px;
-                                    border: 1px solid #ccc;
-                                    border-radius: 10px;
-                                    padding:20px;
-                                }
-                            </style>
-                            <!--<div ng-controller="dragImages">
-                                <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]"
-                                     file="image" file-name="imageFileName" data-max-file-size="3">
-                                    <span>Drop Image Here</span>
-                                </div>
-                                <div class="image-container">
-                                    <img ng-src={{image}} />
-                                    <span class="file-name">{{imageFileName}}</span>
-                                </div>
-                            </div>
-                            <form action>
-                                <input class="btn btn-default btn-file" type="file" fileread="uploadme.src">
-                                <img ng-src="{{ uploadme.src }}">
-                            </form>
-                        </div>-->
-
                         </div>
                         <div class="form-group">
                             <label class="control-label" translate="therockbibleApp.band.links" for="field_links">Links</label>
@@ -128,7 +105,6 @@
                                    ng-model="band.logo"
                             />
                         </div>
-
                         <div class="form-group">
                             <label translate="therockbibleApp.band.genre" for="field_genre">genre</label>
                             <ui-select ng-model="band.genres" multiple title="Choose a genre">
@@ -138,10 +114,6 @@
                                 </ui-select-choices>
                             </ui-select>
                         </div>
-                        <!--        <div class="form-group">
-                                    <label translate="therockbibleApp.band.genre" for="field_genre">genre</label>
-                                    <select class="form-control" id="field_genre" multiple name="genre" ng-model="band.genres" ng-options="genre as genre.name for genre in genres track by genre.id"></select>
-                                </div>-->
                         <div class="form-group">
                             <label translate="therockbibleApp.band.artist" for="field_artist">artist</label>
                             <ui-select ng-model="band.artists" multiple title="Choose a artist">
@@ -155,11 +127,6 @@
                                 <i class="material-icons" style="font-size:10px;">add</i>
                             </a>
                         </div>
-
-                        <!--        <div class="form-group">
-                                    <label translate="therockbibleApp.band.artist" for="field_artist">artist</label>
-                                    <select class="form-control" id="field_artist" multiple name="artist" ng-model="band.artists" ng-options="artist as artist.name for artist in artists track by artist.id"></select>
-                                </div>-->
                         <div class="form-group">
                             <label translate="therockbibleApp.band.country" for="field_country">country</label>
                             <ui-select ng-model="band.country" title="Choose a country">
@@ -182,17 +149,17 @@
                                 <i class="material-icons" style="font-size:10px;">add</i>
                             </a>
                         </div>
-                        <!--        <div class="form-group">
-                                    <label translate="therockbibleApp.band.label" for="field_label">label</label>
-                                    <select class="form-control" id="field_label" name="label" ng-model="band.label" ng-options="label as label.name for label in labels track by label.id">
-                                        <option value=""></option>
-                                    </select>
-                                </div>-->
                         <div class="form-group">
                             <label translate="therockbibleApp.band.status" for="field_status">status</label>
-                            <select class="form-control" id="field_status" name="status" ng-model="band.status" ng-options="status as status.status for status in statuss track by status.id">
+                            <ui-select ng-model="band.status" title="Choose a label">
+                                <ui-select-match placeholder="Select or search a status in the list...">{{$select.selected.status}}</ui-select-match>
+                                <ui-select-choices repeat="status in statuss | filter: $select.search">
+                                    <span id="field_status" ng-bind-html="status.status | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+<!--                            <select class="form-control" id="field_status" name="status" ng-model="band.status" ng-options="status as status.status for status in statuss track by status.id">
                                 <option value=""></option>
-                            </select>
+                            </select>-->
                         </div>
                         <div class="form-group">
                             <label class="control-label" translate="therockbibleApp.band.bio" for="field_bio">Bio</label>
@@ -209,4 +176,10 @@
                             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
                         </button>
                     </div>
+                    </div>
             </form>
+ <style>
+     .pac-container{
+         z-index: 10000;
+     }
+ </style>
