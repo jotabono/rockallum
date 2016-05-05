@@ -23,7 +23,7 @@
                         <label translate="therockbibleApp.band.location" for="field_location">location</label>
                     <input name="location" id="field_location" places-auto-complete size=80
                            ng-model="vm.address"
-                           types="{{types}}"
+                           types="['(cities)']"
                            on-place-changed="vm.placeChanged()"
                             class="form-control"
                            placeholder="Enter a location where the band was formed"/><br/>
