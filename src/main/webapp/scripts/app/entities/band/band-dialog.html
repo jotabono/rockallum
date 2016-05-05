@@ -72,11 +72,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" translate="therockbibleApp.band.picture" for="field_picture">Picture</label>
-                        <input type="text" class="form-control" name="picture" id="field_picture"
-                               ng-model="band.picture"
-                        />
-                        </div>
+
+                        <br>Photo:
+                        <input type="file" ngf-select ng-model="picFile" name="file"
+                               accept="image/*" ngf-max-size="2MB" required
+                               ngf-model-invalid="errorFile" data-toggle="tooltip">
+                        <i ng-show="myForm.file.$error.required">*required</i><br>
+                        <i ng-show="myForm.file.$error.maxSize">File too large
+                            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                        <br>
+                        <button ng-disabled="!myForm.$valid"
+                                ng-click="uploadPic(picFile)">Submit</button>
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%"
+             ng-bind="picFile.progress + '%'"></div>
+      </span>
+                        <span ng-show="picFile.result">Upload Successful</span>
+                        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                    </div>
+
                         <div class="form-group">
                             <label class="control-label" translate="therockbibleApp.band.links" for="field_links">Links</label>
                             <input type="text" class="form-control" name="links" id="field_links"

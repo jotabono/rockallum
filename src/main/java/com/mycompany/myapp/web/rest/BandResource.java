@@ -18,9 +18,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -147,4 +152,54 @@ public class BandResource {
             .stream(bandSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
+    /* Subir imagenes */
+
+    @RequestMapping(value = "/upload",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+        public void handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("name") String name) {
+        log.debug("REST request to handleFileUpload");
+
+        File theDir = new File("./src/main/webapp/uploads");
+
+        byte[] bytes;
+
+        String nameBand = "";
+
+        try {
+
+            if (!theDir.exists()) {
+                System.out.println("creating directory: /uploads");
+                boolean result = false;
+
+                try {
+                    theDir.mkdir();
+                    result = true;
+                } catch (SecurityException se) {
+                    //handle it
+                }
+                if (result) {
+                    System.out.println("DIR created");
+                }
+            }
+
+
+            file.getContentType();
+
+            //Get name of file
+            nameBand = name;
+
+            //Create new file in path
+            BufferedOutputStream stream =
+                new BufferedOutputStream(new FileOutputStream(new File("./src/main/webapp/uploads/" + nameBand + ".jpg")));
+
+            stream.write(file.getBytes());
+            stream.close();
+            log.debug("You successfully uploaded " + file.getName() + "!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

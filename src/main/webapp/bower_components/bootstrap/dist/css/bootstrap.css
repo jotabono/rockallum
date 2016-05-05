@@ -6811,3 +6811,11 @@ td:focus{
 .thumbnail:hover{
     cursor:pointer;
 }
+
+.thumbgenre{
+    height:15px;
+    width:90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

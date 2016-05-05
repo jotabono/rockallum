@@ -40,12 +40,12 @@
         <div class="col-sm-6 col-md-3 bands" ng-repeat="band in bands | filter:searchQuery">
             <div ui-sref="band.detail({id:band.id})" class="thumbnail">
 
-                <img data-ng-src="{{'data:' + band.bandContentType + ';base64,' + band.picture}}" style="max-height: 100px; min-width: 100%;" ng-if="band.picture"/>
-                <img data-ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/>
+                <img ng-src="/uploads/{{band.picture}}.jpg" style="max-height: 100px; min-width: 100%;" ng-if="band.picture"/>
+                <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/>
 
                 <div class="caption">
                     <h3>{{ band.name }}</h3>
-                    <p><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
+                    <p class="thumbgenre"><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
                     <p><b>Country:</b> {{band.country.name}}</p>
                     <p><b>Status:</b> {{band.status.status}}</p>
                 </div>

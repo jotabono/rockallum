@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('BandDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'NgMap',
-        function($scope, $stateParams, $uibModalInstance, $rootScope, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, NgMap) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'NgMap',
+        function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, NgMap) {
 
         $scope.band = entity;
         $scope.genres = Genre.query();
@@ -25,6 +25,11 @@ angular.module('therockbibleApp').controller('BandDialogController',
         };
 
         var onSaveSuccess = function (result) {
+            $scope.uploadPic($scope.picFile, result);
+            var picture = result.name+result.id;
+            result.picture = picture;
+            console.log(result);
+            Band.update(result);
             $scope.$emit('therockbibleApp:bandUpdate', result);
             $uibModalInstance.close(result);
             $scope.isSaving = false;
@@ -83,5 +88,24 @@ angular.module('therockbibleApp').controller('BandDialogController',
         NgMap.getMap().then(function(map) {
             vm.map = map;
         });
+
+            $scope.uploadPic = function(file, result) {
+                file.upload = Upload.upload({
+                    url: 'api/upload',
+                    data: {file: file, 'name': result.name+result.id},
+                });
+
+                file.upload.then(function (response) {
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    // Math.min is to fix IE which reports 200% sometimes
+                    file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                });
+            }
 
         }]);
