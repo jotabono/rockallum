@@ -18,12 +18,18 @@ $(document).ready(function() {
 
         });
 
-        $('.container').on('click', function(){
+        $('.container-fluid').on('click', function(){
             sidebar.removeClass('open');
             $('.barralateral').html("<i style='color:grey'class='material-icons'>dehaze</i>");
             openedMenuIcon = true;
         });
 
+        $('#navbar-collapse').on('click', function(){
+            sidebar.removeClass('open');
+            $('.barralateral').html("<i style='color:grey'class='material-icons'>dehaze</i>");
+            openedMenuIcon = true;
+        });
+        
         if(openedMenuIcon){
             $('.barralateral').html("<i class='material-icons'>close</i>");
             openedMenuIcon = false;

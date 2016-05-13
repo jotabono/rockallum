@@ -4,19 +4,7 @@ angular.module('therockbibleApp').controller('BandDialogController',
     ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'NgMap',
         function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, NgMap) {
 
-        // $scope.band = entity;
-
-            entity.$promise.then(function(data){
-
-                console.log(data);
-
-                $scope.band = data;
-                $scope.loc = $scope.band.location;
-                $scope.lat = $scope.band.latitude;
-                $scope.lng = $scope.band.longitude;
-                $scope.picFile = $scope.band.picture;
-                $scope.picFile2 = $scope.band.logo;
-            });
+        $scope.band = entity;
 
         $scope.genres = Genre.query();
         $scope.artists = Artist.query();
