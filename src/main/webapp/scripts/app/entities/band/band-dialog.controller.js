@@ -16,7 +16,6 @@ angular.module('therockbibleApp').controller('BandDialogController',
                 $scope.lng = $scope.band.longitude;
                 $scope.picFile = $scope.band.picture;
                 $scope.picFile2 = $scope.band.logo;
-
             });
 
         $scope.genres = Genre.query();
