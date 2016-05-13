@@ -1,171 +1,201 @@
- <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                            ng-click="clear()">&times;</button>
-                    <h4 class="modal-title" id="myBandLabel" translate="therockbibleApp.band.home.createOrEditLabel">Create or edit a Band</h4>
-                </div>
-                <div class="modal-body">
-                    <jh-alert-error></jh-alert-error>
-                    <div class="form-group">
-                        <label translate="therockbibleApp.band.name" for="field_name">name</label>
-                        <input type="text" class="form-control" name="name" id="field_name"
-                               ng-model="band.name"
-                               required
-                               placeholder="Name of the band"/>
-                        <div ng-show="editForm.name.$invalid">
-                            <p class="help-block"
-                               ng-show="editForm.name.$error.required" translate="entity.validation.required">
-                                This field is required.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label translate="therockbibleApp.band.location" for="field_location">location</label>
-                    <input name="location" id="field_location" places-auto-complete size=80
-                           ng-model="vm.address"
-                           types="['(cities)']"
-                           on-place-changed="vm.placeChanged()"
-                            class="form-control"
-                           placeholder="Enter a location where the band was formed"/><br/>
-                        <ng-map zoom="2" center="35.5808186, 3.0456276"><marker position="{{vm.place.geometry.location}}"></marker></ng-map>
-                    </div>
-                    <div class="form-group">
-                        <label translate="therockbibleApp.band.foundingDate" for="field_foundingDate">Founding date</label>
-                        <div class="input-group">
-                            <input id="field_foundingDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="band.foundingDate" is-open="datePickerForFoundingDate.status.opened"
-                            placeholder="The date when the band was formed"/>
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBandLabel" translate="therockbibleApp.band.home.createOrEditLabel">Create or edit
+            a Band</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.name" for="field_name">name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                   ng-model="band.name"
+                   required
+                   placeholder="Name of the band"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.location" for="field_location">location</label>
+            <input type="text" class="form-control" name="location" id="field_location_prueba"
+                   ng-model="band.location"
+                   placeholder="Location" ng-if="band.location"/>
+            <input ng-if="!band.location" name="location" id="field_location" places-auto-complete size=80
+                   ng-model="vm.address"
+                   types="['(cities)']"
+                   on-place-changed="vm.placeChanged()"
+                   class="form-control"
+                   placeholder="Enter a location where the band was formed"/>
+            <div id="mapa" style="display:none">
+                <ng-map zoom="2" center="35.5808186, 3.0456276">
+                    <marker position="{{vm.place.geometry.location}}"></marker>
+                </ng-map>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.foundingDate" for="field_foundingDate">Founding date</label>
+            <div class="input-group">
+                <input id="field_foundingDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}"
+                       ng-model="band.foundingDate" is-open="datePickerForFoundingDate.status.opened"
+                       placeholder="The date when the band was formed"/>
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="datePickerForFoundingDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button type="button" class="btn btn-default"
+                                ng-click="datePickerForFoundingDateOpen($event)"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
                     </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label translate="therockbibleApp.band.yearsActive" for="field_yearsActive">Years Active</label>
-                        <input type="text" class="form-control" name="yearsActive" id="field_yearsActive"
-                               ng-model="band.yearsActive" placeholder="Example: 1968 (as Polka Tulk), 1968-1969 (as Earth), 1969-2006, 2011-present"
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label translate="therockbibleApp.band.lyricalThemes" for="field_lyricalThemes">Lyrical themes</label>
-                        <input type="text" class="form-control" name="lyricalThemes" id="field_lyricalThemes"
-                               ng-model="band.lyricalThemes" placeholder="Example: History, Literature, War, Mythology, Society, Religion"
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label translate="therockbibleApp.band.label" for="field_label">label</label>
-                        <ui-select ng-model="band.label" title="Choose a label">
-                            <ui-select-match placeholder="Select or search a label in the list...">{{$select.selected.name}}</ui-select-match>
-                            <ui-select-choices repeat="label in labels | filter: $select.search">
-                                <span id="field_label" ng-bind-html="label.name | highlight: $select.search"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                        <a ui-sref="label.new" class="link">
-                            Add a new label
-                            <i class="material-icons" style="font-size:10px;">add</i>
-                        </a>
-                        <div class="form-group">
-                            <label class="control-label" translate="therockbibleApp.band.independent" for="field_independent">Unsigned/independent?</label>
-                            <input type="checkbox" name="independent" id="field_independent"
-                                   ng-model="band.independent"
-                            />
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.yearsActive" for="field_yearsActive">Years Active</label>
+            <input type="text" class="form-control" name="yearsActive" id="field_yearsActive"
+                   ng-model="band.yearsActive"
+                   placeholder="Example: 1968 (as Polka Tulk), 1968-1969 (as Earth), 1969-2006, 2011-present"
+            />
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.lyricalThemes" for="field_lyricalThemes">Lyrical themes</label>
+            <input type="text" class="form-control" name="lyricalThemes" id="field_lyricalThemes"
+                   ng-model="band.lyricalThemes"
+                   placeholder="Example: History, Literature, War, Mythology, Society, Religion"
+            />
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.label" for="field_label">label</label>
+            <ui-select ng-if="!band.independent" ng-model="band.label" title="Choose a label">
+                <ui-select-match placeholder="Select or search a label in the list...">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="label in labels | filter: $select.search">
+                    <span id="field_label" ng-bind-html="label.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+            <a ng-if="!band.independent" ui-sref="label.new" class="link">
+                Add a new label
+                <i class="material-icons" style="font-size:10px;">add</i>
+            </a>
+            <div class="form-group">
+                <label class="control-label" translate="therockbibleApp.band.independent" for="field_independent">Unsigned/independent?</label>
+                <input type="checkbox" name="independent" id="field_independent"
+                       ng-model="band.independent"
+                />
+            </div>
+        </div>
 
-                    <div class="form-group">
-
-                        <br>Photo:
-                        <input type="file" ngf-select ng-model="picFile" name="file"
-                               accept="image/*" ngf-max-size="2MB" required
-                               ngf-model-invalid="errorFile" data-toggle="tooltip">
-                        <i ng-show="myForm.file.$error.required">*required</i><br>
-                        <i ng-show="myForm.file.$error.maxSize">File too large
-                            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-                        <br>
-                        <button ng-disabled="!myForm.$valid"
-                                ng-click="uploadPic(picFile)">Submit</button>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.picture">Picture</label>
+            <br/>
+            <button class="btn btn-default" id="field_picture" type="file" ngf-select ng-model="picFile" name="file"
+                   accept="image/*" ngf-max-size="2MB" required
+                   ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/> Upload image</button>
+            <button class="btn btn-danger" ng-click="picFile = null" ng-show="picFile"><span class="glyphicon glyphicon-remove"/> Remove</button>
+            <i ng-show="myForm.file.$error.required">*required</i><br>
+            <i ng-show="myForm.file.$error.maxSize">File too large
+                {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+            <br/>
+            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" style="max-width:600px" class="thumb">
       <span class="progress" ng-show="picFile.progress >= 0">
         <div style="width:{{picFile.progress}}%"
              ng-bind="picFile.progress + '%'"></div>
       </span>
-                        <span ng-show="picFile.result">Upload Successful</span>
-                        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                    </div>
+            <span ng-show="picFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 
-                        <div class="form-group">
-                            <label class="control-label" translate="therockbibleApp.band.links" for="field_links">Links</label>
-                            <input type="text" class="form-control" name="links" id="field_links"
-                                   ng-model="band.links"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" translate="therockbibleApp.band.logo" for="field_logo">Logo</label>
-                            <input type="text" class="form-control" name="logo" id="field_logo"
-                                   ng-model="band.logo"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label translate="therockbibleApp.band.genre" for="field_genre">genre</label>
-                            <ui-select ng-model="band.genres" multiple title="Choose a genre">
-                                <ui-select-match placeholder="Select or search a genre in the list...">{{$item.name}}</ui-select-match>
-                                <ui-select-choices repeat="genre in genres | filter: $select.search">
-                                    <span id="field_genre" ng-bind-html="genre.name | highlight: $select.search"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                        <div class="form-group">
-                            <label translate="therockbibleApp.band.artist" for="field_artist">artist</label>
-                            <ui-select ng-model="band.artists" multiple title="Choose a artist">
-                                <ui-select-match placeholder="Select or search a artist in the list...">{{$item.name}}</ui-select-match>
-                                <ui-select-choices repeat="artist in artists | filter: $select.search">
-                                    <span id="field_artist" ng-bind-html="artist.name | highlight: $select.search"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                            <a ui-sref="artist.new" class="link">
-                                Add a new member
-                                <i class="material-icons" style="font-size:10px;">add</i>
-                            </a>
-                        </div>
-                        <div class="form-group">
-                            <label translate="therockbibleApp.band.country" for="field_country">country</label>
-                            <ui-select ng-model="band.country" title="Choose a country">
-                                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
-                                <ui-select-choices repeat="country in countrys | filter: $select.search">
-                                    <span id="field_country" ng-bind-html="country.name | highlight: $select.search"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                        <div class="form-group">
-                            <label translate="therockbibleApp.band.status" for="field_status">status</label>
-                            <ui-select ng-model="band.status" title="Choose a label">
-                                <ui-select-match placeholder="Select or search a status in the list...">{{$select.selected.status}}</ui-select-match>
-                                <ui-select-choices repeat="status in statuss | filter: $select.search">
-                                    <span id="field_status" ng-bind-html="status.status | highlight: $select.search"></span>
-                                </ui-select-choices>
-                            </ui-select>
-<!--                            <select class="form-control" id="field_status" name="status" ng-model="band.status" ng-options="status as status.status for status in statuss track by status.id">
-                                <option value=""></option>
-                            </select>-->
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" translate="therockbibleApp.band.bio" for="field_bio">Bio</label>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.band.logo" for="field_logo">Logo</label>
+            <br/>
+            <button class="btn btn-default" id="field_logo" type="file" ngf-select ng-model="picFile2" name="file2"
+                    accept="image/*" ngf-max-size="2MB" required
+                    ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/> Upload image</button>
+            <button class="btn btn-danger" ng-click="picFile2 = null" ng-show="picFile2"><span class="glyphicon glyphicon-remove"/> Remove</button>
+            <i ng-show="myForm.file.$error.required">*required</i><br>
+            <i ng-show="myForm.file.$error.maxSize">File too large
+                {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+            <br/>
+            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" style="max-width:600px" class="thumb">
+      <span class="progress" ng-show="picFile2.progress >= 0">
+        <div style="width:{{picFile2.progress}}%"
+             ng-bind="picFile2.progress + '%'"></div>
+      </span>
+            <span ng-show="picFile2.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.band.links" for="field_links">Links</label>
+            <input type="text" class="form-control" name="links" id="field_links"
+                   ng-model="band.links"
+            />
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.genre" for="field_genre">genre</label>
+            <ui-select ng-model="band.genres" multiple title="Choose a genre">
+                <ui-select-match placeholder="Select or search a genre in the list...">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="genre in genres | filter: $select.search">
+                    <span id="field_genre" ng-bind-html="genre.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.artist" for="field_artist">artist</label>
+            <ui-select ng-model="band.artists" multiple title="Choose a artist">
+                <ui-select-match placeholder="Select or search a artist in the list...">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="artist in artists | filter: $select.search">
+                    <span id="field_artist" ng-bind-html="artist.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+            <a ui-sref="artist.new" class="link">
+                Add a new member
+                <i class="material-icons" style="font-size:10px;">add</i>
+            </a>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.country" for="field_country">country</label>
+            <ui-select ng-model="band.country" title="Choose a country">
+                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="country in countrys | filter: $select.search">
+                    <span id="field_country" ng-bind-html="country.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.band.status" for="field_status">status</label>
+            <ui-select ng-model="band.status" title="Choose a label">
+                <ui-select-match placeholder="Select or search a status in the list...">{{$select.selected.status}}
+                </ui-select-match>
+                <ui-select-choices repeat="status in statuss | filter: $select.search">
+                    <span id="field_status" ng-bind-html="status.status | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+            <!--                            <select class="form-control" id="field_status" name="status" ng-model="band.status" ng-options="status as status.status for status in statuss track by status.id">
+                                            <option value=""></option>
+                                        </select>-->
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.band.bio" for="field_bio">Bio</label>
                             <textarea style="resize:vertical" type="text" class="form-control" name="bio" id="field_bio"
-                                   ng-model="band.bio" placeholder="Write here the biography of the band"
+                                      ng-model="band.bio" placeholder="Write here the biography of the band"
                             />
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-                        </button>
-                    </div>
-                    </div>
-            </form>
- <style>
-     .pac-container{
-         z-index: 10000;
-     }
- </style>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+    </div>
+</form>
+<style>
+    .pac-container {
+        z-index: 10000;
+    }
+</style>

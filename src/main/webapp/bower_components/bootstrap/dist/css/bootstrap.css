@@ -6154,7 +6154,7 @@ button.close {
     left: 0;
     z-index: 1060;
     display: none;
-    max-width: 276px;
+    width: 100%;
     padding: 1px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -6813,7 +6813,6 @@ td:focus{
 }
 
 .thumbgenre{
-    height:15px;
     width:90%;
     white-space: nowrap;
     overflow: hidden;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('BandController', function ($scope, $state, Band, BandSearch, ParseLinks) {
+    .controller('BandController', function ($scope, $state, $sce, Band, BandSearch, ParseLinks) {
 
         $scope.bands = [];
         $scope.predicate = 'id';
@@ -19,7 +19,6 @@ angular.module('therockbibleApp')
             $scope.loadAll();
         };
         $scope.loadAll();
-
 
         $scope.search = function () {
             BandSearch.query({query: $scope.searchQuery}, function(result) {
@@ -53,4 +52,18 @@ angular.module('therockbibleApp')
                 id: null
             };
         };
+
+        $scope.trusted = {};
+        $scope.getPopoverData = function(s) {
+            var html="";
+            for (var i=0;i<s.length;i++){
+                if(i == s.length-1){
+                    html += '<span>'+s[i].name+'.</span>';
+                } else {
+                    html += '<span>' + s[i].name + ', </span>';
+                }
+            }
+
+            return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
+        }
     });

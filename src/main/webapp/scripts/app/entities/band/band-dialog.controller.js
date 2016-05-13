@@ -4,7 +4,21 @@ angular.module('therockbibleApp').controller('BandDialogController',
     ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'NgMap',
         function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, NgMap) {
 
-        $scope.band = entity;
+        // $scope.band = entity;
+
+            entity.$promise.then(function(data){
+
+                console.log(data);
+
+                $scope.band = data;
+                $scope.loc = $scope.band.location;
+                $scope.lat = $scope.band.latitude;
+                $scope.lng = $scope.band.longitude;
+                $scope.picFile = $scope.band.picture;
+                $scope.picFile2 = $scope.band.logo;
+
+            });
+
         $scope.genres = Genre.query();
         $scope.artists = Artist.query();
         $scope.favouritebands = FavouriteBand.query();
@@ -26,8 +40,11 @@ angular.module('therockbibleApp').controller('BandDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.uploadPic($scope.picFile, result);
+            $scope.uploadPic2($scope.picFile2, result);
             var picture = result.name+result.id;
+            var logo = result.name+"logo"+result.id;
             result.picture = picture;
+            result.logo = logo;
             console.log(result);
             Band.update(result);
             $scope.$emit('therockbibleApp:bandUpdate', result);
@@ -48,6 +65,7 @@ angular.module('therockbibleApp').controller('BandDialogController',
         });
 
         $scope.save = function () {
+
             $scope.band.location = $scope.loc;
             $scope.band.latitude = $scope.lat;
             $scope.band.longitude = $scope.lng;
@@ -80,6 +98,7 @@ angular.module('therockbibleApp').controller('BandDialogController',
             vm.place = this.getPlace();
             console.log('location', vm.place.geometry.location);
             vm.map.setCenter(vm.place.geometry.location);
+            console.log('address', vm.address);
             $scope.loc = vm.address;
             $scope.lat = vm.place.geometry.location.lat();
             $scope.lng = vm.place.geometry.location.lng();
@@ -108,4 +127,22 @@ angular.module('therockbibleApp').controller('BandDialogController',
                 });
             }
 
+            $scope.uploadPic2 = function(file, result) {
+                file.upload = Upload.upload({
+                    url: 'api/upload',
+                    data: {file: file, 'name': result.name+"logo"+result.id},
+                });
+
+                file.upload.then(function (response) {
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    // Math.min is to fix IE which reports 200% sometimes
+                    file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                });
+            }
         }]);

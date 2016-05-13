@@ -1,7 +1,8 @@
 <div>
     <h2>{{band.name}}</h2>
     <img data-ng-src="/media/stage.jpg" style="max-height: 300px; width: 100%;" ng-if="!band.picture"/>
-    <img data-ng-src="{{'data:' + band.pictureContentType + ';base64,' + band.picture}}" style="max-height: 300px; min-width: 50%;" ng-if="band.picture"/>
+    <img ng-src="/uploads/{{band.picture}}.jpg" class="img-responsive" ng-if="band.picture"/>
+    <img ng-src="/uploads/{{band.logo}}.jpg" style="max-height: 300px; min-width: 50%;" ng-if="band.logo"/>
     <p></p>
     <div class="table-responsive">
         <table class="table table-striped">

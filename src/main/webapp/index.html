@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="scripts/components/navbar/navbarlateral.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/ui-select/dist/select.min.css" />
+    <link rel="stylesheet" href="bandstyle.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css assets/styles/main.css -->
@@ -31,7 +32,7 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <div ui-view="navbar" ng-cloak=""></div>
-<div class="container">
+<div class="container-fluid">
     <div class="well" ui-view="content"></div>
 
     <div class="footer">
@@ -74,7 +75,7 @@
 <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
 <script src="bower_components/ui-select/dist/select.min.js"></script>
 <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-
+<script src="bower_components/angular-bootstrap-file-field/src/angular-bootstrap-file-field.js"></script>
 
 
 <!-- endbower -->
@@ -294,7 +295,6 @@
 <script src="scripts/components/entities/collection/collection.search.service.js"></script>
 <script src="scripts/components/navbar/navbarlateral.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-
 <!-- endbuild -->
 </body>
 </html>
