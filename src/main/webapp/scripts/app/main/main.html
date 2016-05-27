@@ -41,7 +41,6 @@
                 <div class="container-fluid divconwallpaper" style="margin-top:180px; margin-right:-19px;margin-left:-20px; padding-top:13.5%; padding-bottom:13.5%;">
                     <div class="row-fluid">
                         <div id="indexthumbs" class="span4 offset2">
-
                             <div class="col-md-4">
                                 <div href="band" class="thumbnail mainthumbs">
                                     <i class="material-icons iconthumbs" style="font-size:100px;">sort_by_alpha</i><br/>
@@ -68,7 +67,7 @@
     <div class="lastestbandsindex">
     <h1 unselectable="on" class="titleindex">Lastest bands added</h1>
         <div class="row">
-            <div class="col-sm-6 col-md-3 bands" ng-repeat="band in bands | filter:searchQuery">
+            <div class="col-sm-6 col-md-4 bands" ng-repeat="band in bands | limitTo:6">
                 <div ui-sref="band.detail({id:band.id})" class="thumbnail bandthumbs">
 
                     <div style="height: 200px;"><img ng-src="/uploads/{{band.picture}}.jpg" style="height: 200px; width: 100%; object-fit: cover;" ng-if="band.picture"/>
@@ -77,15 +76,12 @@
                     <div class="caption">
                         <h3>{{ band.name }}</h3>
 
-                        <p uib-popover-html="getPopoverData(band.genres)" popover-trigger="mouseenter" popover-placement="right" class="thumbgenre"><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
+                        <p uib-popover-html="getPopoverData(band.genres)" popover-trigger="mouseenter" popover-placement="bottom" class="thumbgenre"><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
                         <p><b>Country:</b> {{band.country.name}}</p>
                         <p><b>Status:</b> {{band.status.status}}</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="text-center">
-            <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
         </div>
     </div>
 </div>

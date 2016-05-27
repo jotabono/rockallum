@@ -449,7 +449,7 @@ Social Buttons
 
 .popover{
     border-radius:0px;
-    background-color:rgba(0,0,0,0.2);
+    background-color:rgba(0,0,0,0.9);
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -677,4 +677,8 @@ Social Buttons
         transition:1s;
         font-size:20px;
     }
+}
+
+.blackiconbar:hover>a>i {
+    color: #000 !important;
 }

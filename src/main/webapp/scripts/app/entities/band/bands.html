@@ -46,7 +46,7 @@
                 <div class="caption">
                     <h3>{{ band.name }}</h3>
 
-                    <p uib-popover-html="getPopoverData(band.genres)" popover-trigger="mouseenter" popover-placement="right" class="thumbgenre"><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
+                    <p uib-popover-html="getPopoverData(band.genres)" popover-trigger="mouseenter" popover-placement="bottom" class="thumbgenre"><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
                     <p><b>Country:</b> {{band.country.name}}</p>
                     <p><b>Status:</b> {{band.status.status}}</p>
                 </div>
