@@ -1,22 +1,22 @@
 <div>
-    <h2 translate="therockbibleApp.band.home.title">Bands</h2>
+    <h2 class="paginatitulo" translate="therockbibleApp.band.home.title">Bands</h2>
     <jh-alert></jh-alert>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="band.new" >
+            <div class="col-xs-2 no-padding-left">
+                <button class="btn btn-primary addbutton" ui-sref="band.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span
                         class="hidden-xs"                        translate="therockbibleApp.band.home.createLabel">Create new Band
                     </span>
                 </button>
             </div>
-            <div class="col-xs-8 no-padding-right">
+            <div class="col-xs-10 no-padding-right">
                 <form name="searchForm" class="form-inline">
-                    <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.band.home.search' | translate }}">
+                    <div class="input-group pull-right" style="width:100%" >
+                        <input type="text" class="form-control buscador" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.band.home.search' | translate }}">
                         <span  class="input-group-btn width-min" >
-                            <button class="btn btn-info" ng-click="search()">
+                            <button class="btn btn-info buscadorbutton" ng-click="search()">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
@@ -38,7 +38,7 @@
 
     <div class="row">
         <div class="col-sm-6 col-md-3 bands" ng-repeat="band in bands | filter:searchQuery">
-            <div ui-sref="band.detail({id:band.id})" class="thumbnail">
+            <div ui-sref="band.detail({id:band.id})" class="thumbnail bandthumbs">
 
                 <div style="height: 200px;"><img ng-src="/uploads/{{band.picture}}.jpg" style="height: 200px; width: 100%; object-fit: cover;" ng-if="band.picture"/>
                 <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/></div>

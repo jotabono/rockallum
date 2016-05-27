@@ -4,16 +4,15 @@
 <!-- Material sidebar -->
 <aside id="sidebar" class="sidebar sidebar-inverse closed sidebar-fixed-left" role="navigation">
     <!-- Sidebar header -->
-    <div class="sidebar-header header-cover" style="background-color: #2C3E50;">
+    <div class="sidebar-header header-cover">
         <!-- Top bar -->
-        <div class="top-bar"></div>
         <!-- Sidebar brand image -->
-        <div class="sidebar-image">
-            <img src="http://img.ffffound.com/static-data/assets/6/618baa2b1d557948db77956df46495b7573559b8_m.jpg">
+        <div style="height: 100%;">
+            <img ng-src="/uploads/default-user.png" style="height: 100%; width: 100%; object-fit: cover;"/>
         </div>
         <!-- Sidebar brand name -->
-        <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-            jotabono92@gmail.com
+        <a data-toggle="dropdown" class="sidebar-brand" href="/#/settings">
+            {{account.login}}
             <b class="caret"></b>
         </a>
     </div>

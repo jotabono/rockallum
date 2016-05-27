@@ -273,12 +273,12 @@ Social Buttons
 /* Makes toolbar not wrap on smaller screens
  http://www.sketchingwithcss.com/samplechapter/cheatsheet.html#right */
 .flex-btn-group-container {
-   display: -webkit-flex;
-   display: flex;
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-justify-content: flex-end;
-   justify-content: flex-end;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 /* Align text in td verifically (top aligned by Bootstrap) */
@@ -301,7 +301,7 @@ Social Buttons
     background:transparent;
     border: 2px solid pink;
     color: whitesmoke;
-    font-family:sans-serif;
+    font-family:Roboto;
 }
 
 .misbutons:hover{
@@ -309,10 +309,11 @@ Social Buttons
     background:transparent;
     box-shadow: 0 0 1em #B0FFAD;
     color: whitesmoke;
-    font-family:sans-serif
+    font-family:Roboto
 }
 
 .buscadorindex{
+    font-family:Roboto;
     font-size: 20px;
     font-weight: bold;
     color: pink;
@@ -346,25 +347,29 @@ Social Buttons
 }
 
 .buscadorindex::-webkit-input-placeholder {
-    font-weight: normal;
+    font-family:Roboto;
+    font-weight: 300;
     font-size: 20px;
     color: pink;
 }
 
 .buscadorindex:-moz-placeholder { /* Firefox 18- */
-    font-weight: normal;
+    font-family:Roboto;
+    font-weight: 300;
     font-size: 20px;
     color: pink;
 }
 
 .buscadorindex::-moz-placeholder {  /* Firefox 19+ */
-    font-weight: normal;
+    font-family:Roboto;
+    font-weight: 300;
     font-size: 20px;
     color: pink;
 }
 
 .buscadorindex:-ms-input-placeholder {
-    font-weight: normal;
+    font-family:Roboto;
+    font-weight: 300;
     font-size: 20px;
     color: pink;
 }
@@ -389,4 +394,169 @@ Social Buttons
 
 .navbar-default .navbar-nav > li > a:hover {
     color: pink;
+}
+
+#indexthumbs>.thumbnail{
+    display: inline-block;
+    padding:6%;
+    margin:3%;
+}
+.mainthumbs{
+    background-color:rgba(80,22,91,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius:8px;
+    font-weight:bold;
+    color: whitesmoke;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size:50px;
+    margin:40px;
+    padding:53px;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+}
+.mainthumbs:hover{
+    outline: 0;
+    transition:0.8s;
+    background-color:rgba(80,22,91,0.4);
+    -webkit-box-shadow: inset 0 10px 10px rgba(0,0,0,.075), 0 0 17px rgba(236, 175, 233, .6);
+    box-shadow: inset 0 10px 10px rgba(0,0,0,.075), 0 0 17px rgba(102, 175, 233, .6);
+    color:whitesmoke;
+    text-shadow: -1px -1px 50px #ebebeb, 1px 1px 50px #ebebeb, -1px 1px 50px #ebebeb, 1px -1px 50px #ebebeb;
+}
+#indexthumbs{
+    text-shadow: -1px -1px 20px #ebebeb, 1px 1px 20px #ebebeb, -1px 1px 20px #ebebeb, 1px -1px 20px #ebebeb;
+}
+
+.iconthumbs {
+    text-shadow: none;
+}
+
+.barralateral{
+    position:fixed;
+}
+
+.bandthumbs{
+    color:white;
+    background-color:rgba(0,0,0,0.2);
+    border:none;
+}
+
+.bandthumbs .caption {
+    color: white;
+}
+
+.popover{
+    border-radius:0px;
+    background-color:rgba(0,0,0,0.2);
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    color:white;
+}
+
+.modal-header{
+    color:black;
+}
+.modal-body{
+    color:black;
+}
+
+.addbutton{
+    width:100%;
+    height:50px;
+    background:transparent;
+    border: 1px solid #ccc;
+    color: whitesmoke;
+    font-family:Roboto;
+}
+
+.addbutton:hover{
+    transition:0.5s;
+    background:transparent;
+    box-shadow: 0 0 1em #B0FFAD;
+    color: whitesmoke;
+    font-family:Roboto
+}
+
+
+.buscador{
+    font-family:Roboto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ccc;
+    width:100%;
+    height:50px;
+    display:block;
+    background:transparent;
+}
+.buscador:focus{
+    border: 1px solid #ccc;
+}
+.buscadorbutton{
+    border-color: #ccc;
+    height:50px;
+    display:block;
+    background:transparent;
+    color:white;
+}
+
+.buscadorbutton:hover{
+    background: transparent;
+    color: #B0FFAD;
+    transition:0.6s;
+    border: 1px solid #ccc;
+}
+
+.buscador::-webkit-input-placeholder {
+    font-family:Roboto;
+    font-weight: 300;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.buscador:-moz-placeholder { /* Firefox 18- */
+    font-family:Roboto;
+    font-weight: 300;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.buscador::-moz-placeholder {  /* Firefox 19+ */
+    font-family:Roboto;
+    font-weight: 300;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.buscador:-ms-input-placeholder {
+    font-family:Roboto;
+    font-weight: 300;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.paginatitulo{
+    font-family:Roboto;
+    font-weight: 100;
+    font-size:50px;
+}
+
+.titleindex{
+    margin-top:100px;
+    margin-bottom:100px;
+    font-family:Roboto;
+    font-weight: 100;
+    font-size:80px;
+    text-align:center;
+
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+    cursor:default;
 }

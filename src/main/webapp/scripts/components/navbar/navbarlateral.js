@@ -29,9 +29,9 @@ $(document).ready(function() {
             $('.barralateral').html("<i style='color:grey'class='material-icons'>dehaze</i>");
             openedMenuIcon = true;
         });
-        
+
         if(openedMenuIcon){
-            $('.barralateral').html("<i class='material-icons'>close</i>");
+            $('.barralateral').html("<i style='color:black' class='material-icons'>close</i>");
             openedMenuIcon = false;
         }
         else{

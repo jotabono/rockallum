@@ -5,7 +5,7 @@ angular.module('therockbibleApp')
 
         $scope.bands = [];
         $scope.predicate = 'id';
-        $scope.reverse = true;
+        $scope.reverse = false;
         $scope.page = 1;
         $scope.loadAll = function() {
             Band.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
