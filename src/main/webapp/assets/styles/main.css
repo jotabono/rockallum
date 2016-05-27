@@ -567,3 +567,114 @@ Social Buttons
     -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
     transform: rotate(90deg);
 }
+
+.linknickname{
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 20px;
+    color: #202D33;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    margin-left:10px;
+    margin-right:10px;
+    background:transparent;
+    border: 2px solid pink;
+    color: whitesmoke;
+    font-family:Roboto;
+}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+    background:transparent;
+    border:none;
+    color: whitesmoke;
+    font-family:Roboto;
+}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+    cursor:default;
+}
+
+.footer{
+    background-color:#151216;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top:10%;
+    z-index: 99;
+    color: #ccc;
+    padding: 150px 0px 150px 0;
+    text-align: center;
+    position: relative;
+    text-transform: uppercase;
+    font-family:Roboto;
+    font-weight:100;
+    font-size:50px;
+}
+
+.footer a{
+    color: #ccc;
+    opacity:0.5;
+    margin-right:20px;
+}
+
+.footer a:hover{
+    transition:1s;
+    opacity: 1;
+    color: #fbffe8;
+}
+
+@media screen and (max-width: 800px) {
+    .titleindex{
+        transition:1s;
+        font-size:70px;
+    }
+
+}
+@media screen and (max-width: 720px) {
+    .footer{
+        transition:1s;
+        font-size:40px;
+    }
+
+    .titleindex{
+        transition:1s;
+        font-size:60px;
+    }
+}
+
+@media screen and (max-width: 620px){
+    .titleindex{
+        transition: 1s;
+        font-size:50px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .footer{
+        transition:1s;
+        font-size:30px;
+    }
+
+    .titleindex{
+        transition:1s;
+        font-size:40px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .titleindex{
+        transition:1s;
+        font-size:30px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .footer{
+        transition:1s;
+        font-size:20px;
+    }
+
+    .titleindex{
+        transition:1s;
+        font-size:20px;
+    }
+}

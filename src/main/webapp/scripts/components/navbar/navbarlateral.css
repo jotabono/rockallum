@@ -519,8 +519,8 @@ body {
     background-color: transparent;
 }
 .sidebar-inverse .sidebar-brand {
-    color: #000;
-    background-color: transparent;
+    color: white;
+    background-color:rgba(0,0,0,0.4);
 }
 .sidebar-inverse .sidebar-brand:hover,
 .sidebar-inverse .sidebar-brand:focus {
@@ -552,7 +552,7 @@ body {
 }
 .sidebar-inverse .sidebar-nav li:hover > a i,
 .sidebar-inverse .sidebar-nav li > a:hover i {
-    color: #000;
+    color: white;
 }
 .sidebar-inverse .sidebar-nav li:focus > a,
 .sidebar-inverse .sidebar-nav li > a:focus {
@@ -585,18 +585,18 @@ body {
     background-color: #000;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > li > a:focus {
-    background-color: rgba(224,157,217,1);
-    color: #000;
+    background-color:rgba(72,65,108,1);
+    color: white;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > li > a:hover {
-    background-color: rgba(224,157,217,1);
-    color: #000;
+    background-color:rgba(72,65,108,1);
+    color: white;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a,
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a:hover,
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a:focus {
-    color: #f5f5f5;
-    background-color: #000;
+    color: white;
+    background-color:rgba(72,65,108,1);
 }
 .sidebar-colored {
     background-color: #fff;
