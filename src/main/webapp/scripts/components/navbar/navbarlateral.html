@@ -8,11 +8,11 @@
         <!-- Top bar -->
         <!-- Sidebar brand image -->
         <div style="height: 100%;">
-            <img ng-src="/uploads/default-user.png" style="height: 100%; width: 100%; object-fit: cover;"/>
+            <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;"/>
         </div>
         <!-- Sidebar brand name -->
         <a data-toggle="dropdown" class="sidebar-brand" href="/#/settings">
-            {{account.login}}
+            <div ng-controller="NavbarLateralController">{{account.login}}</div>
             <b class="caret"></b>
         </a>
     </div>

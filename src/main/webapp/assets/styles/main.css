@@ -560,3 +560,10 @@ Social Buttons
     user-select: none;
     cursor:default;
 }
+
+.closeicon:hover{
+    transition:1s;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
