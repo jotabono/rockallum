@@ -147,6 +147,7 @@ public class UserResource {
                 user.setEmail(managedUserDTO.getEmail());
                 user.setActivated(managedUserDTO.isActivated());
                 user.setLangKey(managedUserDTO.getLangKey());
+                user.setUserPicture(managedUserDTO.getUserPicture());
                 Set<Authority> authorities = user.getAuthorities();
                 authorities.clear();
                 managedUserDTO.getAuthorities().stream().forEach(
