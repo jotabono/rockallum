@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2 translate="settings.title" translate-values="{username: '{{settingsAccount.login}}'}">User settings for [<b>{{settingsAccount.login}}</b>]</h2>
+            <h2>User settings for <b>{{settingsAccount.login}}</b></h2>
 
             <div class="alert alert-success" ng-show="success" translate="settings.messages.success">
                 <strong>Settings saved!</strong>
@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <label class="control-label" for="firstName" translate="settings.form.firstname">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
+                    <input type="text" class="form-control buscador" id="firstName" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
                            ng-model="settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
                         <p class="help-block"
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="lastName" translate="settings.form.lastname">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="{{'settings.form.lastname.placeholder' | translate}}"
+                    <input type="text" class="form-control buscador" id="lastName" name="lastName" placeholder="{{'settings.form.lastname.placeholder' | translate}}"
                            ng-model="settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
                         <p class="help-block"
@@ -57,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="email" translate="global.form.email">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                    <input type="email" class="form-control buscador" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
                            ng-model="settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
@@ -80,10 +80,18 @@
                 </div>
                 <div class="form-group">
                     <label for="langKey" translate="settings.form.language">Language</label>
-                    <select id="langKey" name="langKey" class="form-control" ng-model="settingsAccount.langKey" ng-controller="LanguageController" ng-options="code as (code | findLanguageFromKey) for code in languages"></select>
+                    <select id="langKey" name="langKey" class="form-control buscador" ng-model="settingsAccount.langKey" ng-controller="LanguageController" ng-options="code as (code | findLanguageFromKey) for code in languages"></select>
                 </div>
-
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>
+                <div class="form-group">
+                    <label for="picKey">Profile pic</label>
+                    <div id="picKey" class="picKey" ng-controller="NavbarLateralController" ng-model="profilepic" ngf-drop>
+                        <div class="row-fluid infodrag"><span><i class="fa fa-plus-circle" aria-hidden="true"></i>Drag your new profile picture here to update</span></div>
+                        <img ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="account.userPicture"/>
+                        <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="!account.userPicture"/>
+                    </div>
+                    <button class="btn btn-danger buscadorindexbutton" style="display:inline-block" ng-click="profilepic = null" ng-show="profilepic"><span class="glyphicon glyphicon-remove"/> Remove</button>
+                </div>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary misbutons" style="font-size:30px; font-family:Roboto; font-weight:300; border: 1px solid pink; width:120px;" translate="settings.form.button">Save</button>
             </form>
         </div>
     </div>

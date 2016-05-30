@@ -7,13 +7,14 @@
     <div class="sidebar-header header-cover">
         <!-- Top bar -->
         <!-- Sidebar brand image -->
-        <div style="height: 100%;">
-            <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;"/>
+        <div ng-controller="NavbarLateralController" ng-model="profilepic" ngf-drop style="height: 100%;">
+            <img ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="account.userPicture"/>
+            <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="!account.userPicture"/>
         </div>
         <!-- Sidebar brand name -->
         <a data-toggle="dropdown" class="sidebar-brand linknickname" href="/#/settings">
             <div ng-controller="NavbarLateralController">{{account.login}}</div>
-            <b class="caret"></b>
+            <i class="material-icons">open_in_browser</i>
         </a>
     </div>
 
@@ -45,6 +46,12 @@
         </li>
         <li class="blackiconbar">
             <a href="#">
+                <i class="sidebar-icon glyphicon glyphicon-home"></i>
+                Home
+            </a>
+        </li>
+        <li class="blackiconbar">
+            <a href="#">
                 <i class="sidebar-icon glyphicon glyphicon-user"></i>
                 Profile
             </a>
@@ -56,21 +63,27 @@
             </a>
         </li>
         <li class="blackiconbar">
-            <a href="#">
+            <a ui-sref="#" class="link">
                 <i class="sidebar-icon md-send"></i>
                 Reviews
             </a>
         </li>
         <li class="blackiconbar">
-            <a href="#">
+            <a ui-sref="#" class="link">
                 <i class="sidebar-icon glyphicon glyphicon glyphicon-flash"></i>
                 Collection
             </a>
         </li>
         <li class="blackiconbar">
-            <a href="#">
+            <a ui-sref="#" class="link">
                 <i class="sidebar-icon glyphicon glyphicon-heart-empty"></i>
                 Favs
+            </a>
+        </li>
+        <li class="blackiconbar">
+            <a ui-sref="settings" class="link">
+                <i class="sidebar-icon glyphicon glyphicon-cog"></i>
+                Settings
             </a>
         </li>
         <li class="divider"></li>
