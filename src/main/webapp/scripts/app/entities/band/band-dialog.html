@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+       <div name="myForm" class="form-group">
             <label translate="therockbibleApp.band.picture">Picture</label>
             <br/>
 
@@ -107,7 +107,7 @@
 
         </div>
 
-        <div class="form-group">
+        <div name="myForm" class="form-group">
             <label class="control-label" translate="therockbibleApp.band.logo" for="field_logo">Logo</label>
             <br/>
             <button class="btn btn-default" id="field_logo" type="file" ngf-select ng-model="picFile2" name="file2"
@@ -127,6 +127,7 @@
             <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 
         </div>
+
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.band.links" for="field_links">Links</label>
             <input type="text" class="form-control" name="links" id="field_links"

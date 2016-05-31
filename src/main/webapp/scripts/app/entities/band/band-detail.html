@@ -8,7 +8,9 @@
                         <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/>
 
                     <div class="caption">
-                        <h1>{{band.name}}</h1><br/>
+                        <h1>{{band.name}}</h1>
+                        <hr class="infowrapper">
+                        <img class="img-responsive" ng-src="/uploads/{{band.logo}}.jpg" style="width:500px;" ng-if="band.logo"/>
 <!--                        <div class="mapdetail">
                         <p><b>Location:</b> {{band.location}}</p>
                             <ng-map zoom="10" center="{{band.latitude}}, {{band.longitude}}">
@@ -42,7 +44,7 @@
                                 </p>
                             </div>
                         </div>
-                        <hr>
+                        <hr class="infowrapper">
                         <p>
                             <b>Biography:</b><p/>
                             <p class="text-justify">{{band.bio}}</p>
