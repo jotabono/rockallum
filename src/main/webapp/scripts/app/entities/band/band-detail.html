@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="col-sm-12 col-md-12 bands">
-                <div ui-sref="band.detail({id:band.id})" class="thumbnail bandthumbs detailthumb">
 
+                <div class="thumbnail bandthumbs detailthumb">
                     <img ng-src="/uploads/{{band.picture}}.jpg" style="height:500px;width: 100%; object-fit: cover;" ng-if="band.picture"/>
                         <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/>
 
@@ -38,11 +38,14 @@
                                 <p><b>Lyrical themes:</b> {{band.lyricalThemes}}</p>
                             </div>
                             <div class="col-xs-6">
-                                <p><b>Current label:</b> <a ui-sref="label.detail({id:band.label.id})">{{band.label.name}}</a></p>
+                                <p><b>Current label:</b> <a ui-sref="label.detail({id:band.label.id})">{{band.label.name}}</a>
+                                </p>
                             </div>
                         </div>
                         <hr>
-                        <p>{{band.bio}}</p>
+                        <p>
+                            <b>Biography:</b><p/>
+                            <p class="text-justify">{{band.bio}}</p>
                         <button type="submit"
                                 ui-sref="bands"
                                 title="Back"
@@ -61,6 +64,7 @@
                                 class="detailbutton">
                             <span class="glyphicon glyphicon-remove-circle"></span>
                         </button>
+
                     </div>
                 </div>
             </div>

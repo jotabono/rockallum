@@ -692,18 +692,48 @@ Social Buttons
 }
 
 .infodrag{
-    width:96.5%;
+    min-width:96.5%;
     height:50px;
     text-align: center;
     position:absolute;
     background-color: rgba(0,0,0,0.6);
     text-align:center;
     opacity:0;
+    padding-top:10px;
+}
+
+.infodrag2{
+    height:50px;
+    cursor:default;
+    text-align:center;
+    position:absolute;
+    opacity:0;
+    color:white;
+    padding-top:40px;
+    font-family: Roboto;
+    font-size: 25px;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+    cursor:default;
+}
+
+@media screen and (max-width: 768px) {
+    .infodrag2{
+        font-size:18px;
+    }
 }
 
 .picKey:hover > .infodrag{
-    #position: absolute; #top: 50%;display: table-cell; vertical-align: middle;
+    transition:1s;
+    opacity:1;
+}
 
+.picnavbarlateral:hover > .infodrag2{
     transition:1s;
     opacity:1;
 }

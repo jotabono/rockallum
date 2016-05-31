@@ -85,8 +85,8 @@
                 <div class="form-group">
                     <label for="picKey">Profile pic</label>
                     <div id="picKey" class="picKey" ng-controller="NavbarLateralController" ng-model="profilepic" ngf-drop>
-                        <div class="row-fluid infodrag"><span><i class="fa fa-plus-circle" aria-hidden="true"></i>Drag your new profile picture here to update</span></div>
-                        <img ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="account.userPicture"/>
+                        <div class="row-fluid infodrag"><span><i class="fa fa-plus-circle" aria-hidden="true"></i> Drag your new profile picture here to update</span></div>
+                        <img class="fotoprofile" ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover; object-position:0 0;" ng-if="account.userPicture"/>
                         <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="!account.userPicture"/>
                     </div>
                     <button class="btn btn-danger buscadorindexbutton" style="display:inline-block" ng-click="profilepic = null" ng-show="profilepic"><span class="glyphicon glyphicon-remove"/> Remove</button>

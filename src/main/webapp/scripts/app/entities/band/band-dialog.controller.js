@@ -100,7 +100,6 @@ angular.module('therockbibleApp').controller('BandDialogController',
                     url: 'api/upload',
                     data: {file: file, 'name': result.name+result.id},
                 });
-
                 file.upload.then(function (response) {
                     $timeout(function () {
                         file.result = response.data;

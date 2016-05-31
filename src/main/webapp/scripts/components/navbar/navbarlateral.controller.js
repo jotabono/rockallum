@@ -23,6 +23,7 @@ angular.module('therockbibleApp')
 
         $scope.save = function () {
             Auth.updateAccount($scope.account).then(function() {
+                $('.fotoprofile').attr('src', '/uploads/'+$scope.account.userPicture+'.jpg');
                 $scope.error = null;
                 $scope.success = 'OK';
                 Language.getCurrent().then(function(current) {
