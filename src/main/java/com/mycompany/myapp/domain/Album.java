@@ -35,7 +35,7 @@ public class Album implements Serializable {
     private LocalDate releaseDate;
     
     @Column(name = "catalog_id")
-    private String catalogID;
+    private String catalogId;
     
     @Column(name = "num_copies")
     private String numCopies;
@@ -73,6 +73,11 @@ public class Album implements Serializable {
     @JoinColumn(name = "album_types_id")
     private AlbumTypes albumTypes;
 
+    @ManyToMany(mappedBy = "albums")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Band> bands = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -97,12 +102,12 @@ public class Album implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public String getCatalogID() {
-        return catalogID;
+    public String getCatalogId() {
+        return catalogId;
     }
     
-    public void setCatalogID(String catalogID) {
-        this.catalogID = catalogID;
+    public void setCatalogId(String catalogId) {
+        this.catalogId = catalogId;
     }
 
     public String getNumCopies() {
@@ -185,6 +190,14 @@ public class Album implements Serializable {
         this.albumTypes = albumTypes;
     }
 
+    public Set<Band> getBands() {
+        return bands;
+    }
+
+    public void setBands(Set<Band> bands) {
+        this.bands = bands;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -211,7 +224,7 @@ public class Album implements Serializable {
             "id=" + id +
             ", title='" + title + "'" +
             ", releaseDate='" + releaseDate + "'" +
-            ", catalogID='" + catalogID + "'" +
+            ", catalogId='" + catalogId + "'" +
             ", numCopies='" + numCopies + "'" +
             ", format='" + format + "'" +
             ", addNotes='" + addNotes + "'" +

@@ -67,7 +67,7 @@ class AlbumGatlingTest extends Simulation {
             .exec(http("Create new album")
             .post("/api/albums")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "releaseDate":"2020-01-01T00:00:00.000Z", "catalogID":"SAMPLE_TEXT", "numCopies":"SAMPLE_TEXT", "format":"SAMPLE_TEXT", "addNotes":"SAMPLE_TEXT", "recInfo":"SAMPLE_TEXT", "independent":null, "picture":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "releaseDate":"2020-01-01T00:00:00.000Z", "catalogId":"SAMPLE_TEXT", "numCopies":"SAMPLE_TEXT", "format":"SAMPLE_TEXT", "addNotes":"SAMPLE_TEXT", "recInfo":"SAMPLE_TEXT", "independent":null, "picture":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_album_url")))
             .pause(10)

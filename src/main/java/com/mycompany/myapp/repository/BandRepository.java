@@ -15,10 +15,10 @@ public interface BandRepository extends JpaRepository<Band,Long> {
     @Query("select band from Band band where band.user.login = ?#{principal.username}")
     List<Band> findByUserIsCurrentUser();
 
-    @Query("select distinct band from Band band left join fetch band.genres left join fetch band.artists")
+    @Query("select distinct band from Band band left join fetch band.genres left join fetch band.artists left join fetch band.albums")
     List<Band> findAllWithEagerRelationships();
 
-    @Query("select band from Band band left join fetch band.genres left join fetch band.artists where band.id =:id")
+    @Query("select band from Band band left join fetch band.genres left join fetch band.artists left join fetch band.albums where band.id =:id")
     Band findOneWithEagerRelationships(@Param("id") Long id);
 
 }

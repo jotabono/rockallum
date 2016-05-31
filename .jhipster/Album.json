@@ -27,7 +27,15 @@
       "relationshipName": "albumTypes",
       "otherEntityName": "albumTypes",
       "otherEntityField": "name"
-    }
+    },
+      {
+          "relationshipId": 5,
+          "relationshipType": "many-to-many",
+          "relationshipName": "band",
+          "otherEntityName": "band",
+          "ownerSide": false,
+          "otherEntityRelationshipName": "album"
+      }
   ],
   "fields": [
     {

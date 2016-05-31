@@ -46,6 +46,9 @@
                         </div>
                         <hr class="infowrapper">
                         <p>
+
+                        <p><b>Albums: </b><span ng-repeat="y in band.albums">{{y.title}}{{$last ? '' : ', '}}</span></p>
+                        <p>
                             <b>Biography:</b><p/>
                             <p class="text-justify">{{band.bio}}</p>
                         <button type="submit"

@@ -92,7 +92,15 @@
       "relationshipName": "status",
       "otherEntityName": "status",
       "otherEntityField": "status"
-    }
+    },
+      {
+          "relationshipId": 14,
+          "relationshipType": "many-to-many",
+          "relationshipName": "album",
+          "otherEntityName": "album",
+          "otherEntityField": "title",
+          "ownerSide": true
+      }
   ],
   "fields": [
     {

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('BandDialogControllerEdit',
-    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'NgMap',
-        function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, NgMap) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'Album', 'NgMap',
+        function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album, NgMap) {
 
             // $scope.band = entity;
 
@@ -22,6 +22,7 @@ angular.module('therockbibleApp').controller('BandDialogControllerEdit',
 
             $scope.genres = Genre.query();
             $scope.artists = Artist.query();
+            $scope.albums = Album.query();
             $scope.favouritebands = FavouriteBand.query();
             $scope.favouritealbums = FavouriteAlbum.query();
             $scope.favouritesongs = FavouriteSong.query();
@@ -65,6 +66,10 @@ angular.module('therockbibleApp').controller('BandDialogControllerEdit',
                 $scope.labels = Label.query();
             });
 
+            var unsubscribe3 = $rootScope.$on('therockbibleApp:albumUpdate', function(event, result) {
+                $scope.albums = Album.query();
+            });
+            
             $scope.save = function () {
 
                 $scope.band.location = $scope.loc;

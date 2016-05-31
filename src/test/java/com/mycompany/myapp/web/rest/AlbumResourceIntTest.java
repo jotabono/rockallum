@@ -97,7 +97,7 @@ public class AlbumResourceIntTest {
         album = new Album();
         album.setTitle(DEFAULT_TITLE);
         album.setReleaseDate(DEFAULT_RELEASE_DATE);
-        album.setCatalogID(DEFAULT_CATALOG_ID);
+        album.setCatalogId(DEFAULT_CATALOG_ID);
         album.setNumCopies(DEFAULT_NUM_COPIES);
         album.setFormat(DEFAULT_FORMAT);
         album.setAddNotes(DEFAULT_ADD_NOTES);
@@ -124,7 +124,7 @@ public class AlbumResourceIntTest {
         Album testAlbum = albums.get(albums.size() - 1);
         assertThat(testAlbum.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testAlbum.getReleaseDate()).isEqualTo(DEFAULT_RELEASE_DATE);
-        assertThat(testAlbum.getCatalogID()).isEqualTo(DEFAULT_CATALOG_ID);
+        assertThat(testAlbum.getCatalogId()).isEqualTo(DEFAULT_CATALOG_ID);
         assertThat(testAlbum.getNumCopies()).isEqualTo(DEFAULT_NUM_COPIES);
         assertThat(testAlbum.getFormat()).isEqualTo(DEFAULT_FORMAT);
         assertThat(testAlbum.getAddNotes()).isEqualTo(DEFAULT_ADD_NOTES);
@@ -182,7 +182,7 @@ public class AlbumResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(album.getId().intValue())))
                 .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
                 .andExpect(jsonPath("$.[*].releaseDate").value(hasItem(DEFAULT_RELEASE_DATE.toString())))
-                .andExpect(jsonPath("$.[*].catalogID").value(hasItem(DEFAULT_CATALOG_ID.toString())))
+                .andExpect(jsonPath("$.[*].catalogId").value(hasItem(DEFAULT_CATALOG_ID.toString())))
                 .andExpect(jsonPath("$.[*].numCopies").value(hasItem(DEFAULT_NUM_COPIES.toString())))
                 .andExpect(jsonPath("$.[*].format").value(hasItem(DEFAULT_FORMAT.toString())))
                 .andExpect(jsonPath("$.[*].addNotes").value(hasItem(DEFAULT_ADD_NOTES.toString())))
@@ -204,7 +204,7 @@ public class AlbumResourceIntTest {
             .andExpect(jsonPath("$.id").value(album.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.releaseDate").value(DEFAULT_RELEASE_DATE.toString()))
-            .andExpect(jsonPath("$.catalogID").value(DEFAULT_CATALOG_ID.toString()))
+            .andExpect(jsonPath("$.catalogId").value(DEFAULT_CATALOG_ID.toString()))
             .andExpect(jsonPath("$.numCopies").value(DEFAULT_NUM_COPIES.toString()))
             .andExpect(jsonPath("$.format").value(DEFAULT_FORMAT.toString()))
             .andExpect(jsonPath("$.addNotes").value(DEFAULT_ADD_NOTES.toString()))
@@ -232,7 +232,7 @@ public class AlbumResourceIntTest {
         // Update the album
         album.setTitle(UPDATED_TITLE);
         album.setReleaseDate(UPDATED_RELEASE_DATE);
-        album.setCatalogID(UPDATED_CATALOG_ID);
+        album.setCatalogId(UPDATED_CATALOG_ID);
         album.setNumCopies(UPDATED_NUM_COPIES);
         album.setFormat(UPDATED_FORMAT);
         album.setAddNotes(UPDATED_ADD_NOTES);
@@ -251,7 +251,7 @@ public class AlbumResourceIntTest {
         Album testAlbum = albums.get(albums.size() - 1);
         assertThat(testAlbum.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testAlbum.getReleaseDate()).isEqualTo(UPDATED_RELEASE_DATE);
-        assertThat(testAlbum.getCatalogID()).isEqualTo(UPDATED_CATALOG_ID);
+        assertThat(testAlbum.getCatalogId()).isEqualTo(UPDATED_CATALOG_ID);
         assertThat(testAlbum.getNumCopies()).isEqualTo(UPDATED_NUM_COPIES);
         assertThat(testAlbum.getFormat()).isEqualTo(UPDATED_FORMAT);
         assertThat(testAlbum.getAddNotes()).isEqualTo(UPDATED_ADD_NOTES);

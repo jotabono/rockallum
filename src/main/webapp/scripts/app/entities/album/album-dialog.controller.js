@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('AlbumDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Album', 'Song', 'Review', 'Label', 'AlbumTypes',
-        function($scope, $stateParams, $uibModalInstance, entity, Album, Song, Review, Label, AlbumTypes) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Album', 'Song', 'Review', 'Label', 'AlbumTypes', 'Band',
+        function($scope, $stateParams, $uibModalInstance, entity, Album, Song, Review, Label, AlbumTypes, Band) {
 
         $scope.album = entity;
         $scope.songs = Song.query();
         $scope.reviews = Review.query();
         $scope.labels = Label.query();
         $scope.albumtypess = AlbumTypes.query();
+        $scope.bands = Band.query();
         $scope.load = function(id) {
             Album.get({id : id}, function(result) {
                 $scope.album = result;

@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Album Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockAlbum, MockSong, MockReview, MockLabel, MockAlbumTypes;
+        var MockEntity, MockAlbum, MockSong, MockReview, MockLabel, MockAlbumTypes, MockBand;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -16,6 +16,7 @@ describe('Controller Tests', function() {
             MockReview = jasmine.createSpy('MockReview');
             MockLabel = jasmine.createSpy('MockLabel');
             MockAlbumTypes = jasmine.createSpy('MockAlbumTypes');
+            MockBand = jasmine.createSpy('MockBand');
             
 
             var locals = {
@@ -26,7 +27,8 @@ describe('Controller Tests', function() {
                 'Song': MockSong,
                 'Review': MockReview,
                 'Label': MockLabel,
-                'AlbumTypes': MockAlbumTypes
+                'AlbumTypes': MockAlbumTypes,
+                'Band': MockBand
             };
             createController = function() {
                 $injector.get('$controller')("AlbumDetailController", locals);

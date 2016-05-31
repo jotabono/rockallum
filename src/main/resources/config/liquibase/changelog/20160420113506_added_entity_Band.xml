@@ -24,38 +24,38 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-
+            
             <column name="location" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-
+            
             <column name="latitude" type="double"/>
-
+            
             <column name="longitude" type="double"/>
-
+            
             <column name="founding_date" type="date"/>
-
+            
             <column name="years_active" type="varchar(255)"/>
-
+            
             <column name="lyrical_themes" type="varchar(255)"/>
-
+            
             <column name="independent" type="bit"/>
-
+            
             <column name="picture" type="varchar(255)"/>
-
+            
             <column name="links" type="varchar(255)"/>
-
+            
             <column name="logo" type="varchar(255)"/>
-
-            <column name="bio" type="text"/>
-
+            
+            <column name="bio" type="varchar(255)"/>
+            
             <column name="user_id" type="bigint"/>
             <column name="country_id" type="bigint"/>
             <column name="label_id" type="bigint"/>
             <column name="status_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-
+        
         <createTable tableName="band_genre">
             <column name="genres_id" type="bigint">
                 <constraints nullable="false"/>
@@ -78,7 +78,7 @@
                                  constraintName="fk_band_genre_band_id"
                                  referencedColumnNames="id"
                                  referencedTableName="genre"/>
-
+        
         <createTable tableName="band_artist">
             <column name="artists_id" type="bigint">
                 <constraints nullable="false"/>
@@ -101,7 +101,7 @@
                                  constraintName="fk_band_artist_band_id"
                                  referencedColumnNames="id"
                                  referencedTableName="artist"/>
-
+        
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="band"
                                  constraintName="fk_band_user_id"
@@ -126,5 +126,28 @@
                                  referencedColumnNames="id"
                                  referencedTableName="status"/>
 
+        <createTable tableName="band_album">
+            <column name="albums_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bands_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="bands_id, albums_id" tableName="band_album"/>
+
+        <addForeignKeyConstraint baseColumnNames="bands_id"
+                                 baseTableName="band_album"
+                                 constraintName="fk_band_album_album_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="band"/>
+
+        <addForeignKeyConstraint baseColumnNames="albums_id"
+                                 baseTableName="band_album"
+                                 constraintName="fk_band_album_band_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="album"/>
+        
     </changeSet>
 </databaseChangeLog>

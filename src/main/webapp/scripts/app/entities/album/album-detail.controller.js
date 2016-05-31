@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('AlbumDetailController', function ($scope, $rootScope, $stateParams, entity, Album, Song, Review, Label, AlbumTypes) {
+    .controller('AlbumDetailController', function ($scope, $rootScope, $stateParams, entity, Album, Song, Review, Label, AlbumTypes, Band) {
         $scope.album = entity;
         $scope.load = function (id) {
             Album.get({id: id}, function(result) {

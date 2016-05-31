@@ -78,6 +78,13 @@ public class Band implements Serializable {
                inverseJoinColumns = @JoinColumn(name="artists_id", referencedColumnName="ID"))
     private Set<Artist> artists = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "band_album",
+        joinColumns = @JoinColumn(name="bands_id", referencedColumnName="ID"),
+        inverseJoinColumns = @JoinColumn(name="albums_id", referencedColumnName="ID"))
+    private Set<Album> albums = new HashSet<>();
+
     @OneToMany(mappedBy = "band")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -247,6 +254,14 @@ public class Band implements Serializable {
 
     public void setArtists(Set<Artist> artists) {
         this.artists = artists;
+    }
+
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(Set<Album> albums) {
+        this.albums = albums;
     }
 
     public Set<FavouriteBand> getFavouritebands() {

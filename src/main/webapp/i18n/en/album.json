@@ -28,7 +28,8 @@
             "song": "Song",
             "review": "Review",
             "label": "Label",
-            "albumTypes": "AlbumTypes"
+            "albumTypes": "AlbumTypes",
+            "band": "Band"
         }
     }
 }
