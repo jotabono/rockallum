@@ -772,3 +772,70 @@ Social Buttons
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(204, 204, 204, 0.1), rgba(0, 0, 0, 0));
 }
+
+
+[class^="md-"], [class*=" md-"]{
+    font-family:sans-serif;
+    color:white;
+}
+md-content {
+    background-color: transparent !important;
+    font-family: sans-serif;
+}
+
+md-content md-tabs {
+    background: transparent;
+    border:none;
+}
+md-content md-tabs md-tabs-wrapper {
+    background: transparent;
+}
+md-content h1:first-child {
+    margin-top: 0;
+}
+
+md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
+    color:pink;
+}
+md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
+    color:white;
+}
+
+/*READ MORE*/
+
+hm-read-more a {
+    font-weight:300;
+    font-family: sans-serif;
+    cursor: pointer;
+    color:pink;
+}
+
+hm-read-more a:hover{
+    color:#FF4081;
+    text-decoration:none;
+}
+
+.more-show-hide {
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+}
+
+.more-show-hide.ng-hide {
+    opacity: 0;
+}
+
+.toggle-dots-grey {
+    color: darkgrey;
+}
+
+.toggle-dots-yellow {
+    color: yellow;
+}
+
+.toggle-link-yellow {
+    color: yellow;
+}
+
+.toggle-link-grey {
+    color: darkgrey;
+}
