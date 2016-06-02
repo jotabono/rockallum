@@ -206,10 +206,11 @@
             </a>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="therockbibleApp.band.bio" for="field_bio">Bio</label>
-                            <textarea style="resize:vertical" type="text" class="form-control" name="bio" id="field_bio"
+            <label class="control-label" translate="therockbibleApp.band.bio">Bio</label>
+            <text-angular ng-model="band.bio" name="bio" id="field_bio" placeholder="Write here the biography of the band"></text-angular>
+<!--                            <textarea style="resize:vertical" type="text" class="form-control" name="bio" id="field_bio"
                                       ng-model="band.bio" placeholder="Write here the biography of the band"
-                            />
+                            />-->
         </div>
     </div>
     <div class="modal-footer">
