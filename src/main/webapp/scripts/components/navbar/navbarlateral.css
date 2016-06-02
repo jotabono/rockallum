@@ -7,7 +7,7 @@
     src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/Material-Design-Iconic-Font.eot?#iefix&v=1.0') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/Material-Design-Iconic-Font.woff?v=1.0') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/Material-Design-Iconic-Font.ttf?v=1.0') format('truetype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/Material-Design-Iconic-Font.svg?v=1.0#Material-Design-Iconic-Font') format('svg');
     font-weight: normal;
     font-style: normal;
-}
+}/*
 [class^="md-"],
 [class*=" md-"] {
     display: inline-block;
@@ -39,7 +39,7 @@
 }
 .md-arrow-forward:before {
     content: "\f298";
-}
+}*/
 /* -- You can use this sidebar in Bootstrap (v3) projects. HTML-markup like Navbar bootstrap component will make your work easier. -- */
 /* -- Box model ------------------------------- */
 *,
@@ -585,18 +585,18 @@ body {
     background-color: #000;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > li > a:focus {
-    background-color:rgba(72,65,108,1);
+    background-color: #FF4081;
     color: white;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > li > a:hover {
-    background-color:rgba(72,65,108,1);
+    background-color: #FF4081;
     color: white;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a,
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a:hover,
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a:focus {
     color: white;
-    background-color:rgba(72,65,108,1);
+    background-color: #FF4081;
 }
 .sidebar-colored {
     background-color: #fff;

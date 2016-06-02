@@ -85,8 +85,8 @@ angular.module('therockbibleApp')
                 }]
             })
             .state('band.edit', {
-                parent: 'band',
-                url: '/{id}/edit',
+                parent: 'band.detail',
+                url: '/edit',
                 data: {
                     authorities: ['ROLE_USER'],
                 },

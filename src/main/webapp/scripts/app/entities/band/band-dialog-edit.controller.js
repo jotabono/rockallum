@@ -14,9 +14,6 @@ angular.module('therockbibleApp').controller('BandDialogControllerEdit',
                 $scope.loc = $scope.band.location;
                 $scope.lat = $scope.band.latitude;
                 $scope.lng = $scope.band.longitude;
-                // $scope.picFile = $scope.band.picture;
-                // $scope.picFile2 = $scope.band.logo;
-
             });
 
 
@@ -41,8 +38,12 @@ angular.module('therockbibleApp').controller('BandDialogControllerEdit',
             };
 
             var onSaveSuccess = function (result) {
-                $scope.uploadPic($scope.picFile, result);
-                $scope.uploadPic2($scope.picFile2, result);
+                if($scope.picFile != undefined){
+                    $scope.uploadPic($scope.picFile, result);
+                }
+                if($scope.picFile2 != undefined){
+                    $scope.uploadPic2($scope.picFile2, result);
+                }
                 var picture = result.name+result.id;
                 var logo = result.name+"logo"+result.id;
                 result.picture = picture;
@@ -69,7 +70,7 @@ angular.module('therockbibleApp').controller('BandDialogControllerEdit',
             var unsubscribe3 = $rootScope.$on('therockbibleApp:albumUpdate', function(event, result) {
                 $scope.albums = Album.query();
             });
-            
+
             $scope.save = function () {
 
                 $scope.band.location = $scope.loc;
@@ -115,6 +116,7 @@ angular.module('therockbibleApp').controller('BandDialogControllerEdit',
             });
 
             $scope.uploadPic = function(file, result) {
+
                 file.upload = Upload.upload({
                     url: 'api/upload',
                     data: {file: file, 'name': result.name+result.id},

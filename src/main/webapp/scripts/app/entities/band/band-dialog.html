@@ -85,15 +85,22 @@
             </div>
         </div>
 
-       <div name="myForm" class="form-group">
-            <label translate="therockbibleApp.band.picture">Picture</label>
+        <div name="myForm" class="form-group">
+            <label class="control-label" translate="therockbibleApp.band.picture">Picture</label>
             <br/>
 
+            <img ng-src="/uploads/{{band.picture}}.jpg" style="max-width:600px" class="thumb" ng-if="!picFile">
+            <p/>
+
             <button class="btn btn-default" id="field_picture" type="file" ngf-select ng-model="picFile" name="file"
-                   accept="image/*" ngf-max-size="2MB" required
-                   ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/> Upload image</button>
-            <button class="btn btn-danger" ng-click="picFile = null" ng-show="picFile"><span class="glyphicon glyphicon-remove"/> Remove</button>
-            <i ng-show="myForm.file.$error.required">*required</i><br>
+                    accept="image/*" ngf-max-size="2MB"
+                    ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/>
+                Upload image
+            </button>
+            <button class="btn btn-danger" ng-click="picFile = null" ng-show="picFile"><span
+                class="glyphicon glyphicon-remove"/> Remove
+            </button>
+            <br>
             <i ng-show="myForm.file.$error.maxSize">File too large
                 {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
             <br/>
@@ -104,28 +111,34 @@
       </span>
             <span ng-show="picFile.result">Upload Successful</span>
             <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-
         </div>
 
-        <div name="myForm" class="form-group">
+        <div name="myForm2" class="form-group">
             <label class="control-label" translate="therockbibleApp.band.logo" for="field_logo">Logo</label>
             <br/>
+
+            <img ng-src="/uploads/{{band.logo}}.jpg" style="max-width:600px" class="thumb" ng-if="!picFile2">
+            <p/>
+
             <button class="btn btn-default" id="field_logo" type="file" ngf-select ng-model="picFile2" name="file2"
-                    accept="image/*" ngf-max-size="2MB" required
-                    ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/> Upload image</button>
-            <button class="btn btn-danger" ng-click="picFile2 = null" ng-show="picFile2"><span class="glyphicon glyphicon-remove"/> Remove</button>
-            <i ng-show="myForm.file.$error.required">*required</i><br>
-            <i ng-show="myForm.file.$error.maxSize">File too large
+                    accept="image/*" ngf-max-size="2MB"
+                    ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/>
+                Upload image
+            </button>
+            <button class="btn btn-danger" ng-click="picFile2 = null" ng-show="picFile2"><span
+                class="glyphicon glyphicon-remove"/> Remove
+            </button>
+            <br/>
+            <i ng-show="myForm2.file.$error.maxSize">File too large
                 {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
             <br/>
-            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" style="max-width:600px" class="thumb">
+            <img ng-show="myForm2.file.$valid" ngf-thumbnail="picFile2" style="max-width:600px" class="thumb">
       <span class="progress" ng-show="picFile2.progress >= 0">
         <div style="width:{{picFile2.progress}}%"
              ng-bind="picFile2.progress + '%'"></div>
       </span>
             <span ng-show="picFile2.result">Upload Successful</span>
             <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-
         </div>
 
         <div class="form-group">

@@ -620,7 +620,7 @@ Social Buttons
 .footer a:hover{
     transition:1s;
     opacity: 1;
-    color: #fbffe8;
+    color: pink;
 }
 
 @media screen and (max-width: 800px) {
@@ -838,4 +838,13 @@ hm-read-more a:hover{
 
 .toggle-link-grey {
     color: darkgrey;
+}
+
+.detail a{
+    color: pink;
+}
+
+.detail a:hover{
+    color: #FF4081;
+    text-decoration: none;
 }

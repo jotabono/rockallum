@@ -5,10 +5,9 @@ angular.module('therockbibleApp').controller('BandDialogController',
         function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album, NgMap) {
 
         $scope.band = entity;
-
         $scope.genres = Genre.query();
         $scope.artists = Artist.query();
-            $scope.albums = Album.query();
+        $scope.albums = Album.query();
         $scope.favouritebands = FavouriteBand.query();
         $scope.favouritealbums = FavouriteAlbum.query();
         $scope.favouritesongs = FavouriteSong.query();
@@ -27,6 +26,7 @@ angular.module('therockbibleApp').controller('BandDialogController',
         };
 
         var onSaveSuccess = function (result) {
+            
             $scope.uploadPic($scope.picFile, result);
             $scope.uploadPic2($scope.picFile2, result);
             var picture = result.name+result.id;
