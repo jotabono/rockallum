@@ -152,9 +152,9 @@
                                             <div ui-sref="artist.detail({id:y.id})"
                                                  style="display:inline-block; margin:5px; font-size:14px;"
                                                  class="thumbnail bandthumbs albumthumbs"
-                                                 ng-repeat="y in band.artists | orderBy:'releaseDate'">
+                                                 ng-repeat="y in band.artists | orderBy:'YearsActive'">
                                                 <img
-                                                    style="height: 100px; width:100px; object-fit: cover;"
+                                                    style="height: 200px; width:200px; object-fit: cover;"
                                                     ng-src="/uploads/albums/{{y.picture}}.jpg"/>
                                                 <h3> {{y.name}}</h3>
                                                 <h4> {{y.role}}</h4>
