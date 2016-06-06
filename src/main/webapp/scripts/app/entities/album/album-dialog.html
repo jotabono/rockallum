@@ -77,11 +77,33 @@
                     ng-model="album.independent"
                      />
         </div>
-        <div class="form-group">
-            <label class="control-label" translate="therockbibleApp.album.picture" for="field_picture">Picture</label>
-            <input type="text" class="form-control" name="picture" id="field_picture"
-                    ng-model="album.picture"
-                     />
+
+        <div name="myForm" class="form-group">
+            <label class="control-label" translate="therockbibleApp.album.picture">Picture</label>
+            <br/>
+
+            <img ng-src="/uploads/albums/{{album.picture}}.jpg" style="max-width:600px" class="thumb" ng-if="!picFile">
+            <p/>
+
+            <button class="btn btn-default" id="field_picture" type="file" ngf-select ng-model="picFile" name="file"
+                    accept="image/*" ngf-max-size="2MB"
+                    ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/>
+                Upload image
+            </button>
+            <button class="btn btn-danger" ng-click="picFile = null" ng-show="picFile"><span
+                class="glyphicon glyphicon-remove"/> Remove
+            </button>
+            <br>
+            <i ng-show="myForm.file.$error.maxSize">File too large
+                {{errorFile.size / 1000000|number:1}}MB: max 8M</i>
+            <br/>
+            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" style="max-width:600px" class="thumb">
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%"
+             ng-bind="picFile.progress + '%'"></div>
+      </span>
+            <span ng-show="picFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
         </div>
 
         <div class="form-group">

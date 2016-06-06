@@ -848,3 +848,11 @@ hm-read-more a:hover{
     color: #FF4081;
     text-decoration: none;
 }
+
+.albumthumbs:not(img) {
+    padding:5px;
+}
+
+.albumthumbs:hover{
+    background-color: rgba(255,64,129,1);
+}
