@@ -2,11 +2,8 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Artist;
-import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.ArtistRepository;
-import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.ArtistSearchRepository;
-import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -18,9 +15,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -45,9 +47,6 @@ public class ArtistResource {
     @Inject
     private ArtistSearchRepository artistSearchRepository;
 
-    @Inject
-    private UserRepository userRepository;
-
     /**
      * POST  /artists -> Create a new artist.
      */
@@ -60,8 +59,6 @@ public class ArtistResource {
         if (artist.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("artist", "idexists", "A new artist cannot already have an ID")).body(null);
         }
-        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
-        artist.setUser(user);
         Artist result = artistRepository.save(artist);
         artistSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/artists/" + result.getId()))
@@ -112,7 +109,7 @@ public class ArtistResource {
     @Timed
     public ResponseEntity<Artist> getArtist(@PathVariable Long id) {
         log.debug("REST request to get Artist : {}", id);
-        Artist artist = artistRepository.findOne(id);
+        Artist artist = artistRepository.findOneWithEagerRelationships(id);
         return Optional.ofNullable(artist)
             .map(result -> new ResponseEntity<>(
                 result,
@@ -147,5 +144,54 @@ public class ArtistResource {
         return StreamSupport
             .stream(artistSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+    /* Subir imagenes */
+
+    @RequestMapping(value = "/uploadartistpic",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public void handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("name") String name) {
+        log.debug("REST request to handleFileUpload");
+
+        File theDir = new File("./src/main/webapp/uploads/artists");
+
+        byte[] bytes;
+
+        String artistPic = "";
+
+        try {
+
+            if (!theDir.exists()) {
+                System.out.println("creating directory: /uploads/artists");
+                boolean result = false;
+
+                try {
+                    theDir.mkdir();
+                    result = true;
+                } catch (SecurityException se) {
+                    //handle it
+                }
+                if (result) {
+                    System.out.println("DIR created");
+                }
+            }
+
+
+            file.getContentType();
+
+            //Get name of file
+            artistPic = name;
+
+            //Create new file in path
+            BufferedOutputStream stream =
+                new BufferedOutputStream(new FileOutputStream(new File("./src/main/webapp/uploads/artists/" + artistPic + ".jpg")));
+
+            stream.write(file.getBytes());
+            stream.close();
+            log.debug("You successfully uploaded " + file.getName() + "!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -49,9 +49,7 @@ angular.module('therockbibleApp')
                 bornIn: null,
                 age: null,
                 bio: null,
-                role: null,
                 yearsActive: null,
-                links: null,
                 picture: null,
                 id: null
             };

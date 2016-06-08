@@ -35,7 +35,23 @@
       "relationshipName": "status",
       "otherEntityName": "status",
       "otherEntityField": "status"
-    }
+    },
+      {
+          "relationshipId": 6,
+          "relationshipType": "many-to-many",
+          "relationshipName": "social",
+          "otherEntityName": "social",
+          "otherEntityField": "url",
+          "ownerSide": true
+      },
+      {
+          "relationshipId": 7,
+          "relationshipType": "many-to-many",
+          "relationshipName": "instrument",
+          "otherEntityName": "instrument",
+          "otherEntityField": "instrument",
+          "ownerSide": true
+      }
   ],
   "fields": [
     {
@@ -54,7 +70,7 @@
     {
       "fieldId": 3,
       "fieldName": "bornIn",
-      "fieldType": "String"
+      "fieldType": "LocalDate"
     },
     {
       "fieldId": 4,
@@ -67,18 +83,8 @@
       "fieldType": "String"
     },
     {
-      "fieldId": 6,
-      "fieldName": "role",
-      "fieldType": "String"
-    },
-    {
       "fieldId": 7,
       "fieldName": "yearsActive",
-      "fieldType": "String"
-    },
-    {
-      "fieldId": 8,
-      "fieldName": "links",
       "fieldType": "String"
     },
     {

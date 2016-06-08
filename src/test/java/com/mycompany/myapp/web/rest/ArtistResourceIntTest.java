@@ -24,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,19 +48,16 @@ public class ArtistResourceIntTest {
     private static final String UPDATED_NAME = "BBBBB";
     private static final String DEFAULT_REAL_NAME = "AAAAA";
     private static final String UPDATED_REAL_NAME = "BBBBB";
-    private static final String DEFAULT_BORN_IN = "AAAAA";
-    private static final String UPDATED_BORN_IN = "BBBBB";
+
+    private static final LocalDate DEFAULT_BORN_IN = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_BORN_IN = LocalDate.now(ZoneId.systemDefault());
 
     private static final Integer DEFAULT_AGE = 1;
     private static final Integer UPDATED_AGE = 2;
     private static final String DEFAULT_BIO = "AAAAA";
     private static final String UPDATED_BIO = "BBBBB";
-    private static final String DEFAULT_ROLE = "AAAAA";
-    private static final String UPDATED_ROLE = "BBBBB";
     private static final String DEFAULT_YEARS_ACTIVE = "AAAAA";
     private static final String UPDATED_YEARS_ACTIVE = "BBBBB";
-    private static final String DEFAULT_LINKS = "AAAAA";
-    private static final String UPDATED_LINKS = "BBBBB";
     private static final String DEFAULT_PICTURE = "AAAAA";
     private static final String UPDATED_PICTURE = "BBBBB";
 
@@ -97,9 +96,7 @@ public class ArtistResourceIntTest {
         artist.setBornIn(DEFAULT_BORN_IN);
         artist.setAge(DEFAULT_AGE);
         artist.setBio(DEFAULT_BIO);
-        artist.setRole(DEFAULT_ROLE);
         artist.setYearsActive(DEFAULT_YEARS_ACTIVE);
-        artist.setLinks(DEFAULT_LINKS);
         artist.setPicture(DEFAULT_PICTURE);
     }
 
@@ -124,9 +121,7 @@ public class ArtistResourceIntTest {
         assertThat(testArtist.getBornIn()).isEqualTo(DEFAULT_BORN_IN);
         assertThat(testArtist.getAge()).isEqualTo(DEFAULT_AGE);
         assertThat(testArtist.getBio()).isEqualTo(DEFAULT_BIO);
-        assertThat(testArtist.getRole()).isEqualTo(DEFAULT_ROLE);
         assertThat(testArtist.getYearsActive()).isEqualTo(DEFAULT_YEARS_ACTIVE);
-        assertThat(testArtist.getLinks()).isEqualTo(DEFAULT_LINKS);
         assertThat(testArtist.getPicture()).isEqualTo(DEFAULT_PICTURE);
     }
 
@@ -164,9 +159,7 @@ public class ArtistResourceIntTest {
                 .andExpect(jsonPath("$.[*].bornIn").value(hasItem(DEFAULT_BORN_IN.toString())))
                 .andExpect(jsonPath("$.[*].age").value(hasItem(DEFAULT_AGE)))
                 .andExpect(jsonPath("$.[*].bio").value(hasItem(DEFAULT_BIO.toString())))
-                .andExpect(jsonPath("$.[*].role").value(hasItem(DEFAULT_ROLE.toString())))
                 .andExpect(jsonPath("$.[*].yearsActive").value(hasItem(DEFAULT_YEARS_ACTIVE.toString())))
-                .andExpect(jsonPath("$.[*].links").value(hasItem(DEFAULT_LINKS.toString())))
                 .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())));
     }
 
@@ -186,9 +179,7 @@ public class ArtistResourceIntTest {
             .andExpect(jsonPath("$.bornIn").value(DEFAULT_BORN_IN.toString()))
             .andExpect(jsonPath("$.age").value(DEFAULT_AGE))
             .andExpect(jsonPath("$.bio").value(DEFAULT_BIO.toString()))
-            .andExpect(jsonPath("$.role").value(DEFAULT_ROLE.toString()))
             .andExpect(jsonPath("$.yearsActive").value(DEFAULT_YEARS_ACTIVE.toString()))
-            .andExpect(jsonPath("$.links").value(DEFAULT_LINKS.toString()))
             .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()));
     }
 
@@ -214,9 +205,7 @@ public class ArtistResourceIntTest {
         artist.setBornIn(UPDATED_BORN_IN);
         artist.setAge(UPDATED_AGE);
         artist.setBio(UPDATED_BIO);
-        artist.setRole(UPDATED_ROLE);
         artist.setYearsActive(UPDATED_YEARS_ACTIVE);
-        artist.setLinks(UPDATED_LINKS);
         artist.setPicture(UPDATED_PICTURE);
 
         restArtistMockMvc.perform(put("/api/artists")
@@ -233,9 +222,7 @@ public class ArtistResourceIntTest {
         assertThat(testArtist.getBornIn()).isEqualTo(UPDATED_BORN_IN);
         assertThat(testArtist.getAge()).isEqualTo(UPDATED_AGE);
         assertThat(testArtist.getBio()).isEqualTo(UPDATED_BIO);
-        assertThat(testArtist.getRole()).isEqualTo(UPDATED_ROLE);
         assertThat(testArtist.getYearsActive()).isEqualTo(UPDATED_YEARS_ACTIVE);
-        assertThat(testArtist.getLinks()).isEqualTo(UPDATED_LINKS);
         assertThat(testArtist.getPicture()).isEqualTo(UPDATED_PICTURE);
     }
 

@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span translate="therockbibleApp.artist.realName">NombreReal</span>
+                    <span translate="therockbibleApp.artist.realName">RealName</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{artist.realName}}</span>
@@ -31,7 +31,7 @@
                     <span translate="therockbibleApp.artist.bornIn">BornIn</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{artist.bornIn}}</span>
+                    <span class="form-control-static">{{artist.bornIn | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -52,26 +52,10 @@
             </tr>
             <tr>
                 <td>
-                    <span translate="therockbibleApp.artist.role">Role</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{artist.role}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <span translate="therockbibleApp.artist.yearsActive">YearsActive</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{artist.yearsActive}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.artist.links">Links</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{artist.links}}</span>
                 </td>
             </tr>
             <tr>
@@ -112,6 +96,26 @@
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="status.detail({id:artist.status.id})">{{artist.status.status}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.social">social</span>
+                </td>
+                <td>
+                    <span ng-repeat="social in artist.socials">
+                        <a class="form-control-static" ui-sref="social.detail({id: {{social.id}}})">{{social.url}}</a>{{$last ? '' : ', '}}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.artist.instrument">instrument</span>
+                </td>
+                <td>
+                    <span ng-repeat="instrument in artist.instruments">
+                        <a class="form-control-static" ui-sref="instrument.detail({id: {{instrument.id}}})">{{instrument.instrument}}</a>{{$last ? '' : ', '}}
+                    </span>
                 </td>
             </tr>
             </tbody>

@@ -33,9 +33,13 @@
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.bornIn" for="field_bornIn">BornIn</label>
-            <input type="text" class="form-control" name="bornIn" id="field_bornIn"
-                    ng-model="artist.bornIn"
-                     />
+                <div class="input-group">
+                    <input id="field_bornIn" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="artist.bornIn" is-open="datePickerForBornIn.status.opened"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForBornInOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.age" for="field_age">Age</label>
@@ -50,28 +54,45 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="therockbibleApp.artist.role" for="field_role">Role</label>
-            <input type="text" class="form-control" name="role" id="field_role"
-                    ng-model="artist.role"
-                     />
-        </div>
-        <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.yearsActive" for="field_yearsActive">YearsActive</label>
             <input type="text" class="form-control" name="yearsActive" id="field_yearsActive"
                     ng-model="artist.yearsActive"
                      />
         </div>
-        <div class="form-group">
-            <label class="control-label" translate="therockbibleApp.artist.links" for="field_links">Links</label>
-            <input type="text" class="form-control" name="links" id="field_links"
-                    ng-model="artist.links"
-                     />
+
+        <div name="myForm" class="form-group">
+            <label class="control-label" translate="therockbibleApp.artist.picture">Picture</label>
+            <br/>
+
+            <img ng-src="/uploads/artists/{{artist.picture}}.jpg" style="max-width:600px" class="thumb" ng-if="!picFile">
+            <p/>
+
+            <button class="btn btn-default" id="field_picture" type="file" ngf-select ng-model="picFile" name="file"
+                    accept="image/*" ngf-max-size="2MB"
+                    ngf-model-invalid="errorFile" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"/>
+                Upload image
+            </button>
+            <button class="btn btn-danger" ng-click="picFile = null" ng-show="picFile"><span
+                class="glyphicon glyphicon-remove"/> Remove
+            </button>
+            <br>
+            <i ng-show="myForm.file.$error.maxSize">File too large
+                {{errorFile.size / 1000000|number:1}}MB: max 8M</i>
+            <br/>
+            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" style="max-width:600px" class="thumb">
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%"
+             ng-bind="picFile.progress + '%'"></div>
+      </span>
+            <span ng-show="picFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
         </div>
+
         <div class="form-group">
-            <label class="control-label" translate="therockbibleApp.artist.picture" for="field_picture">Picture</label>
-            <input type="text" class="form-control" name="picture" id="field_picture"
-                    ng-model="artist.picture"
-                     />
+            <label translate="therockbibleApp.artist.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="artist.user" ng-options="user as user.email for user in users track by user.id">
+                <option value=""></option>
+            </select>
         </div>
         <div class="form-group">
             <label translate="therockbibleApp.artist.country" for="field_country">country</label>
@@ -90,6 +111,14 @@
             <select class="form-control" id="field_status" name="status" ng-model="artist.status" ng-options="status as status.status for status in statuss track by status.id">
                 <option value=""></option>
             </select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.artist.social" for="field_social">social</label>
+            <select class="form-control" id="field_social" multiple name="social" ng-model="artist.socials" ng-options="social as social.url for social in socials track by social.id"></select>
+        </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.artist.instrument" for="field_instrument">instrument</label>
+            <select class="form-control" id="field_instrument" multiple name="instrument" ng-model="artist.instruments" ng-options="instrument as instrument.instrument for instrument in instruments track by instrument.id"></select>
         </div>
     </div>
     <div class="modal-footer">

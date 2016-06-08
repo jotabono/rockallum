@@ -67,7 +67,7 @@ class ArtistGatlingTest extends Simulation {
             .exec(http("Create new artist")
             .post("/api/artists")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "realName":"SAMPLE_TEXT", "bornIn":"SAMPLE_TEXT", "age":"0", "bio":"SAMPLE_TEXT", "role":"SAMPLE_TEXT", "yearsActive":"SAMPLE_TEXT", "links":"SAMPLE_TEXT", "picture":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "realName":"SAMPLE_TEXT", "bornIn":"2020-01-01T00:00:00.000Z", "age":"0", "bio":"SAMPLE_TEXT", "yearsActive":"SAMPLE_TEXT", "picture":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_artist_url")))
             .pause(10)

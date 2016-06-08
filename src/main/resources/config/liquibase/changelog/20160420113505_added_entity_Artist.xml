@@ -27,17 +27,13 @@
             
             <column name="real_name" type="varchar(255)"/>
             
-            <column name="born_in" type="varchar(255)"/>
+            <column name="born_in" type="date"/>
             
             <column name="age" type="integer"/>
             
             <column name="bio" type="varchar(255)"/>
             
-            <column name="role" type="varchar(255)"/>
-            
             <column name="years_active" type="varchar(255)"/>
-            
-            <column name="links" type="varchar(255)"/>
             
             <column name="picture" type="varchar(255)"/>
             
@@ -72,5 +68,51 @@
                                  referencedColumnNames="id"
                                  referencedTableName="status"/>
 
+        <createTable tableName="artist_social">
+            <column name="socials_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artists_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="artists_id, socials_id" tableName="artist_social"/>
+
+        <addForeignKeyConstraint baseColumnNames="artists_id"
+                                 baseTableName="artist_social"
+                                 constraintName="fk_artist_social_social_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="artist"/>
+
+        <addForeignKeyConstraint baseColumnNames="socials_id"
+                                 baseTableName="artist_social"
+                                 constraintName="fk_artist_social_artist_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="social"/>
+        
+        <createTable tableName="artist_instrument">
+            <column name="instruments_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artists_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="artists_id, instruments_id" tableName="artist_instrument"/>
+
+        <addForeignKeyConstraint baseColumnNames="artists_id"
+                                 baseTableName="artist_instrument"
+                                 constraintName="fk_artist_instrument_instrument_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="artist"/>
+
+        <addForeignKeyConstraint baseColumnNames="instruments_id"
+                                 baseTableName="artist_instrument"
+                                 constraintName="fk_artist_instrument_artist_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="instrument"/>
+        
     </changeSet>
 </databaseChangeLog>

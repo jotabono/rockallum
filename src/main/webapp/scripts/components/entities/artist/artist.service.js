@@ -8,9 +8,23 @@ angular.module('therockbibleApp')
                 method: 'GET',
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
+                    data.bornIn = DateUtils.convertLocaleDateFromServer(data.bornIn);
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': {
+                method: 'PUT',
+                transformRequest: function (data) {
+                    data.bornIn = DateUtils.convertLocaleDateToServer(data.bornIn);
+                    return angular.toJson(data);
+                }
+            },
+            'save': {
+                method: 'POST',
+                transformRequest: function (data) {
+                    data.bornIn = DateUtils.convertLocaleDateToServer(data.bornIn);
+                    return angular.toJson(data);
+                }
+            }
         });
     });

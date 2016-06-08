@@ -3,6 +3,7 @@ package com.mycompany.myapp.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -28,31 +29,25 @@ public class Artist implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @Column(name = "real_name")
     private String realName;
-    
+
     @Column(name = "born_in")
-    private String bornIn;
-    
+    private LocalDate bornIn;
+
     @Column(name = "age")
     private Integer age;
-    
+
     @Column(name = "bio")
     private String bio;
-    
-    @Column(name = "role")
-    private String role;
-    
+
     @Column(name = "years_active")
     private String yearsActive;
-    
-    @Column(name = "links")
-    private String links;
-    
+
     @Column(name = "picture")
     private String picture;
-    
+
     @ManyToMany(mappedBy = "artists")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -74,6 +69,20 @@ public class Artist implements Serializable {
     @JoinColumn(name = "status_id")
     private Status status;
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "artist_social",
+               joinColumns = @JoinColumn(name="artists_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="socials_id", referencedColumnName="ID"))
+    private Set<Social> socials = new HashSet<>();
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "artist_instrument",
+               joinColumns = @JoinColumn(name="artists_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="instruments_id", referencedColumnName="ID"))
+    private Set<Instrument> instruments = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -85,7 +94,7 @@ public class Artist implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -93,23 +102,23 @@ public class Artist implements Serializable {
     public String getRealName() {
         return realName;
     }
-    
+
     public void setRealName(String realName) {
         this.realName = realName;
     }
 
-    public String getBornIn() {
+    public LocalDate getBornIn() {
         return bornIn;
     }
-    
-    public void setBornIn(String bornIn) {
+
+    public void setBornIn(LocalDate bornIn) {
         this.bornIn = bornIn;
     }
 
     public Integer getAge() {
         return age;
     }
-    
+
     public void setAge(Integer age) {
         this.age = age;
     }
@@ -117,39 +126,23 @@ public class Artist implements Serializable {
     public String getBio() {
         return bio;
     }
-    
+
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public String getRole() {
-        return role;
-    }
-    
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getYearsActive() {
         return yearsActive;
     }
-    
+
     public void setYearsActive(String yearsActive) {
         this.yearsActive = yearsActive;
-    }
-
-    public String getLinks() {
-        return links;
-    }
-    
-    public void setLinks(String links) {
-        this.links = links;
     }
 
     public String getPicture() {
         return picture;
     }
-    
+
     public void setPicture(String picture) {
         this.picture = picture;
     }
@@ -194,6 +187,22 @@ public class Artist implements Serializable {
         this.status = status;
     }
 
+    public Set<Social> getSocials() {
+        return socials;
+    }
+
+    public void setSocials(Set<Social> socials) {
+        this.socials = socials;
+    }
+
+    public Set<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(Set<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -223,9 +232,7 @@ public class Artist implements Serializable {
             ", bornIn='" + bornIn + "'" +
             ", age='" + age + "'" +
             ", bio='" + bio + "'" +
-            ", role='" + role + "'" +
             ", yearsActive='" + yearsActive + "'" +
-            ", links='" + links + "'" +
             ", picture='" + picture + "'" +
             '}';
     }

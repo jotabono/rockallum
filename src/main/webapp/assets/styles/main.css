@@ -856,3 +856,21 @@ hm-read-more a:hover{
 .albumthumbs:hover{
     background-color: rgba(255,64,129,1);
 }
+
+.nobar md-ink-bar{
+ display:none;
+}
+
+md-tabs[md-border-bottom] md-tabs-wrapper{
+    border-style:none;
+}
+
+.nobar [class^="md-"], .nobar [class*=" md-"]{
+    font-size:14px;
+}
+
+.nobar .md-tab{
+    text-transform: none;
+    padding-top:4px;
+    padding-bottom:4px;
+}

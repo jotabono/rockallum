@@ -25,6 +25,8 @@
                 "favouriteLabel": "FavouriteLabel",
                 "favouriteSong": "FavouriteSong",
                 "collection": "Collection",
+                "social": "Social",
+                "instrument": "Instrument",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

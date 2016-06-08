@@ -36,9 +36,7 @@ class="hidden-xs"                        translate="therockbibleApp.artist.home.
                     <th jh-sort-by="bornIn"><span translate="therockbibleApp.artist.bornIn">BornIn</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="age"><span translate="therockbibleApp.artist.age">Age</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="bio"><span translate="therockbibleApp.artist.bio">Bio</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="role"><span translate="therockbibleApp.artist.role">Role</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="yearsActive"><span translate="therockbibleApp.artist.yearsActive">YearsActive</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="links"><span translate="therockbibleApp.artist.links">Links</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="picture"><span translate="therockbibleApp.artist.picture">Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="user.email"><span translate="therockbibleApp.artist.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="country.name"><span translate="therockbibleApp.artist.country">country</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -52,12 +50,10 @@ class="hidden-xs"                        translate="therockbibleApp.artist.home.
                     <td><a ui-sref="artist.detail({id:artist.id})">{{artist.id}}</a></td>
                     <td>{{artist.name}}</td>
                     <td>{{artist.realName}}</td>
-                    <td>{{artist.bornIn}}</td>
+                        <td>{{artist.bornIn | date:'mediumDate'}}</td>
                     <td>{{artist.age}}</td>
                     <td>{{artist.bio}}</td>
-                    <td>{{artist.role}}</td>
                     <td>{{artist.yearsActive}}</td>
-                    <td>{{artist.links}}</td>
                     <td>{{artist.picture}}</td>
                     <td>
                         {{artist.user.email}}

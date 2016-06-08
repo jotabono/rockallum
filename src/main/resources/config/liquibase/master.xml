@@ -14,7 +14,9 @@
     <include file="classpath:config/liquibase/changelog/20160413173905_added_entity_Album.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173906_added_entity_Song.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173907_added_entity_Review.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160413173908_added_entity_Artist.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606212403_added_entity_Social.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606212444_added_entity_Instrument.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160420113505_added_entity_Artist.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160420113506_added_entity_Band.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173956_added_entity_FavouriteBand.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173957_added_entity_FavouriteAlbum.xml" relativeToChangelogFile="false"/>
@@ -23,5 +25,7 @@
     <include file="classpath:config/liquibase/changelog/20160413173900_added_entity_FavouriteLabel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173901_added_entity_FavouriteSong.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173902_added_entity_Collection.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606233202_editedartist.xml" relativeToChangelogFile="false"/>
+
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
