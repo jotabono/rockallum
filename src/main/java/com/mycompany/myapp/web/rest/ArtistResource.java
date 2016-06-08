@@ -194,4 +194,5 @@ public class ArtistResource {
             e.printStackTrace();
         }
     }
+
 }

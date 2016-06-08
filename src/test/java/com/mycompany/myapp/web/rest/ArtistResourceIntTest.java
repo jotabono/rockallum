@@ -61,6 +61,9 @@ public class ArtistResourceIntTest {
     private static final String DEFAULT_PICTURE = "AAAAA";
     private static final String UPDATED_PICTURE = "BBBBB";
 
+    private static final Boolean DEFAULT_STILL_IN_BAND = false;
+    private static final Boolean UPDATED_STILL_IN_BAND = true;
+
     @Inject
     private ArtistRepository artistRepository;
 
@@ -98,6 +101,7 @@ public class ArtistResourceIntTest {
         artist.setBio(DEFAULT_BIO);
         artist.setYearsActive(DEFAULT_YEARS_ACTIVE);
         artist.setPicture(DEFAULT_PICTURE);
+        artist.setStillInBand(DEFAULT_STILL_IN_BAND);
     }
 
     @Test
@@ -123,6 +127,7 @@ public class ArtistResourceIntTest {
         assertThat(testArtist.getBio()).isEqualTo(DEFAULT_BIO);
         assertThat(testArtist.getYearsActive()).isEqualTo(DEFAULT_YEARS_ACTIVE);
         assertThat(testArtist.getPicture()).isEqualTo(DEFAULT_PICTURE);
+        assertThat(testArtist.getStillInBand()).isEqualTo(DEFAULT_STILL_IN_BAND);
     }
 
     @Test
@@ -160,7 +165,8 @@ public class ArtistResourceIntTest {
                 .andExpect(jsonPath("$.[*].age").value(hasItem(DEFAULT_AGE)))
                 .andExpect(jsonPath("$.[*].bio").value(hasItem(DEFAULT_BIO.toString())))
                 .andExpect(jsonPath("$.[*].yearsActive").value(hasItem(DEFAULT_YEARS_ACTIVE.toString())))
-                .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())));
+                .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())))
+                .andExpect(jsonPath("$.[*].stillInBand").value(hasItem(DEFAULT_STILL_IN_BAND.booleanValue())));
     }
 
     @Test
@@ -180,7 +186,8 @@ public class ArtistResourceIntTest {
             .andExpect(jsonPath("$.age").value(DEFAULT_AGE))
             .andExpect(jsonPath("$.bio").value(DEFAULT_BIO.toString()))
             .andExpect(jsonPath("$.yearsActive").value(DEFAULT_YEARS_ACTIVE.toString()))
-            .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()));
+            .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()))
+            .andExpect(jsonPath("$.stillInBand").value(DEFAULT_STILL_IN_BAND.booleanValue()));
     }
 
     @Test
@@ -207,6 +214,7 @@ public class ArtistResourceIntTest {
         artist.setBio(UPDATED_BIO);
         artist.setYearsActive(UPDATED_YEARS_ACTIVE);
         artist.setPicture(UPDATED_PICTURE);
+        artist.setStillInBand(UPDATED_STILL_IN_BAND);
 
         restArtistMockMvc.perform(put("/api/artists")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -224,6 +232,7 @@ public class ArtistResourceIntTest {
         assertThat(testArtist.getBio()).isEqualTo(UPDATED_BIO);
         assertThat(testArtist.getYearsActive()).isEqualTo(UPDATED_YEARS_ACTIVE);
         assertThat(testArtist.getPicture()).isEqualTo(UPDATED_PICTURE);
+        assertThat(testArtist.getStillInBand()).isEqualTo(UPDATED_STILL_IN_BAND);
     }
 
     @Test

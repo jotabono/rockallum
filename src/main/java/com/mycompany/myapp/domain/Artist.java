@@ -48,6 +48,9 @@ public class Artist implements Serializable {
     @Column(name = "picture")
     private String picture;
 
+    @Column(name = "still_in_band")
+    private Boolean stillInBand;
+
     @ManyToMany(mappedBy = "artists")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -147,6 +150,14 @@ public class Artist implements Serializable {
         this.picture = picture;
     }
 
+    public Boolean getStillInBand() {
+        return stillInBand;
+    }
+
+    public void setStillInBand(Boolean stillInBand) {
+        this.stillInBand = stillInBand;
+    }
+
     public Set<Band> getBands() {
         return bands;
     }
@@ -234,6 +245,7 @@ public class Artist implements Serializable {
             ", bio='" + bio + "'" +
             ", yearsActive='" + yearsActive + "'" +
             ", picture='" + picture + "'" +
+            ", stillInBand='" + stillInBand + "'" +
             '}';
     }
 }

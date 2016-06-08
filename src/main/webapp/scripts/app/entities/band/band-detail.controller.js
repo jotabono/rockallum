@@ -29,18 +29,20 @@ angular.module('therockbibleApp')
             return albumsArray;
         }
     })
-    .filter('memberType', function () {
-        return function (albums, tipo) {
-            var albumType;
-            var albumsArray = [];
 
-            angular.forEach(albums, function (album) {
-                albumType = album.albumTypes.name;
-                if (albumType === tipo) {
-                    albumsArray.push(album);
+    .filter('memberStill', function () {
+        return function (artists, still) {
+            var memberStill;
+            var artistsArray = [];
+
+            angular.forEach(artists, function (artist) {
+                memberStill = artist.stillInBand;
+                if (memberStill === still) {
+                    artistsArray.push(artist);
                 }
             });
 
-            return albumsArray;
+            return artistsArray;
         }
     });
+

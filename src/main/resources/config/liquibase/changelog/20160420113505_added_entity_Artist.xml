@@ -37,6 +37,8 @@
             
             <column name="picture" type="varchar(255)"/>
             
+            <column name="still_in_band" type="bit"/>
+            
             <column name="user_id" type="bigint"/>
             <column name="country_id" type="bigint"/>
             <column name="sex_id" type="bigint"/>

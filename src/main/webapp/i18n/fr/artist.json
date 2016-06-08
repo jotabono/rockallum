@@ -23,6 +23,7 @@
             "bio": "Bio",
             "yearsActive": "YearsActive",
             "picture": "Picture",
+            "stillInBand": "StillInBand",
             "band": "Band",
             "user": "User",
             "country": "Country",

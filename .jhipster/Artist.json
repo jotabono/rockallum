@@ -91,7 +91,12 @@
       "fieldId": 9,
       "fieldName": "picture",
       "fieldType": "String"
-    }
+    },
+      {
+          "fieldId": 10,
+          "fieldName": "stillInBand",
+          "fieldType": "Boolean"
+      }
   ],
   "changelogDate": "20160420113505",
   "dto": "no",
