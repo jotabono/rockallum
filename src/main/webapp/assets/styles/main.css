@@ -804,6 +804,13 @@ md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
 /*READ MORE*/
 
 hm-read-more a {
+    font-weight:300;
+    font-family: sans-serif;
+    cursor: pointer;
+    color:pink;
+}
+
+.buttonreadmore{
     padding:8px;
     font-weight:300;
     font-family: sans-serif;
@@ -811,7 +818,7 @@ hm-read-more a {
     color:pink;
 }
 
-hm-read-more a:hover{
+.buttonreadmore:hover{
     background-color:rgba(255,64,129,1);
     color: white !important;
     text-decoration:none;
@@ -894,8 +901,12 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
 }
 
 .responsivetitle{
-    max-width:150px;
+    max-width:190px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.formindetail{
+    color:white;
 }

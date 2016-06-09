@@ -48,7 +48,6 @@
                                 </p>
                             </div>
                         </div>
-                        </p>
                         <div class="text-justify">
                             <hm-read-more
                                 hm-text="{{ band.bio }}"
@@ -56,7 +55,7 @@
                                 hm-more-text="read more"
                                 hm-less-text="read less"
                                 hm-dots-class="dots"
-                                hm-link-class="links">
+                                hm-link-class="buttonreadmore">
                             </hm-read-more>
                         </div>
                         <hr class="infowrapper">
@@ -80,7 +79,7 @@
                                                                             style="height: 200px; width: 100%; object-fit: cover;"
                                                                             ng-src="/uploads/albums/{{y.picture}}.jpg"/>
                                                                         <h3 class="responsivetitle"> {{y.title}}</h3>
-                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h4> {{y.releaseDate |  date:"yyyy" }}</h4>
                                                                         <h5> {{y.albumTypes.name}}</h5></div>
                                                                 </div>
                                                             </div>
@@ -99,7 +98,7 @@
                                                                             style="height: 200px; width: 100%; object-fit: cover;"
                                                                             ng-src="/uploads/albums/{{y.picture}}.jpg"/>
                                                                         <h3 class="responsivetitle"> {{y.title}}</h3>
-                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h4> {{y.releaseDate |  date:"yyyy" }}</h4>
                                                                         <h5> {{y.albumTypes.name}}</h5></div>
                                                                 </div>
                                                             </div>
@@ -119,7 +118,7 @@
                                                                             style="height: 200px; width: 100%; object-fit: cover;"
                                                                             ng-src="/uploads/albums/{{y.picture}}.jpg"/>
                                                                         <h3 class="responsivetitle"> {{y.title}}</h3>
-                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h4> {{y.releaseDate |  date:"yyyy" }}</h4>
                                                                         <h5> {{y.albumTypes.name}}</h5></div>
                                                                 </div>
                                                             </div>
@@ -139,7 +138,7 @@
                                                                             style="height: 200px; width: 100%; object-fit: cover;"
                                                                             ng-src="/uploads/albums/{{y.picture}}.jpg"/>
                                                                         <h3 class="responsivetitle"> {{y.title}}</h3>
-                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h4> {{y.releaseDate |  date:"yyyy" }}</h4>
                                                                         <h5> {{y.albumTypes.name}}</h5></div>
                                                                 </div>
                                                             </div>
@@ -159,7 +158,7 @@
                                                                             style="height: 200px; width: 100%; object-fit: cover;"
                                                                             ng-src="/uploads/albums/{{y.picture}}.jpg"/>
                                                                         <h3 class="responsivetitle"> {{y.title}}</h3>
-                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h4> {{y.releaseDate |  date:"yyyy" }}</h4>
                                                                         <h5> {{y.albumTypes.name}}</h5></div>
                                                                 </div>
                                                             </div>
@@ -312,25 +311,26 @@
                             </md-content>
                         </div>
                         <p>
-                            <button type="submit"
-                                    ui-sref="bands"
-                                    title="Back"
-                                    class="detailbutton">
+                            <button class="detailbutton" ui-sref="bands">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                             </button>
-                            <button type="submit"
-                                    ui-sref="band.edit({id:band.id})"
-                                    title="Edit"
-                                    class="detailbutton">
+                            <button class="detailbutton" ui-sref="band.edit({id:band.id})">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
-                            <button type="submit"
-                                    ui-sref="band.delete({id:band.id})"
-                                    title="Delete"
-                                    class="detailbutton">
+                            <button class="detailbutton" ui-sref="band.delete({id:band.id})">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                             </button>
-
+                            <button class="detailbutton" ui-sref="album.new" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Add a new album">
+                                <span class="glyphicon glyphicon-cd"></span>
+                            </button>
+                            <button class="detailbutton" ui-sref="artist.new" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Add a new member">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
+                            <script>
+                                $(document).ready(function(){
+                                    $('[data-toggle="popover"]').popover();
+                                });
+                            </script>
                     </div>
                 </div>
             </div>
