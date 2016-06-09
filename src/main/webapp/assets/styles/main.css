@@ -804,6 +804,7 @@ md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
 /*READ MORE*/
 
 hm-read-more a {
+    padding:8px;
     font-weight:300;
     font-family: sans-serif;
     cursor: pointer;
@@ -811,7 +812,8 @@ hm-read-more a {
 }
 
 hm-read-more a:hover{
-    color:#FF4081;
+    background-color:rgba(255,64,129,1);
+    color: white !important;
     text-decoration:none;
 }
 
@@ -849,12 +851,26 @@ hm-read-more a:hover{
     text-decoration: none;
 }
 
+.albumsdiv{
+    padding-left:0;
+    padding-right:0;
+
+}
+
 .albumthumbs:not(img) {
     padding:5px;
 }
 
 .albumthumbs:hover{
     background-color: rgba(255,64,129,1);
+}
+
+.albumthumbs label{
+    font-family:sans-serif;
+}
+
+.albumthumbs:hover label{
+    color:white !important;
 }
 
 .nobar md-ink-bar{
@@ -867,10 +883,19 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
 
 .nobar [class^="md-"], .nobar [class*=" md-"]{
     font-size:14px;
+    overflow-y:hidden;
+    overflow-x:hidden;
 }
 
 .nobar .md-tab{
     text-transform: none;
     padding-top:4px;
     padding-bottom:4px;
+}
+
+.responsivetitle{
+    max-width:150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

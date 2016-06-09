@@ -69,6 +69,7 @@ angular.module('therockbibleApp')
                                     yearsActive: null,
                                     picture: null,
                                     stillInBand: null,
+                                    liveMusician: null,
                                     id: null
                                 };
                             }

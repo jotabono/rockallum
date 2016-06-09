@@ -70,76 +70,99 @@
                                                 <md-tabs md-dynamic-height md-border-bottom>
                                                     <md-tab label="All">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="album.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.albums | orderBy:'releaseDate'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/albums/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.title}}</h3>
-                                                                <h4> {{y.releaseDate}}</h4>
-                                                                <h5> {{y.albumTypes.name}}</h5></div>
-                                                            </p>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs">
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
                                                         </md-content>
                                                     </md-tab>
                                                     <md-tab label="Main">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="album.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.albums | albumType:'Full length' | orderBy:'releaseDate' ">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/albums/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.title}}</h3>
-                                                                <h4> {{y.releaseDate}}</h4>
-                                                                <h5> {{y.albumTypes.name}}</h5></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | albumType:'Full length' | orderBy:'releaseDate' ">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
                                                             </p>
                                                         </md-content>
                                                     </md-tab>
                                                     <md-tab label="Lives">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="album.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.albums | albumType:'Live album' | orderBy:'releaseDate'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/albums/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.title}}</h3>
-                                                                <h4> {{y.releaseDate}}</h4>
-                                                                <h5> {{y.albumTypes.name}}</h5></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | liveAlbum:'Live album':'Video' | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
                                                             </p>
                                                         </md-content>
                                                     </md-tab>
                                                     <md-tab label="Demos">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="album.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.albums | albumType:'Demo' | orderBy:'releaseDate'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/albums/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.title}}</h3>
-                                                                <h4> {{y.releaseDate}}</h4>
-                                                                <h5> {{y.albumTypes.name}}</h5></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | albumType:'Demo' | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
                                                             </p>
                                                         </md-content>
                                                     </md-tab>
-                                                    <md-tab label="Misc"><!--  filter:{y.albumTypes.name}:'Full length' -->
+                                                    <md-tab label="Misc">
+                                                        <!--  filter:{y.albumTypes.name}:'Full length' -->
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="album.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.albums | orderBy:'releaseDate'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/albums/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.title}}</h3>
-                                                                <h4> {{y.releaseDate}}</h4>
-                                                                <h5> {{y.albumTypes.name}}</h5></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | miscAlbum:'Single':'EP':'Boxed set':'Split':'Compilation':'Split video':'Collaboration' | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs">
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate}}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
                                                             </p>
                                                         </md-content>
                                                     </md-tab>
@@ -153,58 +176,102 @@
                                                 <md-tabs md-dynamic-height md-border-bottom>
                                                     <md-tab label="Current lineup">
                                                         <md-content class="md-padding">
-                                            <div ui-sref="artist.detail({id:y.id})"
-                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                 class="thumbnail bandthumbs albumthumbs"
-                                                 ng-repeat="y in band.artists | memberStill:true | orderBy:'yearsActive'">
-                                                <img
-                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                    ng-src="/uploads/artists/{{y.picture}}.jpg"/>
-                                                <h3> {{y.name}}</h3>
-                                                <h4 ng-repeat="z in y.instruments">{{z.instrument}}{{$last ? '' : ', '}}</h4>
-                                                <h6> {{y.yearsActive}}</h6></div>
-                                                            </md-content>
-                                                        </md-tab>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | memberStill:true | orderBy:'yearsActive'">
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
+                                                        </md-content>
+                                                    </md-tab>
                                                     <md-tab label="Past members">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="artist.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.artists | memberStill:false | orderBy:'yearsActive'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/artists/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.name}}</h3>
-                                                                <h4 ng-repeat="z in y.instruments">{{z.instrument}}{{$last ? '' : ', '}}</h4>
-                                                                <h6> {{y.yearsActive}}</h6></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | orderBy:'yearsActive'"
+                                                                     ng-if="!y.stillInBand">
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
                                                         </md-content>
                                                     </md-tab>
                                                     <md-tab label="Live musicians">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="artist.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.artists | orderBy:'yearsActive'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/artists/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.name}}</h3>
-                                                                <h4 ng-repeat="z in y.instruments">{{z.instrument}}{{$last ? '' : ', '}}</h4>
-                                                                <h6> {{y.yearsActive}}</h6></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | isLiveMusician:true | orderBy:'yearsActive'"
+                                                                >
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <label ng-if="y.stillInBand"
+                                                                               style="color:greenyellow">Still in the
+                                                                            band</label>
+                                                                        <label ng-if="!y.stillInBand"
+                                                                               style="color:indianred">No longer in the
+                                                                            band</label>
+                                                                        <p/>
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
                                                         </md-content>
                                                     </md-tab>
                                                     <md-tab label="Complete lineup">
                                                         <md-content class="md-padding">
-                                                            <div ui-sref="artist.detail({id:y.id})"
-                                                                 style="display:inline-block; margin:5px; font-size:14px;"
-                                                                 class="thumbnail bandthumbs albumthumbs"
-                                                                 ng-repeat="y in band.artists | orderBy:'yearsActive'">
-                                                                <img
-                                                                    style="height: 200px; width:200px; object-fit: cover;"
-                                                                    ng-src="/uploads/artists/{{y.picture}}.jpg"/>
-                                                                <h3> {{y.name}}</h3>
-                                                                <h4 ng-repeat="z in y.instruments">{{z.instrument}}{{$last ? '' : ', '}}</h4>
-                                                                <h6> {{y.yearsActive}}</h6></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | orderBy:'stillInBand'">
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <label
+                                                                            ng-if="y.stillInBand"
+                                                                            style="color:greenyellow">Still in the
+                                                                            band</label>
+                                                                        <label
+                                                                            ng-if="!y.stillInBand"
+                                                                            style="color:indianred">No longer in the
+                                                                            band</label>
+                                                                        <p/>
+
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
+
                                                         </md-content>
                                                     </md-tab>
                                                 </md-tabs>

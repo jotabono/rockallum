@@ -24,6 +24,7 @@
             "yearsActive": "YearsActive",
             "picture": "Picture",
             "stillInBand": "StillInBand",
+            "liveMusician": "LiveMusician",
             "band": "Band",
             "user": "User",
             "country": "Country",

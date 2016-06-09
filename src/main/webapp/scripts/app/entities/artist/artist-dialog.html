@@ -11,16 +11,16 @@
         <div class="form-group">
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="artist.id" readonly />
+                   ng-model="artist.id" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="artist.name"
-                    required />
+                   ng-model="artist.name"
+                   required />
             <div ng-show="editForm.name.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
             </div>
@@ -28,36 +28,36 @@
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.realName" for="field_realName">RealName</label>
             <input type="text" class="form-control" name="realName" id="field_realName"
-                    ng-model="artist.realName"
-                     />
+                   ng-model="artist.realName"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.bornIn" for="field_bornIn">BornIn</label>
-                <div class="input-group">
-                    <input id="field_bornIn" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="artist.bornIn" is-open="datePickerForBornIn.status.opened"
-                    />
+            <div class="input-group">
+                <input id="field_bornIn" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="artist.bornIn" is-open="datePickerForBornIn.status.opened"
+                />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="datePickerForBornInOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
-                </div>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.age" for="field_age">Age</label>
             <input type="number" class="form-control" name="age" id="field_age"
-                    ng-model="artist.age"
-                     />
+                   ng-model="artist.age"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.bio" for="field_bio">Bio</label>
             <input type="text" class="form-control" name="bio" id="field_bio"
-                    ng-model="artist.bio"
-                     />
+                   ng-model="artist.bio"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.yearsActive" for="field_yearsActive">YearsActive</label>
             <input type="text" class="form-control" name="yearsActive" id="field_yearsActive"
-                    ng-model="artist.yearsActive"
-                     />
+                   ng-model="artist.yearsActive"
+            />
         </div>
 
         <div name="myForm" class="form-group">
@@ -91,10 +91,15 @@
         <div class="form-group">
             <label class="control-label" translate="therockbibleApp.artist.stillInBand" for="field_stillInBand">StillInBand</label>
             <input type="checkbox" class="form-control" name="stillInBand" id="field_stillInBand"
-                    ng-model="artist.stillInBand"
-                     />
+                   ng-model="artist.stillInBand"
+            />
         </div>
-
+        <div class="form-group">
+            <label class="control-label" translate="therockbibleApp.artist.liveMusician" for="field_liveMusician">liveMusician</label>
+            <input type="checkbox" class="form-control" name="liveMusician" id="field_liveMusician"
+                   ng-model="artist.liveMusician"
+            />
+        </div>
         <div class="form-group">
             <label translate="therockbibleApp.artist.user" for="field_user">user</label>
             <select class="form-control" id="field_user" name="user" ng-model="artist.user" ng-options="user as user.email for user in users track by user.id">

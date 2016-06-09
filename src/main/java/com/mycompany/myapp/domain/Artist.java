@@ -51,6 +51,9 @@ public class Artist implements Serializable {
     @Column(name = "still_in_band")
     private Boolean stillInBand;
 
+    @Column(name = "live_musician")
+    private Boolean liveMusician;
+
     @ManyToMany(mappedBy = "artists")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -72,7 +75,7 @@ public class Artist implements Serializable {
     @JoinColumn(name = "status_id")
     private Status status;
 
-    @ManyToMany
+    @ManyToMany (fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "artist_social",
                joinColumns = @JoinColumn(name="artists_id", referencedColumnName="ID"),
@@ -156,6 +159,14 @@ public class Artist implements Serializable {
 
     public void setStillInBand(Boolean stillInBand) {
         this.stillInBand = stillInBand;
+    }
+
+    public Boolean getLiveMusician() {
+        return liveMusician;
+    }
+
+    public void setLiveMusician(Boolean liveMusician) {
+        this.liveMusician = liveMusician;
     }
 
     public Set<Band> getBands() {
@@ -246,6 +257,7 @@ public class Artist implements Serializable {
             ", yearsActive='" + yearsActive + "'" +
             ", picture='" + picture + "'" +
             ", stillInBand='" + stillInBand + "'" +
+            ", liveMusician='" + liveMusician + "'" +
             '}';
     }
 }

@@ -96,6 +96,11 @@
           "fieldId": 10,
           "fieldName": "stillInBand",
           "fieldType": "Boolean"
+      },
+      {
+          "fieldId": 11,
+          "fieldName": "liveMusician",
+          "fieldType": "Boolean"
       }
   ],
   "changelogDate": "20160420113505",
