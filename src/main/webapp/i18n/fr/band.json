@@ -25,7 +25,6 @@
             "lyricalThemes": "LyricalThemes",
             "independent": "Independent",
             "picture": "Picture",
-            "links": "Links",
             "logo": "Logo",
             "bio": "Bio",
             "genre": "Genre",
@@ -40,7 +39,8 @@
             "user": "User",
             "country": "Country",
             "label": "Label",
-            "status": "Status"
+            "status": "Status",
+            "album": "Album"
         }
     }
 }

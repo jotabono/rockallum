@@ -41,7 +41,7 @@ public class Band implements Serializable {
     private Double longitude;
 
     @Column(name = "founding_date")
-    private LocalDate foundingDate;
+    private String foundingDate;
 
     @Column(name = "years_active")
     private String yearsActive;
@@ -54,9 +54,6 @@ public class Band implements Serializable {
 
     @Column(name = "picture")
     private String picture;
-
-    @Column(name = "links")
-    private String links;
 
     @Column(name = "logo")
     private String logo;
@@ -176,11 +173,11 @@ public class Band implements Serializable {
         this.longitude = longitude;
     }
 
-    public LocalDate getFoundingDate() {
+    public String getFoundingDate() {
         return foundingDate;
     }
 
-    public void setFoundingDate(LocalDate foundingDate) {
+    public void setFoundingDate(String foundingDate) {
         this.foundingDate = foundingDate;
     }
 
@@ -214,14 +211,6 @@ public class Band implements Serializable {
 
     public void setPicture(String picture) {
         this.picture = picture;
-    }
-
-    public String getLinks() {
-        return links;
-    }
-
-    public void setLinks(String links) {
-        this.links = links;
     }
 
     public String getLogo() {
@@ -385,7 +374,6 @@ public class Band implements Serializable {
             ", lyricalThemes='" + lyricalThemes + "'" +
             ", independent='" + independent + "'" +
             ", picture='" + picture + "'" +
-            ", links='" + links + "'" +
             ", logo='" + logo + "'" +
             ", bio='" + bio + "'" +
             '}';

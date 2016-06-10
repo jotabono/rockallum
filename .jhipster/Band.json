@@ -132,7 +132,7 @@
     {
       "fieldId": 5,
       "fieldName": "foundingDate",
-      "fieldType": "LocalDate"
+      "fieldType": "String"
     },
     {
       "fieldId": 6,
@@ -156,16 +156,11 @@
     },
     {
       "fieldId": 10,
-      "fieldName": "links",
-      "fieldType": "String"
-    },
-    {
-      "fieldId": 11,
       "fieldName": "logo",
       "fieldType": "String"
     },
       {
-          "fieldId": 12,
+          "fieldId": 11,
           "fieldName": "bio",
           "fieldType": "String"
       }

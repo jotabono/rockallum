@@ -24,8 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,9 +52,8 @@ public class BandResourceIntTest {
 
     private static final Double DEFAULT_LONGITUDE = 1D;
     private static final Double UPDATED_LONGITUDE = 2D;
-
-    private static final LocalDate DEFAULT_FOUNDING_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_FOUNDING_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final String DEFAULT_FOUNDING_DATE = "AAAAA";
+    private static final String UPDATED_FOUNDING_DATE = "BBBBB";
     private static final String DEFAULT_YEARS_ACTIVE = "AAAAA";
     private static final String UPDATED_YEARS_ACTIVE = "BBBBB";
     private static final String DEFAULT_LYRICAL_THEMES = "AAAAA";
@@ -66,8 +63,6 @@ public class BandResourceIntTest {
     private static final Boolean UPDATED_INDEPENDENT = true;
     private static final String DEFAULT_PICTURE = "AAAAA";
     private static final String UPDATED_PICTURE = "BBBBB";
-    private static final String DEFAULT_LINKS = "AAAAA";
-    private static final String UPDATED_LINKS = "BBBBB";
     private static final String DEFAULT_LOGO = "AAAAA";
     private static final String UPDATED_LOGO = "BBBBB";
     private static final String DEFAULT_BIO = "AAAAA";
@@ -112,7 +107,6 @@ public class BandResourceIntTest {
         band.setLyricalThemes(DEFAULT_LYRICAL_THEMES);
         band.setIndependent(DEFAULT_INDEPENDENT);
         band.setPicture(DEFAULT_PICTURE);
-        band.setLinks(DEFAULT_LINKS);
         band.setLogo(DEFAULT_LOGO);
         band.setBio(DEFAULT_BIO);
     }
@@ -142,7 +136,6 @@ public class BandResourceIntTest {
         assertThat(testBand.getLyricalThemes()).isEqualTo(DEFAULT_LYRICAL_THEMES);
         assertThat(testBand.getIndependent()).isEqualTo(DEFAULT_INDEPENDENT);
         assertThat(testBand.getPicture()).isEqualTo(DEFAULT_PICTURE);
-        assertThat(testBand.getLinks()).isEqualTo(DEFAULT_LINKS);
         assertThat(testBand.getLogo()).isEqualTo(DEFAULT_LOGO);
         assertThat(testBand.getBio()).isEqualTo(DEFAULT_BIO);
     }
@@ -203,7 +196,6 @@ public class BandResourceIntTest {
                 .andExpect(jsonPath("$.[*].lyricalThemes").value(hasItem(DEFAULT_LYRICAL_THEMES.toString())))
                 .andExpect(jsonPath("$.[*].independent").value(hasItem(DEFAULT_INDEPENDENT.booleanValue())))
                 .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())))
-                .andExpect(jsonPath("$.[*].links").value(hasItem(DEFAULT_LINKS.toString())))
                 .andExpect(jsonPath("$.[*].logo").value(hasItem(DEFAULT_LOGO.toString())))
                 .andExpect(jsonPath("$.[*].bio").value(hasItem(DEFAULT_BIO.toString())));
     }
@@ -228,7 +220,6 @@ public class BandResourceIntTest {
             .andExpect(jsonPath("$.lyricalThemes").value(DEFAULT_LYRICAL_THEMES.toString()))
             .andExpect(jsonPath("$.independent").value(DEFAULT_INDEPENDENT.booleanValue()))
             .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()))
-            .andExpect(jsonPath("$.links").value(DEFAULT_LINKS.toString()))
             .andExpect(jsonPath("$.logo").value(DEFAULT_LOGO.toString()))
             .andExpect(jsonPath("$.bio").value(DEFAULT_BIO.toString()));
     }
@@ -259,7 +250,6 @@ public class BandResourceIntTest {
         band.setLyricalThemes(UPDATED_LYRICAL_THEMES);
         band.setIndependent(UPDATED_INDEPENDENT);
         band.setPicture(UPDATED_PICTURE);
-        band.setLinks(UPDATED_LINKS);
         band.setLogo(UPDATED_LOGO);
         band.setBio(UPDATED_BIO);
 
@@ -281,7 +271,6 @@ public class BandResourceIntTest {
         assertThat(testBand.getLyricalThemes()).isEqualTo(UPDATED_LYRICAL_THEMES);
         assertThat(testBand.getIndependent()).isEqualTo(UPDATED_INDEPENDENT);
         assertThat(testBand.getPicture()).isEqualTo(UPDATED_PICTURE);
-        assertThat(testBand.getLinks()).isEqualTo(UPDATED_LINKS);
         assertThat(testBand.getLogo()).isEqualTo(UPDATED_LOGO);
         assertThat(testBand.getBio()).isEqualTo(UPDATED_BIO);
     }

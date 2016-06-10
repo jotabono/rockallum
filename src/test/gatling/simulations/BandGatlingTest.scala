@@ -67,7 +67,7 @@ class BandGatlingTest extends Simulation {
             .exec(http("Create new band")
             .post("/api/bands")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "location":"SAMPLE_TEXT", "latitude":null, "longitude":null, "foundingDate":"2020-01-01T00:00:00.000Z", "yearsActive":"SAMPLE_TEXT", "lyricalThemes":"SAMPLE_TEXT", "independent":null, "picture":"SAMPLE_TEXT", "links":"SAMPLE_TEXT", "logo":"SAMPLE_TEXT", "bio":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "location":"SAMPLE_TEXT", "latitude":null, "longitude":null, "foundingDate":"SAMPLE_TEXT", "yearsActive":"SAMPLE_TEXT", "lyricalThemes":"SAMPLE_TEXT", "independent":null, "picture":"SAMPLE_TEXT", "logo":"SAMPLE_TEXT", "bio":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_band_url")))
             .pause(10)

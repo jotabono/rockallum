@@ -26,7 +26,7 @@ angular.module('therockbibleApp').controller('BandDialogController',
         };
 
         var onSaveSuccess = function (result) {
-            
+
             $scope.uploadPic($scope.picFile, result);
             $scope.uploadPic2($scope.picFile2, result);
             var picture = result.name+result.id;
@@ -71,15 +71,6 @@ angular.module('therockbibleApp').controller('BandDialogController',
 
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
-        };
-        $scope.datePickerForFoundingDate = {};
-
-        $scope.datePickerForFoundingDate.status = {
-            opened: false
-        };
-
-        $scope.datePickerForFoundingDateOpen = function($event) {
-            $scope.datePickerForFoundingDate.status.opened = true;
         };
 
             $scope.lat = [];

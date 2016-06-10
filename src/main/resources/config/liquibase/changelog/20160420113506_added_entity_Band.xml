@@ -33,7 +33,7 @@
             
             <column name="longitude" type="double"/>
             
-            <column name="founding_date" type="date"/>
+            <column name="founding_date" type="varchar(255)"/>
             
             <column name="years_active" type="varchar(255)"/>
             
@@ -42,8 +42,6 @@
             <column name="independent" type="bit"/>
             
             <column name="picture" type="varchar(255)"/>
-            
-            <column name="links" type="varchar(255)"/>
             
             <column name="logo" type="varchar(255)"/>
             

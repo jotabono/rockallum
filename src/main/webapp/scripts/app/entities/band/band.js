@@ -70,7 +70,6 @@ angular.module('therockbibleApp')
                                     lyricalThemes: null,
                                     independent: null,
                                     picture: null,
-                                    links: null,
                                     logo: null,
                                     bio: null,
                                     id: null
