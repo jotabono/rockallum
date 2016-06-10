@@ -101,6 +101,11 @@
           "fieldId": 11,
           "fieldName": "liveMusician",
           "fieldType": "Boolean"
+      },
+      {
+          "fieldId": 12,
+          "fieldName": "isRip",
+          "fieldType": "Boolean"
       }
   ],
   "changelogDate": "20160420113505",

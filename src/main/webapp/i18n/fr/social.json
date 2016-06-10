@@ -18,6 +18,8 @@
             },
             "url": "Url",
             "official": "Official",
+            "merchandising": "Merchandising",
+            "tabs": "Tabs",
             "artist": "Artist"
         }
     }

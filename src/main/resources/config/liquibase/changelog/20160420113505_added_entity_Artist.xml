@@ -41,6 +41,8 @@
             
             <column name="live_musician" type="bit"/>
             
+            <column name="is_rip" type="bit"/>
+            
             <column name="user_id" type="bigint"/>
             <column name="country_id" type="bigint"/>
             <column name="sex_id" type="bigint"/>

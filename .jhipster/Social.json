@@ -1,0 +1,38 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "social"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "official",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "merchandising",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "tabs",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20160610164714",
+    "dto": "no",
+    "service": "no",
+    "pagination": "no"
+}

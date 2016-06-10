@@ -54,6 +54,9 @@ public class Artist implements Serializable {
     @Column(name = "live_musician")
     private Boolean liveMusician;
 
+    @Column(name = "is_rip")
+    private Boolean isRip;
+
     @ManyToMany(mappedBy = "artists")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -169,6 +172,14 @@ public class Artist implements Serializable {
         this.liveMusician = liveMusician;
     }
 
+    public Boolean getIsRip() {
+        return isRip;
+    }
+
+    public void setIsRip(Boolean isRip) {
+        this.isRip = isRip;
+    }
+
     public Set<Band> getBands() {
         return bands;
     }
@@ -258,6 +269,7 @@ public class Artist implements Serializable {
             ", picture='" + picture + "'" +
             ", stillInBand='" + stillInBand + "'" +
             ", liveMusician='" + liveMusician + "'" +
+            ", isRip='" + isRip + "'" +
             '}';
     }
 }

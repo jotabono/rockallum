@@ -25,6 +25,7 @@
             "picture": "Picture",
             "stillInBand": "StillInBand",
             "liveMusician": "LiveMusician",
+            "isRip": "IsRip",
             "band": "Band",
             "user": "User",
             "country": "Country",

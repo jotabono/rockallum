@@ -1,0 +1,23 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "instrument"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "instrument",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160610164212",
+    "dto": "no",
+    "service": "no",
+    "pagination": "no"
+}

@@ -67,6 +67,9 @@ public class ArtistResourceIntTest {
     private static final Boolean DEFAULT_LIVE_MUSICIAN = false;
     private static final Boolean UPDATED_LIVE_MUSICIAN = true;
 
+    private static final Boolean DEFAULT_IS_RIP = false;
+    private static final Boolean UPDATED_IS_RIP = true;
+
     @Inject
     private ArtistRepository artistRepository;
 
@@ -106,6 +109,7 @@ public class ArtistResourceIntTest {
         artist.setPicture(DEFAULT_PICTURE);
         artist.setStillInBand(DEFAULT_STILL_IN_BAND);
         artist.setLiveMusician(DEFAULT_LIVE_MUSICIAN);
+        artist.setIsRip(DEFAULT_IS_RIP);
     }
 
     @Test
@@ -133,6 +137,7 @@ public class ArtistResourceIntTest {
         assertThat(testArtist.getPicture()).isEqualTo(DEFAULT_PICTURE);
         assertThat(testArtist.getStillInBand()).isEqualTo(DEFAULT_STILL_IN_BAND);
         assertThat(testArtist.getLiveMusician()).isEqualTo(DEFAULT_LIVE_MUSICIAN);
+        assertThat(testArtist.getIsRip()).isEqualTo(DEFAULT_IS_RIP);
     }
 
     @Test
@@ -172,7 +177,8 @@ public class ArtistResourceIntTest {
                 .andExpect(jsonPath("$.[*].yearsActive").value(hasItem(DEFAULT_YEARS_ACTIVE.toString())))
                 .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())))
                 .andExpect(jsonPath("$.[*].stillInBand").value(hasItem(DEFAULT_STILL_IN_BAND.booleanValue())))
-                .andExpect(jsonPath("$.[*].liveMusician").value(hasItem(DEFAULT_LIVE_MUSICIAN.booleanValue())));
+                .andExpect(jsonPath("$.[*].liveMusician").value(hasItem(DEFAULT_LIVE_MUSICIAN.booleanValue())))
+                .andExpect(jsonPath("$.[*].isRip").value(hasItem(DEFAULT_IS_RIP.booleanValue())));
     }
 
     @Test
@@ -194,7 +200,8 @@ public class ArtistResourceIntTest {
             .andExpect(jsonPath("$.yearsActive").value(DEFAULT_YEARS_ACTIVE.toString()))
             .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()))
             .andExpect(jsonPath("$.stillInBand").value(DEFAULT_STILL_IN_BAND.booleanValue()))
-            .andExpect(jsonPath("$.liveMusician").value(DEFAULT_LIVE_MUSICIAN.booleanValue()));
+            .andExpect(jsonPath("$.liveMusician").value(DEFAULT_LIVE_MUSICIAN.booleanValue()))
+            .andExpect(jsonPath("$.isRip").value(DEFAULT_IS_RIP.booleanValue()));
     }
 
     @Test
@@ -223,6 +230,7 @@ public class ArtistResourceIntTest {
         artist.setPicture(UPDATED_PICTURE);
         artist.setStillInBand(UPDATED_STILL_IN_BAND);
         artist.setLiveMusician(UPDATED_LIVE_MUSICIAN);
+        artist.setIsRip(UPDATED_IS_RIP);
 
         restArtistMockMvc.perform(put("/api/artists")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -242,6 +250,7 @@ public class ArtistResourceIntTest {
         assertThat(testArtist.getPicture()).isEqualTo(UPDATED_PICTURE);
         assertThat(testArtist.getStillInBand()).isEqualTo(UPDATED_STILL_IN_BAND);
         assertThat(testArtist.getLiveMusician()).isEqualTo(UPDATED_LIVE_MUSICIAN);
+        assertThat(testArtist.getIsRip()).isEqualTo(UPDATED_IS_RIP);
     }
 
     @Test

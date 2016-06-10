@@ -70,6 +70,7 @@ angular.module('therockbibleApp')
                                     picture: null,
                                     stillInBand: null,
                                     liveMusician: null,
+                                    isRip: null,
                                     id: null
                                 };
                             }
