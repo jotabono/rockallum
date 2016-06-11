@@ -74,7 +74,7 @@
                         <img ui-sref="band.detail({id:bandDTO.band.id})" ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!bandDTO.band.picture"/></div>
 
                     <a ng-click="like(bandDTO.band.id)" aria-label="More">
-                        <md-button ng-class="{true: 'fav2', false: 'fav'}[bandDTO.liked == false]"
+                        <md-button ng-class="{true: 'fav2', false: 'fav'}[bandDTO.liked == true]"
                                    icon="favorite-border"
                                    style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;" class="md-fab">
                             <i class="material-icons">favorite</i>
