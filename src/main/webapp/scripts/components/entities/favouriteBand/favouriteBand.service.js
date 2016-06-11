@@ -11,6 +11,7 @@ angular.module('therockbibleApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'addLike': { method: 'POST', isArray: false, url: 'api/favorites/:id/like'}
         });
     });

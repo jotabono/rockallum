@@ -156,24 +156,6 @@ public class ReviewResourceIntTest {
 
     @Test
     @Transactional
-    public void checkReviewDateIsRequired() throws Exception {
-        int databaseSizeBeforeTest = reviewRepository.findAll().size();
-        // set the field null
-        review.setReviewDate(null);
-
-        // Create the Review, which fails.
-
-        restReviewMockMvc.perform(post("/api/reviews")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(review)))
-                .andExpect(status().isBadRequest());
-
-        List<Review> reviews = reviewRepository.findAll();
-        assertThat(reviews).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkReviewTextIsRequired() throws Exception {
         int databaseSizeBeforeTest = reviewRepository.findAll().size();
         // set the field null

@@ -67,21 +67,30 @@
     <div class="lastestbandsindex">
     <h1 unselectable="on" class="titleindex">Lastest bands added</h1>
         <div class="row">
-            <div class="col-sm-6 col-md-4 bands" ng-repeat="band in bands | limitTo:6">
-                <div ui-sref="band.detail({id:band.id})" class="thumbnail bandthumbs">
+            <div class="col-sm-6 col-md-4 bands" ng-repeat="bandDTO in bands | limitTo:6">
+                <div class="thumbnail bandthumbs">
 
-                    <div style="height: 200px;"><img ng-src="/uploads/{{band.picture}}.jpg" style="height: 200px; width: 100%; object-fit: cover;" ng-if="band.picture"/>
-                        <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!band.picture"/></div>
+                    <div  ui-sref="band.detail({id:bandDTO.band.id})"  style="height: 200px;"><img ng-src="/uploads/{{bandDTO.band.picture}}.jpg" style="height: 200px; width: 100%; object-fit: cover;" ng-if="bandDTO.band.picture"/>
+                        <img ui-sref="band.detail({id:bandDTO.band.id})" ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!bandDTO.band.picture"/></div>
 
-                    <div class="caption">
-                        <h3>{{ band.name }}</h3>
+                    <a ng-click="like(bandDTO.band.id)" aria-label="More">
+                        <md-button ng-class="{true: 'fav2', false: 'fav'}[bandDTO.liked == false]"
+                                   icon="favorite-border"
+                                   style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;" class="md-fab">
+                            <i class="material-icons">favorite</i>
+                        </md-button>
+                    </a>
 
-                        <p uib-popover-html="getPopoverData(band.genres)" popover-trigger="mouseenter" popover-placement="bottom" class="thumbgenre"><b>Genre: </b><span ng-repeat="y in band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
-                        <p><b>Country:</b> {{band.country.name}}</p>
-                        <p><b>Status:</b> {{band.status.status}}</p>
+                    <div ui-sref="band.detail({id:bandDTO.band.id})" class="caption">
+                        <h3>{{ bandDTO.band.name }}</h3>
+
+                        <p uib-popover-html="getPopoverData(bandDTO.band.genres)" popover-trigger="mouseenter" popover-placement="bottom" class="thumbgenre"><b>Genre: </b><span ng-repeat="y in bandDTO.band.genres">{{y.name}}{{$last ? '' : ', '}}</span></p>
+                        <p><b>Country:</b> {{bandDTO.band.country.name}}</p>
+                        <p><b>Status:</b> {{bandDTO.band.status.status}}</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div style="text-align:center; margin-top:10px;"><button class="seemore" ui-sref="bands">See more bands</button></div>
     </div>
 </div>

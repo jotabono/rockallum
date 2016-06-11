@@ -1,9 +1,14 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Album;
 import com.mycompany.myapp.domain.Review;
+import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.repository.AlbumRepository;
 import com.mycompany.myapp.repository.ReviewRepository;
+import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.ReviewSearchRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -20,6 +25,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,25 +41,39 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ReviewResource {
 
     private final Logger log = LoggerFactory.getLogger(ReviewResource.class);
-        
+
     @Inject
     private ReviewRepository reviewRepository;
-    
+
     @Inject
     private ReviewSearchRepository reviewSearchRepository;
-    
+
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private AlbumRepository albumRepository;
+
     /**
      * POST  /reviews -> Create a new review.
      */
-    @RequestMapping(value = "/reviews",
+    @RequestMapping(value = "/album/{id}/reviews",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Review> createReview(@Valid @RequestBody Review review) throws URISyntaxException {
+    public ResponseEntity<Review> createReview(@Valid @RequestBody Review review, @PathVariable Long id) throws URISyntaxException {
         log.debug("REST request to save Review : {}", review);
         if (review.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("review", "idexists", "A new review cannot already have an ID")).body(null);
         }
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Album album = albumRepository.findOne(id);
+
+        review.setUser(user);
+        review.setAlbum(album);
+        ZonedDateTime today = ZonedDateTime.now();
+        review.setReviewDate(today);
+
         Review result = reviewRepository.save(review);
         reviewSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/reviews/" + result.getId()))
@@ -68,10 +88,10 @@ public class ReviewResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Review> updateReview(@Valid @RequestBody Review review) throws URISyntaxException {
+    public ResponseEntity<Review> updateReview(@Valid @RequestBody Review review, @PathVariable Long id) throws URISyntaxException {
         log.debug("REST request to update Review : {}", review);
         if (review.getId() == null) {
-            return createReview(review);
+            return createReview(review, id);
         }
         Review result = reviewRepository.save(review);
         reviewSearchRepository.save(result);
@@ -90,7 +110,7 @@ public class ReviewResource {
     public ResponseEntity<List<Review>> getAllReviews(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Reviews");
-        Page<Review> page = reviewRepository.findAll(pageable); 
+        Page<Review> page = reviewRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reviews");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

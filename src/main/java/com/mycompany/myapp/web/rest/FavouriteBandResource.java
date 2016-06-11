@@ -1,9 +1,14 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Band;
 import com.mycompany.myapp.domain.FavouriteBand;
+import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.repository.BandRepository;
 import com.mycompany.myapp.repository.FavouriteBandRepository;
+import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.FavouriteBandSearchRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,13 +36,19 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class FavouriteBandResource {
 
     private final Logger log = LoggerFactory.getLogger(FavouriteBandResource.class);
-        
+
     @Inject
     private FavouriteBandRepository favouriteBandRepository;
-    
+
     @Inject
     private FavouriteBandSearchRepository favouriteBandSearchRepository;
-    
+
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private BandRepository bandRepository;
+
     /**
      * POST  /favouriteBands -> Create a new favouriteBand.
      */
@@ -132,5 +143,36 @@ public class FavouriteBandResource {
         return StreamSupport
             .stream(favouriteBandSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/favorites/{id}/like",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<FavouriteBand> likeSong(@PathVariable Long id) throws URISyntaxException {
+
+        FavouriteBand exist = favouriteBandRepository.findExistUserLiked(id);
+
+        if(exist != null){
+            if(exist.getLiked() == null || exist.getLiked() == false){
+                exist.setLiked(true);
+            }else{
+                exist.setLiked(false);
+            }
+            return updateFavouriteBand(exist);
+        }
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Band band = bandRepository.findOne(id);
+
+        FavouriteBand favorite = new FavouriteBand();
+        favorite.setUser(user);
+        favorite.setBand(band);
+        favorite.setLiked(true);
+
+        FavouriteBand result = favouriteBandRepository.save(favorite);
+        return ResponseEntity.created(new URI("/api/favouriteBands/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert("favouriteBands", result.getId().toString()))
+            .body(result);
     }
 }

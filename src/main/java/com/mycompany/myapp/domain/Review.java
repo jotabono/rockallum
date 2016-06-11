@@ -33,8 +33,7 @@ public class Review implements Serializable {
     @Column(name = "mark", nullable = false)
     private Integer mark;
     
-    @NotNull
-    @Column(name = "review_date", nullable = false)
+    @Column(name = "review_date")
     private ZonedDateTime reviewDate;
     
     @NotNull

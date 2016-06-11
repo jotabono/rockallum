@@ -11,6 +11,11 @@ angular.module('therockbibleApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'getBandsLiked': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/bands/userliked'
+            }
         });
     });

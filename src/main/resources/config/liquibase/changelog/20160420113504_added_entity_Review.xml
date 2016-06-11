@@ -29,9 +29,7 @@
                 <constraints nullable="false" />
             </column>
             
-            <column name="review_date" type="timestamp">
-                <constraints nullable="false" />
-            </column>
+            <column name="review_date" type="timestamp"/>
             
             <column name="review_text" type="varchar(255)">
                 <constraints nullable="false" />

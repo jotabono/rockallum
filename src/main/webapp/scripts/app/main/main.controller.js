@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('MainController', function ($scope, $state, $sce, Principal, Band, BandSearch, ParseLinks) {
+    .controller('MainController', function ($scope, $state, $sce, Principal, Band, BandSearch, ParseLinks, FavouriteBand) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
@@ -13,7 +13,7 @@ angular.module('therockbibleApp')
         $scope.reverse = false;
         $scope.page = 1;
         $scope.loadAll = function() {
-            Band.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
+            Band.getBandsLiked({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 $scope.totalItems = headers('X-Total-Count');
                 $scope.bands = result;
@@ -70,5 +70,17 @@ angular.module('therockbibleApp')
             }
 
             return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
+        }
+
+        $scope.like = function(id){
+            FavouriteBand.addLike({id: id},{}, successLike);
+        }
+
+        var successLike = function(result) {
+            for (var k = 0; k < $scope.bands.length; k++) {
+                if ($scope.bands[k].band.id == result.band.id) {
+                    $scope.bands[k].liked = result.liked;
+                }
+            }
         }
     });

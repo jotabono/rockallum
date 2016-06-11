@@ -35,10 +35,7 @@
     {
       "fieldId": 3,
       "fieldName": "reviewDate",
-      "fieldType": "ZonedDateTime",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldType": "ZonedDateTime"
     },
     {
       "fieldId": 4,

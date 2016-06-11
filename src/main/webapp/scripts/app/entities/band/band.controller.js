@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('BandController', function ($scope, $state, $sce, Band, BandSearch, ParseLinks) {
+    .controller('BandController', function ($scope, $state, $sce, Band, BandSearch, ParseLinks, FavouriteBand) {
 
         $scope.bands = [];
         $scope.predicate = 'id';
         $scope.reverse = false;
         $scope.page = 1;
         $scope.loadAll = function() {
-            Band.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
+            Band.getBandsLiked({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 $scope.totalItems = headers('X-Total-Count');
                 $scope.bands = result;
@@ -65,4 +65,17 @@ angular.module('therockbibleApp')
 
             return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
         }
+
+        $scope.like = function(id){
+            FavouriteBand.addLike({id: id},{}, successLike);
+        }
+
+        var successLike = function(result) {
+            for (var k = 0; k < $scope.bands.length; k++) {
+                if ($scope.bands[k].band.id == result.band.id) {
+                    $scope.bands[k].liked = result.liked;
+                }
+            }
+        }
     });
+

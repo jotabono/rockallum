@@ -910,3 +910,29 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
 .formindetail{
     color:white;
 }
+
+.fav{
+    color: white;
+}
+
+
+.fav2 > i{
+    color: #FF4081;
+}
+
+
+.seemore {
+    background-color: rgba(255,64,129,0.8);
+    color:white;
+    font-size:20px;
+    font-family:Roboto;
+    font-weight: 400;
+    padding:10px;
+    border:none;
+}
+
+.seemore:hover{
+    background-color: rgba(255,64,129,1);
+    color:white;
+    transition:0.2s;
+}
