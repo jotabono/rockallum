@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('BandDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'ravouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'Album', 'NgMap',
+    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'Album', 'NgMap',
         function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album, NgMap) {
 
         $scope.band = entity;

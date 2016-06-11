@@ -915,8 +915,16 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
     color: white;
 }
 
+.fav:hover{
+    box-shadow: 0 0 1em #FF4081;
+}
+
 .fav2 > i{
     color: #FF4081;
+}
+
+.fav2:hover{
+    box-shadow: 0 0 1em #CCCCCC;
 }
 
 .seemore {

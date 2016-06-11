@@ -1,16 +1,20 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('FavouriteBandController', function ($scope, $state, FavouriteBand, FavouriteBandSearch) {
-
+    .controller('FavouriteBandController', function ($scope, $state, ParseLinks, Band, FavouriteBand, FavouriteBandSearch) {
+        
         $scope.favouriteBands = [];
         $scope.loadAll = function() {
-            FavouriteBand.query(function(result) {
-               $scope.favouriteBands = result;
+            FavouriteBand.getBandsLikedbyUser(function(result) {
+                $scope.favouriteBands = result;
             });
         };
-        $scope.loadAll();
 
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
+        };
+        $scope.loadAll();
 
         $scope.search = function () {
             FavouriteBandSearch.query({query: $scope.searchQuery}, function(result) {

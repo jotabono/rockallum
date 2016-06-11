@@ -41,4 +41,23 @@ angular.module('therockbibleApp')
                     }]
                 }
             })
+        .state('favouriteBands', {
+            parent: 'site',
+            url: '/favouriteBands',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'scripts/app/entities/favouriteBand/favouriteBands.html',
+                    controller: 'FavouriteBandController'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('band');
+                    return $translate.refresh();
+                }]
+            }
+        })
     });

@@ -162,7 +162,7 @@ public class BandResource {
             .collect(Collectors.toList());
     }
 
-    /* GET SPACE WITH DTO */
+    /* GET BAND WITH DTO */
 
     @RequestMapping(value = "/bands/userliked",
         method = RequestMethod.GET,

@@ -10,8 +10,11 @@ import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.FavouriteBandSearchRepository;
 import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
+import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -145,11 +148,13 @@ public class FavouriteBandResource {
             .collect(Collectors.toList());
     }
 
+    /* LIKE */
+
     @RequestMapping(value = "/favorites/{id}/like",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<FavouriteBand> likeSong(@PathVariable Long id) throws URISyntaxException {
+    public ResponseEntity<FavouriteBand> likeBand(@PathVariable Long id) throws URISyntaxException {
 
         FavouriteBand exist = favouriteBandRepository.findExistUserLiked(id);
 
@@ -165,14 +170,27 @@ public class FavouriteBandResource {
         User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         Band band = bandRepository.findOne(id);
 
-        FavouriteBand favorite = new FavouriteBand();
-        favorite.setUser(user);
-        favorite.setBand(band);
-        favorite.setLiked(true);
+        FavouriteBand favourite = new FavouriteBand();
+        favourite.setUser(user);
+        favourite.setBand(band);
+        favourite.setLiked(true);
 
-        FavouriteBand result = favouriteBandRepository.save(favorite);
+        FavouriteBand result = favouriteBandRepository.save(favourite);
         return ResponseEntity.created(new URI("/api/favouriteBands/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("favouriteBands", result.getId().toString()))
             .body(result);
+    }
+
+    /* GET LIKED BANDS BY USER LOGGED */
+
+    @RequestMapping(value = "/favouriteBandss",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<FavouriteBand>> getAllFaBandsUser(Pageable pageable)
+        throws URISyntaxException {
+        Page<FavouriteBand> page = favouriteBandRepository.findLikesUserLogged(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/favouriteBandss");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

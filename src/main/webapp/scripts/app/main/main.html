@@ -5,67 +5,67 @@
         }
     </style>
     <div class="row" style="text-align:center">
-            <img style="margin:auto; display:block;" class="img-responsive" src="/media/logoindex.png"/>
+        <img style="margin:auto; display:block;" class="img-responsive" src="/media/logoindex.png"/>
 
-            <div class="containerindex" ng-switch="isAuthenticated()">
+        <div class="containerindex" ng-switch="isAuthenticated()">
 
-                <h3 style="color: pink" ng-switch-when="true">Welcome, <a style="color:#b3d2f2" href="/#/settings">{{account.login}}!</a></h3><br/>
+            <h3 style="color: pink" ng-switch-when="true">Welcome, <a style="color:#b3d2f2" href="/#/settings">{{account.login}}!</a></h3><br/>
 
-                <div ng-switch-when="true" class="container container-table">
-                    <div class="row vertical-center-row">
-                        <div class="text-center">
-                            <form name="searchForm" class="form-inline">
-                                <div class="input-group pull-right" >
-                                    <input type="text" class="form-control buscadorindex" ng-mel="searchQuery" id="searchQuery"
-                                           placeholder="Search a band by name" onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Search a band by name'">
+            <div ng-switch-when="true" class="container container-table">
+                <div class="row vertical-center-row">
+                    <div class="text-center">
+                        <form name="searchForm" class="form-inline">
+                            <div class="input-group pull-right" >
+                                <input type="text" class="form-control buscadorindex" ng-mel="searchQuery" id="searchQuery"
+                                       placeholder="Search a band by name" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Search a band by name'">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info buscadorindexbutton" ng-click="search()">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <a type="button" class="btn btn-default misbutons" style="margin-right:10px;" ng-switch-when="false"
-                   class="alert-link" href="#/login">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    ENTER
-                </a>
-                <a type="button" class="btn btn-default misbutons" ng-switch-when="false" class="alert-link" href="#/register">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    REGISTER
-                </a>
-                <div class="container-fluid divconwallpaper" style="margin-top:180px; margin-right:-19px;margin-left:-20px; padding-top:13.5%; padding-bottom:13.5%;">
-                    <div class="row-fluid">
-                        <div id="indexthumbs" class="span4 offset2">
-                            <div class="col-md-4">
-                                <div href="band" class="thumbnail mainthumbs">
-                                    <i class="material-icons iconthumbs" style="font-size:100px;">sort_by_alpha</i><br/>
-                                    <span>alphabet</span>
-                                </div>
+            </div>
+            <a type="button" class="btn btn-default misbutons" style="margin-right:10px;" ng-switch-when="false"
+               class="alert-link" href="#/login">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                ENTER
+            </a>
+            <a type="button" class="btn btn-default misbutons" ng-switch-when="false" class="alert-link" href="#/register">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                REGISTER
+            </a>
+            <div class="container-fluid divconwallpaper" style="margin-top:180px; margin-right:-19px;margin-left:-20px; padding-top:13.5%; padding-bottom:13.5%;">
+                <div class="row-fluid">
+                    <div id="indexthumbs" class="span4 offset2">
+                        <div class="col-md-4">
+                            <div href="band" class="thumbnail mainthumbs">
+                                <i class="material-icons iconthumbs" style="font-size:100px;">sort_by_alpha</i><br/>
+                                <span>alphabet</span>
                             </div>
-                            <div class="col-md-4">
-                                <div href="band" class="thumbnail mainthumbs">
-                                    <i class="material-icons iconthumbs" style="font-size:100px;">location_on</i><br/>
-                                    <span>country</span>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div href="band" class="thumbnail mainthumbs">
+                                <i class="material-icons iconthumbs" style="font-size:100px;">location_on</i><br/>
+                                <span>country</span>
                             </div>
-                            <div class="col-md-4">
-                                <div href="band" class="thumbnail mainthumbs">
-                                    <i class="material-icons iconthumbs" style="font-size:100px;">music_note</i><br/>
-                                    <span>genre</span>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div href="band" class="thumbnail mainthumbs">
+                                <i class="material-icons iconthumbs" style="font-size:100px;">music_note</i><br/>
+                                <span>genre</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <div class="lastestbandsindex">
-    <h1 unselectable="on" class="titleindex">Lastest bands added</h1>
+        <h1 unselectable="on" class="titleindex">Lastest bands added</h1>
         <div class="row">
             <div class="col-sm-6 col-md-4 bands" ng-repeat="bandDTO in bands | limitTo:6">
                 <div class="thumbnail bandthumbs">
