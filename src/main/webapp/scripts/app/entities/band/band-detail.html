@@ -65,6 +65,7 @@
                         </div>
                         <hr class="infowrapper">
                         <p style="margin-bottom:20px;"></p>
+
                         <div ng-cloak class="tabmenu">
                             <md-content>
                                 <md-tabs md-dynamic-height md-border-bottom>
@@ -76,16 +77,27 @@
                                                         <md-content class="md-padding">
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-md-3 albumsdiv"
-                                                                     ng-repeat="y in band.albums | orderBy:'releaseDate'">
-                                                                    <div ui-sref="album.detail({id:y.id})"
-                                                                         style="display:inline-block; margin:5px; font-size:14px;"
-                                                                         class="thumbnail bandthumbs albumthumbs">
-                                                                        <img
-                                                                            style="height: 200px; width: 100%; object-fit: cover;"
-                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
-                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
-                                                                        <h4> {{y.releaseDate | date:"yyyy" }}</h4>
-                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                     ng-repeat="albumDTO in band.albums">
+                                                                     <div
+                                                                            style="display:inline-block; margin:5px; font-size:14px;"
+                                                                            class="thumbnail bandthumbs albumthumbs">
+                                                                            <img ui-sref="album.detail({id:albumDTO.id})"
+                                                                                 style="height: 200px; width: 100%; object-fit: cover;"
+                                                                                 ng-src="/uploads/albums/{{albumDTO.picture}}.jpg"/>
+
+                                                                            <a ng-click="like(albumDTO.id)" aria-label="More">
+                                                                                <md-button ng-class="{true: 'fav2disc', false: 'favdisc'}[albumDTO.liked == true]"
+                                                                                           icon="favorite-border"
+                                                                                           style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;" class="md-fab">
+                                                                                    <i class="material-icons">bookmark</i>
+                                                                                </md-button>
+                                                                            </a>
+
+                                                                            <div ui-sref="album.detail({id:albumDTO.id})" class="caption">
+                                                                                <h3 class="responsivetitle"> {{albumDTO.title}}</h3>
+                                                                                <h4> {{albumDTO.releaseDate | date:"yyyy" }}</h4>
+                                                                                <h5> {{albumDTO.albumTypes.name}}</h5></div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </md-content>

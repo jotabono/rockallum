@@ -912,7 +912,8 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
 }
 
 .fav{
-    color: white;
+    color:rgba(255,255,255,0.5) !important;
+    border: 1px solid pink;
 }
 
 .fav:hover{
@@ -921,6 +922,10 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
 
 .fav2 > i{
     color: #FF4081;
+}
+
+.fav2{
+    border: 1px solid pink;
 }
 
 .fav2:hover{
@@ -941,4 +946,20 @@ md-tabs[md-border-bottom] md-tabs-wrapper{
     background-color: rgba(255,64,129,1);
     color:white;
     transition:0.2s;
+}
+
+.favdisc{
+    color:rgba(255,255,255,0.5) !important;
+    border: 1px solid pink;
+}
+
+.favdisc:hover{
+    background: white !important;
+    color: #FF4081 !important;
+    transition:0s;
+}
+
+.fav2disc{
+    color: #FF4081 !important;
+    background: rgba(255,255,255,0.8) !important;
 }

@@ -25,6 +25,11 @@ angular.module('therockbibleApp')
                     data.releaseDate = DateUtils.convertLocaleDateToServer(data.releaseDate);
                     return angular.toJson(data);
                 }
+            },
+            'getAlbumsLiked': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/albums/userlikedalbums',
             }
         });
     });

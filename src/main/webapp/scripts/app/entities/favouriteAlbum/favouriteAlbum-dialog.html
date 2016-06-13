@@ -22,7 +22,7 @@
 
         <div class="form-group">
             <label translate="therockbibleApp.favouriteAlbum.album" for="field_album">album</label>
-            <select class="form-control" id="field_album" name="album" ng-model="favouriteAlbum.album" ng-options="band as band.title for band in bands track by band.id">
+            <select class="form-control" id="field_album" name="album" ng-model="favouriteAlbum.album" ng-options="album as album.title for album in albums track by album.id">
                 <option value=""></option>
             </select>
         </div>

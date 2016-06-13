@@ -1,7 +1,41 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('BandDetailController', function ($scope, $rootScope, $stateParams, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album) {
+    .controller('BandDetailController', function ($scope, $rootScope, $stateParams, ParseLinks, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album) {
+        $scope.bands = [];
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
+        $scope.loadAll = function() {
+            Band.getBandsLiked({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
+                $scope.bands = result;
+            });
+        };
+
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
+        };
+        $scope.loadAll();
+
+        $scope.albums = [];
+        $scope.loadAll2 = function() {
+            Band.getAlbumsLiked({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
+                $scope.albums = result;
+            });
+        };
+
+        $scope.loadPage2 = function(page) {
+            $scope.page = page;
+            $scope.loadAll2();
+        };
+        $scope.loadAll2();
+
+
         $scope.band = entity;
         $scope.load = function (id) {
             Band.get({id: id}, function (result) {
@@ -12,7 +46,18 @@ angular.module('therockbibleApp')
             $scope.band = result;
         });
         $scope.$on('$destroy', unsubscribe);
-    })
+        $scope.like = function(id){
+            FavouriteAlbum.addLikeAlbum({id: id},{}, successLike);
+        }
+
+        var successLike = function(result) {
+            for (var k = 0; k < $scope.albums.length; k++) {
+                if ($scope.albums[k].album.id == result.album.id) {
+                    $scope.albums[k].liked = result.liked;
+                }
+            }
+        }
+})
     .filter('albumType', function () {
         return function (albums, tipo) {
             var albumType;
@@ -92,4 +137,5 @@ angular.module('therockbibleApp')
             return artistsArray;
         }
     });
+
 

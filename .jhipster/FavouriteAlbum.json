@@ -4,7 +4,7 @@
       "relationshipId": 1,
       "relationshipType": "many-to-one",
       "relationshipName": "album",
-      "otherEntityName": "band",
+      "otherEntityName": "album",
       "otherEntityField": "title"
     },
     {

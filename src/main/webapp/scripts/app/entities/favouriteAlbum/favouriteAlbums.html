@@ -1,76 +1,47 @@
 <div>
-    <h2 translate="therockbibleApp.favouriteAlbum.home.title">FavouriteAlbums</h2>
+    <h2 class="paginatitulo">My album collection</h2>
     <jh-alert></jh-alert>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="favouriteAlbum.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span 
-class="hidden-xs"                        translate="therockbibleApp.favouriteAlbum.home.createLabel">Create new FavouriteAlbum
-                    </span>
-                </button>
-            </div>
-            <div class="col-xs-8 no-padding-right">
+            <div class="col-lg-12 input-group">
                 <form name="searchForm" class="form-inline">
-                    <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.favouriteAlbum.home.search' | translate }}">
-                        <span  class="input-group-btn width-min" >
-                            <button class="btn btn-info" ng-click="search()">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
+                    <input type="text" class="form-control buscador" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'therockbibleApp.album.home.search' | translate }}">
                 </form>
             </div>
         </div>
     </div>
     <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-                <tr>
-                    <th><span translate="global.field.id">ID</span></th>
-                    <th><span translate="therockbibleApp.favouriteAlbum.liked">Liked</span></th>
-                    <th><span translate="therockbibleApp.favouriteAlbum.album">album</span></th>
-                    <th><span translate="therockbibleApp.favouriteAlbum.user">user</span></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="favouriteAlbum in favouriteAlbums track by favouriteAlbum.id">
-                    <td><a ui-sref="favouriteAlbum.detail({id:favouriteAlbum.id})">{{favouriteAlbum.id}}</a></td>
-                    <td>{{favouriteAlbum.liked}}</td>
-                    <td>
-                        <a ui-sref="band.detail({id:favouriteAlbum.album.id})">{{favouriteAlbum.album.title}}</a>
-                    </td>
-                    <td>
-                        {{favouriteAlbum.user.email}}
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
-                            <button type="submit"
-                                    ui-sref="favouriteAlbum.detail({id:favouriteAlbum.id})"
-                                    class="btn btn-info btn-sm"> 
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="favouriteAlbum.edit({id:favouriteAlbum.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="favouriteAlbum.delete({id:favouriteAlbum.id})"
-                                    class="btn btn-danger btn-sm">                                    
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <table class="table band" style="text-align: center;">
+        <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+            <th jh-sort-by="title"><span translate="therockbibleApp.album.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th jh-sort-by="releaseDate"><span translate="therockbibleApp.album.releaseDate">Release date</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th jh-sort-by="albumTypes.name"><span>Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+            <th></th>
+        </tr>
+    </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3 bands" ng-repeat="favouriteAlbum in favouriteAlbums | filter:searchQuery">
+            <div
+                style="display:inline-block; margin:5px; font-size:14px;"
+                class="thumbnail bandthumbs albumthumbs">
+                <img ui-sref="album.detail({id:favouriteAlbum.album.id})"
+                     style="height: 200px; width: 100%; object-fit: cover;"
+                     ng-src="/uploads/albums/{{favouriteAlbum.album.picture}}.jpg"/>
+
+                <a ng-click="like(favouriteAlbum.album.id)" aria-label="More">
+                    <md-button ng-class="{true: 'fav2disc', false: 'favdisc'}[favouriteAlbum.liked == true]"
+                               icon="favorite-border"
+                               style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;" class="md-fab">
+                        <i class="material-icons">bookmark</i>
+                    </md-button>
+                </a>
+
+                <div ui-sref="album.detail({id:favouriteAlbum.album.id})" class="caption">
+                    <h3 class="responsivetitle"> {{favouriteAlbum.album.title}}</h3>
+                    <h4> {{favouriteAlbum.album.releaseDate | date:"yyyy" }}</h4>
+                    <h5> {{favouriteAlbum.album.albumTypes.name}}</h5></div>
+            </div>
+        </div>
     </div>
 </div>

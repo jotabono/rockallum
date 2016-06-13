@@ -32,7 +32,7 @@
                                  baseTableName="favourite_album"
                                  constraintName="fk_favouritealbum_album_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="band"/>
+                                 referencedTableName="album"/>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="favourite_album"

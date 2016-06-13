@@ -5,7 +5,7 @@ angular.module('therockbibleApp')
 
         $scope.favouriteAlbums = [];
         $scope.loadAll = function() {
-            FavouriteAlbum.query(function(result) {
+            FavouriteAlbum.getAlbumsLikedbyUser(function(result) {
                $scope.favouriteAlbums = result;
             });
         };

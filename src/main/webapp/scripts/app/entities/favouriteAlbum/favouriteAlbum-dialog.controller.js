@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('FavouriteAlbumDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'FavouriteAlbum', 'Band', 'User',
-        function($scope, $stateParams, $uibModalInstance, entity, FavouriteAlbum, Band, User) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'FavouriteAlbum', 'Album', 'User',
+        function($scope, $stateParams, $uibModalInstance, entity, FavouriteAlbum, Album, User) {
 
         $scope.favouriteAlbum = entity;
-        $scope.bands = Band.query();
+        $scope.albums = Album.query();
         $scope.users = User.query();
         $scope.load = function(id) {
             FavouriteAlbum.get({id : id}, function(result) {

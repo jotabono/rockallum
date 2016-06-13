@@ -28,7 +28,7 @@ public class FavouriteAlbum implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "album_id")
-    private Band album;
+    private Album album;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -50,12 +50,12 @@ public class FavouriteAlbum implements Serializable {
         this.liked = liked;
     }
 
-    public Band getAlbum() {
+    public Album getAlbum() {
         return album;
     }
 
-    public void setAlbum(Band band) {
-        this.album = band;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public User getUser() {

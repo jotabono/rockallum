@@ -1,12 +1,20 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Album;
 import com.mycompany.myapp.domain.FavouriteAlbum;
+import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.repository.AlbumRepository;
 import com.mycompany.myapp.repository.FavouriteAlbumRepository;
+import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.FavouriteAlbumSearchRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
+import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,13 +39,19 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class FavouriteAlbumResource {
 
     private final Logger log = LoggerFactory.getLogger(FavouriteAlbumResource.class);
-        
+
     @Inject
     private FavouriteAlbumRepository favouriteAlbumRepository;
-    
+
     @Inject
     private FavouriteAlbumSearchRepository favouriteAlbumSearchRepository;
-    
+
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private AlbumRepository albumRepository;
+
     /**
      * POST  /favouriteAlbums -> Create a new favouriteAlbum.
      */
@@ -132,5 +146,52 @@ public class FavouriteAlbumResource {
         return StreamSupport
             .stream(favouriteAlbumSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+
+    /* LIKE */
+
+    @RequestMapping(value = "/favouritealbums/{id}/like",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<FavouriteAlbum> likeAlbum(@PathVariable Long id) throws URISyntaxException {
+
+        FavouriteAlbum exist = favouriteAlbumRepository.findExistUserLiked(id);
+
+        if(exist != null){
+            if(exist.getLiked() == null || exist.getLiked() == false){
+                exist.setLiked(true);
+            }else{
+                exist.setLiked(false);
+            }
+            return updateFavouriteAlbum(exist);
+        }
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Album album = albumRepository.findOne(id);
+
+        FavouriteAlbum favourite = new FavouriteAlbum();
+        favourite.setUser(user);
+        favourite.setAlbum(album);
+        favourite.setLiked(true);
+
+        FavouriteAlbum result = favouriteAlbumRepository.save(favourite);
+        return ResponseEntity.created(new URI("/api/favouriteAlbums/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert("favouriteAlbums", result.getId().toString()))
+            .body(result);
+    }
+
+    /* GET LIKED ALBUMS BY USER LOGGED */
+
+    @RequestMapping(value = "/favouriteAlbumss",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<FavouriteAlbum>> getAllFaAlbumsUser(Pageable pageable)
+        throws URISyntaxException {
+        Page<FavouriteAlbum> page = favouriteAlbumRepository.findLikesUserLogged(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/favouriteAlbumss");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

@@ -16,6 +16,11 @@ angular.module('therockbibleApp')
                 method: 'GET',
                 isArray: true,
                 url: 'api/bands/userliked'
+            },
+            'getAlbumsLiked': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/albums/userlikedalbums',
             }
         });
     });

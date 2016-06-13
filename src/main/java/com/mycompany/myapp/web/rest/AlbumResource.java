@@ -2,8 +2,12 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Album;
+import com.mycompany.myapp.domain.FavouriteAlbum;
 import com.mycompany.myapp.repository.AlbumRepository;
+import com.mycompany.myapp.repository.FavouriteAlbumRepository;
 import com.mycompany.myapp.repository.search.AlbumSearchRepository;
+import com.mycompany.myapp.web.rest.dto.AlbumDTO;
+import com.mycompany.myapp.web.rest.dto.BandDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -25,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,6 +51,9 @@ public class AlbumResource {
 
     @Inject
     private AlbumSearchRepository albumSearchRepository;
+
+    @Inject
+    private FavouriteAlbumRepository favouriteAlbumRepository;
 
     /**
      * POST  /albums -> Create a new album.
@@ -144,6 +152,44 @@ public class AlbumResource {
         return StreamSupport
             .stream(albumSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+        /* GET ALBUM WITH DTO */
+
+    @RequestMapping(value = "/albums/userlikedalbums",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<AlbumDTO>> getAlbums(Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a list of Albums");
+        Page<Album> page = albumRepository.findAll(pageable);
+
+        List<AlbumDTO> listAlbumDTO = getAlbumDTOs(page.getContent());
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/albums");
+        return new ResponseEntity<>(listAlbumDTO, headers, HttpStatus.OK);
+
+    }
+
+    private List<AlbumDTO> getAlbumDTOs(List<Album> list) {
+        List<AlbumDTO> listAlbumDTO = new ArrayList<>();
+
+        for (Album album : list) {
+            FavouriteAlbum favorite = favouriteAlbumRepository.findExistUserLiked(album.getId());
+            AlbumDTO albumDTO = new AlbumDTO();
+            albumDTO.setAlbum(album);
+
+            if (favorite == null || favorite.getLiked() == null || !favorite.getLiked()) {
+                albumDTO.setLiked(false);
+            } else {
+                albumDTO.setLiked(true);
+            }
+            listAlbumDTO.add(albumDTO);
+
+        }
+
+        return listAlbumDTO;
     }
 
      /* Subir imagenes */

@@ -19,7 +19,7 @@
     <include file="classpath:config/liquibase/changelog/20160420113505_added_entity_Artist.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160420113506_added_entity_Band.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173956_added_entity_FavouriteBand.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160413173957_added_entity_FavouriteAlbum.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160420113554_added_entity_FavouriteAlbum.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173958_added_entity_FavouriteArtist.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173959_added_entity_FavouriteReview.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173900_added_entity_FavouriteLabel.xml" relativeToChangelogFile="false"/>
