@@ -37,6 +37,7 @@ class="hidden-xs"                        translate="therockbibleApp.review.home.
                     <th jh-sort-by="reviewText"><span translate="therockbibleApp.review.reviewText">ReviewText</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="album.title"><span translate="therockbibleApp.review.album">album</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="user.email"><span translate="therockbibleApp.review.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="band.name"><span translate="therockbibleApp.review.band">band</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -52,6 +53,9 @@ class="hidden-xs"                        translate="therockbibleApp.review.home.
                     </td>
                     <td>
                         {{review.user.email}}
+                    </td>
+                    <td>
+                        <a ui-sref="band.detail({id:review.band.id})">{{review.band.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

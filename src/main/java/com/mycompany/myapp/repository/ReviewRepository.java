@@ -3,6 +3,7 @@ package com.mycompany.myapp.repository;
 import com.mycompany.myapp.domain.Review;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,4 +15,9 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     @Query("select review from Review review where review.user.login = ?#{principal.username}")
     List<Review> findByUserIsCurrentUser();
 
+    @Query("select review from Review review where review.band.user.login = ?#{principal.username}")
+    List<Review> findByUserIsCurrentUserAndBand();
+
+    @Query("select review from Review review where review.band.id = :band_id")
+    List<Review> findReviewsByBand(@Param("band_id") Long id);
 }

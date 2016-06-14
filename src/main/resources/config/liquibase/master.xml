@@ -13,11 +13,11 @@
     <include file="classpath:config/liquibase/changelog/20160413173904_added_entity_Label.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173905_added_entity_Album.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173906_added_entity_Song.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160420113504_added_entity_Review.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160610164212_added_entity_Instrument.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160610164714_added_entity_Social.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160420113505_added_entity_Artist.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160420113506_added_entity_Band.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160420113504_added_entity_Review.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173956_added_entity_FavouriteBand.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160420113554_added_entity_FavouriteAlbum.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173958_added_entity_FavouriteArtist.xml" relativeToChangelogFile="false"/>

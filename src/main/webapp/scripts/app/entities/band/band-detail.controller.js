@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('BandDetailController', function ($scope, $rootScope, $stateParams, ParseLinks, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album) {
+    .controller('BandDetailController', function ($scope, $rootScope, $stateParams, ParseLinks, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album, Review) {
         $scope.bands = [];
         $scope.predicate = 'id';
         $scope.reverse = true;
@@ -57,7 +57,30 @@ angular.module('therockbibleApp')
                 }
             }
         }
-})
+
+        $scope.reviewsByCurrentBand = [];
+        $scope.loadAllByBand = function(id) {
+            Review.reviewsByCurrentBand({id: id}, function(result) {
+/*                for(var i=0; i<result.length;i++){
+                    if($scope.account.login == result[0].user.login){
+                        $scope.testReview = true;
+                    }
+                }*/
+                $scope.reviewsByCurrentBand = result;
+            });
+        };
+        $scope.loadAllByBand($stateParams.id);
+
+
+        $scope.addReview = function (){
+            Review.addReview({id:$stateParams.id}, {mark:$scope.text1, title:$scope.text2, reviewText:$scope.text3}, function(result){
+                $scope.reviewsByCurrentBand.push(result);
+                $scope.test = true;
+            });
+        }
+
+
+    })
     .filter('albumType', function () {
         return function (albums, tipo) {
             var albumType;

@@ -58,6 +58,14 @@
                     {{review.user.email}}
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="therockbibleApp.review.band">band</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="band.detail({id:review.band.id})">{{review.band.name}}</a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

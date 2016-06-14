@@ -78,25 +78,31 @@
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-md-3 albumsdiv"
                                                                      ng-repeat="albumDTO in band.albums">
-                                                                     <div
-                                                                            style="display:inline-block; margin:5px; font-size:14px;"
-                                                                            class="thumbnail bandthumbs albumthumbs">
-                                                                            <img ui-sref="album.detail({id:albumDTO.id})"
-                                                                                 style="height: 200px; width: 100%; object-fit: cover;"
-                                                                                 ng-src="/uploads/albums/{{albumDTO.picture}}.jpg"/>
+                                                                    <div
+                                                                        style="display:inline-block; margin:5px; font-size:14px;"
+                                                                        class="thumbnail bandthumbs albumthumbs">
+                                                                        <img ui-sref="album.detail({id:albumDTO.id})"
+                                                                             style="height: 200px; width: 100%; object-fit: cover;"
+                                                                             ng-src="/uploads/albums/{{albumDTO.picture}}.jpg"/>
 
-                                                                            <a ng-click="like(albumDTO.id)" aria-label="More">
-                                                                                <md-button ng-class="{true: 'fav2disc', false: 'favdisc'}[albumDTO.liked == true]"
-                                                                                           icon="favorite-border"
-                                                                                           style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;" class="md-fab">
-                                                                                    <i class="material-icons">bookmark</i>
-                                                                                </md-button>
-                                                                            </a>
+                                                                        <a ng-click="like(albumDTO.id)"
+                                                                           aria-label="More">
+                                                                            <md-button
+                                                                                ng-class="{true: 'fav2disc', false: 'favdisc'}[albumDTO.liked == true]"
+                                                                                icon="favorite-border"
+                                                                                style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;"
+                                                                                class="md-fab">
+                                                                                <i class="material-icons">bookmark</i>
+                                                                            </md-button>
+                                                                        </a>
 
-                                                                            <div ui-sref="album.detail({id:albumDTO.id})" class="caption">
-                                                                                <h3 class="responsivetitle"> {{albumDTO.title}}</h3>
-                                                                                <h4> {{albumDTO.releaseDate | date:"yyyy" }}</h4>
-                                                                                <h5> {{albumDTO.albumTypes.name}}</h5></div>
+                                                                        <div ui-sref="album.detail({id:albumDTO.id})"
+                                                                             class="caption">
+                                                                            <h3 class="responsivetitle">
+                                                                                {{albumDTO.title}}</h3>
+                                                                            <h4> {{albumDTO.releaseDate | date:"yyyy"
+                                                                                }}</h4>
+                                                                            <h5> {{albumDTO.albumTypes.name}}</h5></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -316,12 +322,75 @@
                                     </md-tab>
                                     <md-tab label="Reviews">
                                         <md-content class="md-padding">
-                                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum
-                                                tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis
-                                                rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu
-                                                fermentum nunc. Sed id ante eu orci commodo volutpat non ac est.
-                                                Praesent ligula diam, congue eu enim scelerisque, finibus commodo
-                                                lectus.</p>
+                                            <div class="col-lg-6"
+                                                 ng-repeat="reviewByCurrentBand in reviewsByCurrentBand">
+                                                <div class="thumbnail bandthumbs reviewthumbs">
+                                                    <span class="title">{{reviewByCurrentBand.title}}</span>
+                                                    <div class="markstyle"><span>{{reviewByCurrentBand.mark}}</span>
+                                                    </div>
+                                                    <hr class="review infowrapper">
+                                                    <div class="text-justify" style="padding:10px;">
+                                                    <span class="text">
+                                                    <hm-read-more
+                                                        hm-text="{{ reviewByCurrentBand.reviewText }}"
+                                                        hm-limit="35"
+                                                        hm-more-text="read more"
+                                                        hm-less-text="read less"
+                                                        hm-dots-class="dots"
+                                                        hm-link-class="buttonreadmore">
+                                                    </hm-read-more>
+                                                        </span>
+                                                    </div>
+                                                    <!-- <div class="infouserreview" style="padding:5px;">
+                                                     <div style="width:60px;height:60px;">
+                                                         <img  style="margin-left:5px; height:100%; width:100%; border-radius:50%;"
+                                                               ng-src="/uploads/{{reviewByCurrentBand.user.userPicture}}.jpg">
+                                                         <div class="useranddate">
+                                                             <h5>
+                                                                 <span class="name" ><b>{{reviewByCurrentBand.user.firstName}}</b></span>
+                                                                 <span style="float:right;padding-right:5px;" class="time">{{reviewByCurrentBand.reviewDate | date:"MM/dd/yy 'at' h:mma"}}</span><br/>
+                                                             </h5>
+                                                         </div>
+                                                     </div>
+                                                     </div>-->
+                                                    <div class="infouserreview">
+                                                        <img
+                                                            style="vertical-align:middle; height:40px;width:40px; border-radius:50%; margin:5px;"
+                                                            ng-src="/uploads/{{reviewByCurrentBand.user.userPicture}}.jpg">
+                                                        <span style="margin-left:5px;" class="name">{{reviewByCurrentBand.user.firstName}}</span>
+                                                        <span
+                                                            style="float:right; vertical-align:middle; line-height:50px; margin-right: 5px;"
+                                                            class="time">{{reviewByCurrentBand.reviewDate | date:"MM/dd/yy 'at' h:mma"}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <form ng-submit="addReview()">
+                                                    <div class="input-group" style="width:100%;">
+                                                        <md-input-container class="md-block" flex-gt-sm>
+                                                            <input ng-model="text1" type="number"
+                                                                   class="reviewstyle"
+                                                                   placeholder="Mark"/>
+                                                        </md-input-container>
+                                                        <md-input-container class="md-block" flex-gt-sm>
+                                                            <input ng-model="text2" md-maxlength="50" type="text"
+                                                                   class="reviewstyle"
+                                                                   placeholder="Title"/>
+                                                        </md-input-container>
+                                                        <md-input-container class="md-block" flex-gt-sm>
+                                                            <textarea ng-model="text3" md-maxlength="10000" rows="5"
+                                                                      class="reviewstyle"
+                                                                      placeholder="Write here your review"></textarea>
+                                                        </md-input-container>
+                                                        <p><span class="input-group-btn">
+                                    <md-button class="md-icon-button sendreview" type="submit">
+                <i class="sidebar-icon glyphicon glyphicon glyphicon-send"></i>
+                                      </md-button>
+
+                          </span></p>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </md-content>
                                     </md-tab>
                                 </md-tabs>

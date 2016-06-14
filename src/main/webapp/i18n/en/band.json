@@ -40,7 +40,8 @@
             "country": "Country",
             "label": "Label",
             "status": "Status",
-            "album": "Album"
+            "album": "Album",
+            "review": "Review"
         }
     }
 }

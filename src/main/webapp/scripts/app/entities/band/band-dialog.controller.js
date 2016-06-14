@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('BandDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'Album', 'NgMap',
-        function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album, NgMap) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$rootScope', '$timeout', 'Upload', 'entity', 'Band', 'Genre', 'Artist', 'FavouriteBand', 'FavouriteAlbum', 'FavouriteSong', 'FavouriteLabel', 'FavouriteArtist', 'FavouriteReview', 'Collection', 'User', 'Country', 'Label', 'Status', 'Album', 'Review', 'NgMap',
+        function($scope, $stateParams, $uibModalInstance, $rootScope, $timeout, Upload, entity, Band, Genre, Artist, FavouriteBand, FavouriteAlbum, FavouriteSong, FavouriteLabel, FavouriteArtist, FavouriteReview, Collection, User, Country, Label, Status, Album, Review, NgMap) {
 
         $scope.band = entity;
         $scope.genres = Genre.query();
@@ -19,7 +19,9 @@ angular.module('therockbibleApp').controller('BandDialogController',
         $scope.countrys = Country.query();
         $scope.labels = Label.query();
         $scope.statuss = Status.query();
-        $scope.load = function(id) {
+            $scope.reviews = Review.query();
+
+            $scope.load = function(id) {
             Band.get({id : id}, function(result) {
                 $scope.band = result;
             });

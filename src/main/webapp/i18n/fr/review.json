@@ -21,7 +21,8 @@
             "reviewDate": "ReviewDate",
             "reviewText": "ReviewText",
             "album": "Album",
-            "user": "User"
+            "user": "User",
+            "band": "Band"
         }
     }
 }

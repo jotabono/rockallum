@@ -12,6 +12,15 @@ angular.module('therockbibleApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'reviewsByCurrentBand': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/band/:id/reviews'
+            },
+            'addReview': {
+                method: 'POST', isArray: false, url: 'api/band/:id/reviews'
+            }
+
         });
     });

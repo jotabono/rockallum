@@ -37,6 +37,7 @@
             
             <column name="album_id" type="bigint"/>
             <column name="user_id" type="bigint"/>
+            <column name="band_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="review" columnName="review_date" columnDataType="datetime"/>
@@ -53,6 +54,12 @@
                                  constraintName="fk_review_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="band_id"
+                                 baseTableName="review"
+                                 constraintName="fk_review_band_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="band"/>
 
     </changeSet>
 </databaseChangeLog>

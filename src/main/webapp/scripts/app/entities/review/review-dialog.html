@@ -72,6 +72,12 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label translate="therockbibleApp.review.band" for="field_band">band</label>
+            <select class="form-control" id="field_band" name="band" ng-model="review.band" ng-options="band as band.name for band in bands track by band.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">

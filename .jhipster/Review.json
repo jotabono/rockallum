@@ -13,7 +13,14 @@
       "relationshipName": "user",
       "otherEntityName": "user",
       "otherEntityField": "email"
-    }
+    },
+      {
+          "relationshipId": 3,
+          "relationshipType": "many-to-one",
+          "relationshipName": "band",
+          "otherEntityName": "band",
+          "otherEntityField": "name"
+      }
   ],
   "fields": [
     {

@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('therockbibleApp').controller('ReviewDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Review', 'Album', 'User',
-        function($scope, $stateParams, $uibModalInstance, entity, Review, Album, User) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Review', 'Album', 'User', 'Band',
+        function($scope, $stateParams, $uibModalInstance, entity, Review, Album, User, Band) {
 
         $scope.review = entity;
         $scope.albums = Album.query();
         $scope.users = User.query();
+        $scope.bands = Band.query();
         $scope.load = function(id) {
             Review.get({id : id}, function(result) {
                 $scope.review = result;

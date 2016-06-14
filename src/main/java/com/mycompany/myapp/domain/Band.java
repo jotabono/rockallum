@@ -117,6 +117,11 @@ public class Band implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Collection> collections = new HashSet<>();
 
+    @OneToMany(mappedBy = "band")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Review> reviews = new HashSet<>();
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -339,6 +344,14 @@ public class Band implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Override

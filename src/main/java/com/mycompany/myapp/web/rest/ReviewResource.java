@@ -2,9 +2,11 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Album;
+import com.mycompany.myapp.domain.Band;
 import com.mycompany.myapp.domain.Review;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.AlbumRepository;
+import com.mycompany.myapp.repository.BandRepository;
 import com.mycompany.myapp.repository.ReviewRepository;
 import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.ReviewSearchRepository;
@@ -19,6 +21,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -54,8 +57,11 @@ public class ReviewResource {
     @Inject
     private AlbumRepository albumRepository;
 
+    @Inject
+    private BandRepository bandRepository;
+
     /**
-     * POST  /reviews -> Create a new review.
+     * POST  ALBUM REVIEW /reviews -> Create a new review.
      */
     @RequestMapping(value = "/album/{id}/reviews",
         method = RequestMethod.POST,
@@ -71,6 +77,34 @@ public class ReviewResource {
 
         review.setUser(user);
         review.setAlbum(album);
+        ZonedDateTime today = ZonedDateTime.now();
+        review.setReviewDate(today);
+
+        Review result = reviewRepository.save(review);
+        reviewSearchRepository.save(result);
+        return ResponseEntity.created(new URI("/api/reviews/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert("review", result.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * POST  BAND REVIEW /reviews -> Create a new review.
+     */
+
+    @RequestMapping(value = "/band/{id}/reviews",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Review> createBandReview(@Valid @RequestBody Review review, @PathVariable Long id) throws URISyntaxException {
+        log.debug("REST request to save Review : {}", review);
+        if (review.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("review", "idexists", "A new review cannot already have an ID")).body(null);
+        }
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Band band = bandRepository.findOne(id);
+
+        review.setUser(user);
+        review.setBand(band);
         ZonedDateTime today = ZonedDateTime.now();
         review.setReviewDate(today);
 
@@ -116,6 +150,19 @@ public class ReviewResource {
     }
 
     /**
+     * GET  /reviews -> get all the reviews.
+     */
+    @RequestMapping(value = "/reviewsbyband",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Review> getAllReviewsByBand() {
+        log.debug("REST request to get all Reviews");
+        return reviewRepository.findByUserIsCurrentUserAndBand();
+    }
+
+
+    /**
      * GET  /reviews/:id -> get the "id" review.
      */
     @RequestMapping(value = "/reviews/{id}",
@@ -159,5 +206,19 @@ public class ReviewResource {
         return StreamSupport
             .stream(reviewSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+    /**
+     * GET  /reviews/:id -> get the "id" review.
+     */
+    @Transactional
+    @RequestMapping(value = "/band/{id}/reviews",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Review>> getReviewByBand(@PathVariable Long id) {
+        log.debug("REST request to get Review : {}", id);
+        List<Review> review = reviewRepository.findReviewsByBand(id);
+        return new ResponseEntity<>(review, HttpStatus.OK);
     }
 }

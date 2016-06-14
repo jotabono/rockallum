@@ -6,6 +6,7 @@ import com.mycompany.myapp.domain.FavouriteBand;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.BandRepository;
 import com.mycompany.myapp.repository.FavouriteBandRepository;
+import com.mycompany.myapp.repository.ReviewRepository;
 import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.BandSearchRepository;
 import com.mycompany.myapp.security.SecurityUtils;
@@ -60,6 +61,9 @@ public class BandResource {
 
     @Inject
     private FavouriteBandRepository favouriteBandRepository;
+
+    @Inject
+    private ReviewRepository reviewRepository;
 
     /**
      * POST  /bands -> Create a new band.
@@ -199,6 +203,9 @@ public class BandResource {
 
         return listBandDTO;
     }
+
+
+    /**/
 
     /* Subir imagenes */
 

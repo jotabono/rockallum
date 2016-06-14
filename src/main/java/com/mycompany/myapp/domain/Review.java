@@ -48,6 +48,10 @@ public class Review implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "band_id")
+    private Band band;
+
     public Long getId() {
         return id;
     }
@@ -102,6 +106,14 @@ public class Review implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Band getBand() {
+        return band;
+    }
+
+    public void setBand(Band band) {
+        this.band = band;
     }
 
     @Override
