@@ -1,12 +1,18 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('SettingsController', function ($scope, Principal, Auth, Language, $translate) {
+    .controller('SettingsController', function ($scope, $rootScope, Principal, Auth, Language, $translate) {
         $scope.success = null;
         $scope.error = null;
         Principal.identity().then(function(account) {
             $scope.settingsAccount = copyAccount(account);
         });
+
+/*        $rootScope.$on("BackgroundSettings nuevo", function (e,res){
+            var timestamp = new Date().getTime();
+            $('.backgroundblurdiv').prop('src', '/uploads/' + res.userPicture + '.jpg?'+ Math.random());
+            console.log(res);
+        });*/
 
         $scope.save = function () {
             Auth.updateAccount($scope.settingsAccount).then(function() {

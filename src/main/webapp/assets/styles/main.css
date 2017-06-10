@@ -688,12 +688,42 @@ Social Buttons
     font-size: 20px;
     font-weight: bold;
     color: #ccc;
-    border: 1px solid #ccc;
+    position:relative;
+    overflow:hidden;
 }
 
+.backgroundblurdiv{
+    position:absolute !important;
+    top:-10px !important;
+    left: -10px !important;
+    bottom:-10px !important;
+    right:-10px !important;
+    height:auto !important;
+    filter:blur(10px) !important;
+    z-index:-10 !important;
+    background: no-repeat !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+
+.fotoprofile{
+    object-fit: cover;
+    display:block;
+    margin-top:30px;
+    border-radius:100%;
+    margin-left:auto;
+    margin-right:auto;
+    height:250px;
+    width:250px;
+    overflow: hidden;
+}
+
+
+
 .infodrag{
-    min-width:96.5%;
-    height:50px;
+    min-width:100%;
+    height:auto;
+    padding-bottom:10px;
     text-align: center;
     position:absolute;
     background-color: rgba(0,0,0,0.6);
@@ -1029,4 +1059,27 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input{
 .infouserreview{
     margin-top:10px;
     background: rgba(255,255,255,0.1);
+}
+
+.results{
+    margin-top:50px;
+    width:100%;
+    background-color:rgba(51,49,49,0.5);
+    color: white;
+}
+
+.resultdiv, .resultdiv2, .resultdiv3, .resultdiv4{
+    padding:15px;
+}
+.resultdiv:hover{
+    background-color:#161D23;
+    cursor:pointer;
+}
+
+.home-container{
+    margin-top:180px; margin-right:-19px;margin-left:-20px; padding-top:13.5%; padding-bottom:13.5%;
+
+    min-width:100%;
+    max-width:100%;
+    width:100%;
 }

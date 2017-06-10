@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="jotabono (generated)" id="1465577541449-1">
+      <createTable tableName="album">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="albumPK"/>
+         </column>
+         <column name="add_notes" type="VARCHAR(255)"/>
+         <column name="catalog_id" type="VARCHAR(255)"/>
+         <column name="format" type="VARCHAR(255)"/>
+         <column name="independent" type="BOOLEAN"/>
+         <column name="num_copies" type="VARCHAR(255)"/>
+         <column name="picture" type="VARCHAR(255)"/>
+         <column name="rec_info" type="VARCHAR(255)"/>
+         <column name="release_date" type="date">
+            <constraints nullable="false"/>
+         </column>
+         <column name="title" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="album_types_id" type="BIGINT"/>
+         <column name="label_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-2">
+      <createTable tableName="album_types">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="album_typesPK"/>
+         </column>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-3">
+      <createTable tableName="artist">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="artistPK"/>
+         </column>
+         <column name="age" type="INT"/>
+         <column name="bio" type="VARCHAR(255)"/>
+         <column name="born_in" type="date"/>
+         <column name="live_musician" type="BOOLEAN"/>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="picture" type="VARCHAR(255)"/>
+         <column name="real_name" type="VARCHAR(255)"/>
+         <column name="still_in_band" type="BOOLEAN"/>
+         <column name="years_active" type="VARCHAR(255)"/>
+         <column name="country_id" type="BIGINT"/>
+         <column name="sex_id" type="BIGINT"/>
+         <column name="status_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-4">
+      <createTable tableName="artist_instrument">
+         <column name="artists_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="instruments_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-5">
+      <createTable tableName="artist_social">
+         <column name="artists_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="socials_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-6">
+      <createTable tableName="band">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="bandPK"/>
+         </column>
+         <column name="bio" type="VARCHAR(255)"/>
+         <column name="founding_date" type="date"/>
+         <column name="independent" type="BOOLEAN"/>
+         <column name="latitude" type="DOUBLE precision"/>
+         <column name="links" type="VARCHAR(255)"/>
+         <column name="location" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="logo" type="VARCHAR(255)"/>
+         <column name="longitude" type="DOUBLE precision"/>
+         <column name="lyrical_themes" type="VARCHAR(255)"/>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="picture" type="VARCHAR(255)"/>
+         <column name="years_active" type="VARCHAR(255)"/>
+         <column name="country_id" type="BIGINT"/>
+         <column name="label_id" type="BIGINT"/>
+         <column name="status_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-7">
+      <createTable tableName="band_album">
+         <column name="bands_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="albums_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-8">
+      <createTable tableName="band_artist">
+         <column name="bands_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="artists_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-9">
+      <createTable tableName="band_genre">
+         <column name="bands_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="genres_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-10">
+      <createTable tableName="collection">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="collectionPK"/>
+         </column>
+         <column name="catched" type="BOOLEAN"/>
+         <column name="album_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-11">
+      <createTable tableName="country">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="countryPK"/>
+         </column>
+         <column name="name" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-12">
+      <createTable tableName="favourite_album">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="favourite_albumPK"/>
+         </column>
+         <column name="liked" type="BOOLEAN"/>
+         <column name="album_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-13">
+      <createTable tableName="favourite_artist">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="favourite_artistPK"/>
+         </column>
+         <column name="liked" type="BOOLEAN"/>
+         <column name="artist_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-14">
+      <createTable tableName="favourite_band">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="favourite_bandPK"/>
+         </column>
+         <column name="liked" type="BOOLEAN"/>
+         <column name="band_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-15">
+      <createTable tableName="favourite_label">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="favourite_labelPK"/>
+         </column>
+         <column name="liked" type="BOOLEAN"/>
+         <column name="label_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-16">
+      <createTable tableName="favourite_review">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="favourite_reviewPK"/>
+         </column>
+         <column name="liked" type="BOOLEAN"/>
+         <column name="review_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-17">
+      <createTable tableName="favourite_song">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="favourite_songPK"/>
+         </column>
+         <column name="liked" type="BOOLEAN"/>
+         <column name="song_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-18">
+      <createTable tableName="genre">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="genrePK"/>
+         </column>
+         <column name="name" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-19">
+      <createTable tableName="instrument">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="instrumentPK"/>
+         </column>
+         <column name="instrument" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-20">
+      <createTable tableName="jhi_authority">
+         <column name="name" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-21">
+      <createTable tableName="jhi_persistent_audit_event">
+         <column autoIncrement="true" name="event_id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+         </column>
+         <column name="event_date" type="datetime"/>
+         <column name="event_type" type="VARCHAR(255)"/>
+         <column name="principal" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-22">
+      <createTable tableName="jhi_persistent_audit_evt_data">
+         <column name="event_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="value" type="VARCHAR(255)"/>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-23">
+      <createTable tableName="jhi_persistent_token">
+         <column name="series" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="ip_address" type="VARCHAR(39)"/>
+         <column name="token_date" type="date"/>
+         <column name="token_value" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="user_agent" type="VARCHAR(255)"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-24">
+      <createTable tableName="jhi_social_user_connection">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jhi_social_user_connectionPK"/>
+         </column>
+         <column name="access_token" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="display_name" type="VARCHAR(255)"/>
+         <column name="expire_time" type="BIGINT"/>
+         <column name="image_url" type="VARCHAR(255)"/>
+         <column name="profile_url" type="VARCHAR(255)"/>
+         <column name="provider_id" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="provider_user_id" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="rank" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="refresh_token" type="VARCHAR(255)"/>
+         <column name="secret" type="VARCHAR(255)"/>
+         <column name="user_id" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-25">
+      <createTable tableName="jhi_user">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+         </column>
+         <column name="created_by" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="created_date" type="datetime">
+            <constraints nullable="false"/>
+         </column>
+         <column name="last_modified_by" type="VARCHAR(50)"/>
+         <column name="last_modified_date" type="datetime"/>
+         <column name="activated" type="BOOLEAN">
+            <constraints nullable="false"/>
+         </column>
+         <column name="activation_key" type="VARCHAR(20)"/>
+         <column name="email" type="VARCHAR(100)"/>
+         <column name="first_name" type="VARCHAR(50)"/>
+         <column name="lang_key" type="VARCHAR(5)"/>
+         <column name="last_name" type="VARCHAR(50)"/>
+         <column name="login" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="password_hash" type="VARCHAR(60)"/>
+         <column name="reset_date" type="datetime"/>
+         <column name="reset_key" type="VARCHAR(20)"/>
+         <column name="userPicture" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-26">
+      <createTable tableName="jhi_user_authority">
+         <column name="user_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="authority_name" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-27">
+      <createTable tableName="label">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="labelPK"/>
+         </column>
+         <column name="add_notes" type="VARCHAR(255)"/>
+         <column name="address" type="VARCHAR(255)"/>
+         <column name="description" type="VARCHAR(255)"/>
+         <column name="founding_date" type="VARCHAR(255)"/>
+         <column name="genres" type="VARCHAR(255)"/>
+         <column name="links" type="VARCHAR(255)"/>
+         <column name="location" type="VARCHAR(255)"/>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="onlineshop" type="VARCHAR(255)"/>
+         <column name="phone" type="VARCHAR(255)"/>
+         <column name="picture" type="VARCHAR(255)"/>
+         <column name="status" type="VARCHAR(255)"/>
+         <column name="country_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-28">
+      <createTable tableName="review">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="reviewPK"/>
+         </column>
+         <column name="mark" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="review_date" type="datetime">
+            <constraints nullable="false"/>
+         </column>
+         <column name="review_text" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="title" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="album_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-29">
+      <createTable tableName="sex">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="sexPK"/>
+         </column>
+         <column name="name" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-30">
+      <createTable tableName="social">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="socialPK"/>
+         </column>
+         <column name="merchandising" type="BOOLEAN"/>
+         <column name="official" type="BOOLEAN"/>
+         <column name="tabs" type="BOOLEAN"/>
+         <column name="url" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-31">
+      <createTable tableName="song">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="songPK"/>
+         </column>
+         <column name="duration" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lyrics" type="VARCHAR(255)"/>
+         <column name="title" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="album_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-32">
+      <createTable tableName="status">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="statusPK"/>
+         </column>
+         <column name="status" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-33">
+      <addPrimaryKey columnNames="artists_id, instruments_id" tableName="artist_instrument"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-34">
+      <addPrimaryKey columnNames="artists_id, socials_id" tableName="artist_social"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-35">
+      <addPrimaryKey columnNames="bands_id, albums_id" tableName="band_album"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-36">
+      <addPrimaryKey columnNames="bands_id, artists_id" tableName="band_artist"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-37">
+      <addPrimaryKey columnNames="bands_id, genres_id" tableName="band_genre"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-38">
+      <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-39">
+      <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-40">
+      <addPrimaryKey columnNames="name"
+                     constraintName="jhi_authorityPK"
+                     tableName="jhi_authority"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-41">
+      <addPrimaryKey columnNames="series"
+                     constraintName="jhi_persistent_tokenPK"
+                     tableName="jhi_persistent_token"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-42">
+      <addUniqueConstraint columnNames="email"
+                           constraintName="UC_JHI_USEREMAIL_COL"
+                           tableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-43">
+      <addUniqueConstraint columnNames="login"
+                           constraintName="UC_JHI_USERLOGIN_COL"
+                           tableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-44">
+      <addForeignKeyConstraint baseColumnNames="review_id"
+                               baseTableName="favourite_review"
+                               constraintName="FK_20gmq7i77b4wo231nw5p7c752"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-45">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="favourite_band"
+                               constraintName="FK_490n9y892uc2pkhpqmxax7xi5"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-46">
+      <addForeignKeyConstraint baseColumnNames="instruments_id"
+                               baseTableName="artist_instrument"
+                               constraintName="FK_4bf8sa4w85mb7xbnrroagyu38"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="instrument"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-47">
+      <addForeignKeyConstraint baseColumnNames="label_id"
+                               baseTableName="album"
+                               constraintName="FK_4p3osomyomesbtkip7g4pcm56"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="label"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-48">
+      <addForeignKeyConstraint baseColumnNames="country_id"
+                               baseTableName="band"
+                               constraintName="FK_4yvks57sg1h3ke57jgvrnyfrs"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="country"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-49">
+      <addForeignKeyConstraint baseColumnNames="band_id"
+                               baseTableName="favourite_band"
+                               constraintName="FK_6n794srt6cmyeweubma48w9u9"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-50">
+      <addForeignKeyConstraint baseColumnNames="albums_id"
+                               baseTableName="band_album"
+                               constraintName="FK_722jt2fq5tvxaqklqesho6wnf"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="album"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-51">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="artist"
+                               constraintName="FK_8ug4uikj7earl15plgqi9d4fg"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-52">
+      <addForeignKeyConstraint baseColumnNames="artists_id"
+                               baseTableName="band_artist"
+                               constraintName="FK_9brtr7om2n5fvfjoy8sy0tbr4"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="artist"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-53">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="collection"
+                               constraintName="FK_aanxkg6n45mck5fl454yd9aaa"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-54">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="favourite_artist"
+                               constraintName="FK_b16nr7btbq7rfgj29xamsg7kn"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-55">
+      <addForeignKeyConstraint baseColumnNames="status_id"
+                               baseTableName="artist"
+                               constraintName="FK_b3vbeog95xtu663ho4qn3xdg4"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="status"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-56">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="jhi_persistent_token"
+                               constraintName="FK_c2yetr6vr7nrqhjvi1rl24b3l"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-57">
+      <addForeignKeyConstraint baseColumnNames="artists_id"
+                               baseTableName="artist_social"
+                               constraintName="FK_cebvgnoicosx0i4bqqtvoni2y"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="artist"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-58">
+      <addForeignKeyConstraint baseColumnNames="bands_id"
+                               baseTableName="band_genre"
+                               constraintName="FK_d1py9n2ov9ddrk8rv3mlo4ive"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-59">
+      <addForeignKeyConstraint baseColumnNames="label_id"
+                               baseTableName="favourite_label"
+                               constraintName="FK_e5ij0b8nosox1dyd6vy91ult4"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-60">
+      <addForeignKeyConstraint baseColumnNames="bands_id"
+                               baseTableName="band_album"
+                               constraintName="FK_em7f7k80qfjs4ik563a0kvou6"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-61">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="label"
+                               constraintName="FK_eon1aa83p79c5smwubi0f6oqf"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-62">
+      <addForeignKeyConstraint baseColumnNames="event_id"
+                               baseTableName="jhi_persistent_audit_evt_data"
+                               constraintName="FK_evb970jo5bi8aon8s65c0lyyn"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="event_id"
+                               referencedTableName="jhi_persistent_audit_event"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-63">
+      <addForeignKeyConstraint baseColumnNames="artists_id"
+                               baseTableName="artist_instrument"
+                               constraintName="FK_ey0sl313dutqa0colwtla7mel"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="artist"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-64">
+      <addForeignKeyConstraint baseColumnNames="bands_id"
+                               baseTableName="band_artist"
+                               constraintName="FK_eycnfmlso8awhotlwqemu74jv"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-65">
+      <addForeignKeyConstraint baseColumnNames="label_id"
+                               baseTableName="band"
+                               constraintName="FK_fhm6oyirp00y0g44r1qw0mimn"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="label"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-66">
+      <addForeignKeyConstraint baseColumnNames="genres_id"
+                               baseTableName="band_genre"
+                               constraintName="FK_gb5ipkcyxlj1wcmeewgj7jyb8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="genre"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-67">
+      <addForeignKeyConstraint baseColumnNames="song_id"
+                               baseTableName="favourite_song"
+                               constraintName="FK_hco99g0ccwj91b3uk5utde0ql"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-68">
+      <addForeignKeyConstraint baseColumnNames="authority_name"
+                               baseTableName="jhi_user_authority"
+                               constraintName="FK_ik5r332jlvpolfr7e5n7oi42l"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="name"
+                               referencedTableName="jhi_authority"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-69">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="band"
+                               constraintName="FK_isjydckekmfocii84yhijw6g6"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-70">
+      <addForeignKeyConstraint baseColumnNames="socials_id"
+                               baseTableName="artist_social"
+                               constraintName="FK_iy84w6qh0lhvr3olxnc4e2var"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="social"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-71">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="review"
+                               constraintName="FK_jdnb3cnup5vq6opj19kbm8w4d"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-72">
+      <addForeignKeyConstraint baseColumnNames="artist_id"
+                               baseTableName="favourite_artist"
+                               constraintName="FK_jhpdud68l273nitxt6ovxvcis"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-73">
+      <addForeignKeyConstraint baseColumnNames="sex_id"
+                               baseTableName="artist"
+                               constraintName="FK_k6v6ua9831m29l4xwtw9rbkrm"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="sex"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-74">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="favourite_album"
+                               constraintName="FK_l72agpje9pfyne8hymblfml0m"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-75">
+      <addForeignKeyConstraint baseColumnNames="status_id"
+                               baseTableName="band"
+                               constraintName="FK_m0ob5xaaaug57tal266ecamdr"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="status"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-76">
+      <addForeignKeyConstraint baseColumnNames="country_id"
+                               baseTableName="label"
+                               constraintName="FK_maqeqro25su8ct0ou444r9tox"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="country"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-77">
+      <addForeignKeyConstraint baseColumnNames="country_id"
+                               baseTableName="artist"
+                               constraintName="FK_ocirb0y5nthqqk9yck8iq95ny"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="country"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-78">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="favourite_song"
+                               constraintName="FK_od798b7vgth77kq8brcntxebb"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-79">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="jhi_user_authority"
+                               constraintName="FK_pg0oaw6mr9pt3ibeihdc1jwof"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-80">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="favourite_review"
+                               constraintName="FK_pwdgf229pp7anv7umms7phc4v"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-81">
+      <addForeignKeyConstraint baseColumnNames="album_id"
+                               baseTableName="review"
+                               constraintName="FK_q2n4tv90491hxfemeygk9hu1w"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="album"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-82">
+      <addForeignKeyConstraint baseColumnNames="album_id"
+                               baseTableName="favourite_album"
+                               constraintName="FK_rxtig086yngne4vqdnt5yq4mo"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-83">
+      <addForeignKeyConstraint baseColumnNames="album_id"
+                               baseTableName="song"
+                               constraintName="FK_s26p4wlmwakdj7ajdv4vee6n8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="album"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-84">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="favourite_label"
+                               constraintName="FK_s7b3xcl3xsyjeufqgq9och3ih"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-85">
+      <addForeignKeyConstraint baseColumnNames="album_id"
+                               baseTableName="collection"
+                               constraintName="FK_shlblchuoknohvtywdu05935f"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="band"/>
+   </changeSet>
+   <changeSet author="jotabono (generated)" id="1465577541449-86">
+      <addForeignKeyConstraint baseColumnNames="album_types_id"
+                               baseTableName="album"
+                               constraintName="FK_svtnx3s1bkhs8lvmh7nq1jrx4"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="album_types"/>
+   </changeSet>
+</databaseChangeLog>

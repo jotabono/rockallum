@@ -18,6 +18,15 @@
             <form name="form" role="form" novalidate ng-submit="save()" show-validation>
 
                 <div class="form-group">
+                    <div id="picKey" class="picKey" ng-controller="NavbarLateralController" ng-model="profilepic" ngf-drop>
+                        <img class="backgroundblurdiv" ng-src="/uploads/{{account.userPicture}}.jpg">
+                        <div class="row-fluid infodrag"><span><i class="fa fa-plus-circle" aria-hidden="true"></i> Drag your new profile picture here to update</span></div>
+                        <img class="fotoprofile" ng-src="/uploads/{{account.userPicture}}.jpg" ng-if="account.userPicture"/>
+                        <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="!account.userPicture"/>
+                    </div>
+                    <button class="btn btn-danger buscadorindexbutton" style="display:inline-block" ng-click="profilepic = null" ng-show="profilepic"><span class="glyphicon glyphicon-remove"/> Remove</button>
+                </div>
+                <div class="form-group">
                     <label class="control-label" for="firstName" translate="settings.form.firstname">First Name</label>
                     <input type="text" class="form-control buscador" id="firstName" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
                            ng-model="settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
@@ -81,15 +90,6 @@
                 <div class="form-group">
                     <label for="langKey" translate="settings.form.language">Language</label>
                     <select id="langKey" name="langKey" class="form-control buscador" ng-model="settingsAccount.langKey" ng-controller="LanguageController" ng-options="code as (code | findLanguageFromKey) for code in languages"></select>
-                </div>
-                <div class="form-group">
-                    <label for="picKey">Profile pic</label>
-                    <div id="picKey" class="picKey" ng-controller="NavbarLateralController" ng-model="profilepic" ngf-drop>
-                        <div class="row-fluid infodrag"><span><i class="fa fa-plus-circle" aria-hidden="true"></i> Drag your new profile picture here to update</span></div>
-                        <img class="fotoprofile" ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover; object-position:0 0;" ng-if="account.userPicture"/>
-                        <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="!account.userPicture"/>
-                    </div>
-                    <button class="btn btn-danger buscadorindexbutton" style="display:inline-block" ng-click="profilepic = null" ng-show="profilepic"><span class="glyphicon glyphicon-remove"/> Remove</button>
                 </div>
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary misbutons" style="font-size:30px; font-family:Roboto; font-weight:300; border: 1px solid pink; width:120px;" translate="settings.form.button">Save</button>
             </form>

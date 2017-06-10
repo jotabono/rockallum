@@ -1,11 +1,25 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('MainController', function ($scope, $state, $sce, Principal, Band, BandSearch, ParseLinks, FavouriteBand) {
+    .controller('MainController', function ($scope, $state, $sce, $http, Principal, Band, BandSearch, ParseLinks, FavouriteBand) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
+
+        $scope.results = [];
+        $scope.query = "";
+
+        $scope.search = function (query) {
+            $http({
+                method: 'GET',
+                url: '/api/_search/'+query
+            }).then(function successCallback(response) {
+                $scope.results = response.data;
+            }, function errorCallback(response) {
+
+            });
+        }
 
 
         $scope.bands = [];
@@ -24,16 +38,6 @@ angular.module('therockbibleApp')
             $scope.loadAll();
         };
         $scope.loadAll();
-
-        $scope.search = function () {
-            BandSearch.query({query: $scope.searchQuery}, function(result) {
-                $scope.bands = result;
-            }, function(response) {
-                if(response.status === 404) {
-                    $scope.loadAll();
-                }
-            });
-        };
 
         $scope.refresh = function () {
             $scope.loadAll();

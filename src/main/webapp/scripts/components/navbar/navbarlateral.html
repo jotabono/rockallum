@@ -9,7 +9,7 @@
         <!-- Sidebar brand image -->
         <div class="picnavbarlateral" ng-controller="NavbarLateralController" ng-model="profilepic" ngf-drop style="height: 100%;">
             <div class="row-fluid infodrag2" unselectable="on"><span unselectable="on"><i class="fa fa-upload" aria-hidden="true"></i> Drag your new profile picture here to update.</span></div>
-            <img class="fotoprofile" ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover; object-position:0 0;" ng-if="account.userPicture"/>
+            <img class="fotoprofile2 sidebarpic" ng-src="/uploads/{{account.userPicture}}.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="account.userPicture"/>
             <img ng-src="/uploads/default-user.jpg" style="height: 100%; width: 100%; object-fit: cover;" ng-if="!account.userPicture"/>
         </div>
         <!-- Sidebar brand name -->

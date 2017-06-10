@@ -61,7 +61,7 @@ angular.module('therockbibleApp')
         $scope.reviewsByCurrentBand = [];
         $scope.loadAllByBand = function(id) {
             Review.reviewsByCurrentBand({id: id}, function(result) {
-/*                for(var i=0; i<result.length;i++){
+                /*for(var i=0; i<result.length;i++){
                     if($scope.account.login == result[0].user.login){
                         $scope.testReview = true;
                     }

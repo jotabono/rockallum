@@ -1,11 +1,16 @@
 'use strict';
 
 angular.module('therockbibleApp')
-    .controller('NavbarLateralController', function ($scope, $state, $sce, Principal, Auth, Upload, Language) {
+    .controller('NavbarLateralController', function ($scope, $state, $sce, $rootScope, Principal, Auth, User, Upload, Language) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
+
+        var unsubscribe = $rootScope.$on('therockbibleApp:userUpdate', function(event, result) {
+            $scope.users = User.query();
+        });
+
 
         $scope.trusted = {};
         $scope.getPopoverData = function(s) {
@@ -24,6 +29,8 @@ angular.module('therockbibleApp')
         $scope.save = function () {
             Auth.updateAccount($scope.account).then(function() {
                 $('.fotoprofile').attr('src', '/uploads/'+$scope.account.userPicture+'.jpg');
+                $('.fotoprofile2').attr('src', '/uploads/'+$scope.account.userPicture+'.jpg');
+                $('.backgroundblurdiv').attr('src', '/uploads/'+$scope.account.userPicture+'.jpg');
                 $scope.error = null;
                 $scope.success = 'OK';
                 Language.getCurrent().then(function(current) {
@@ -39,6 +46,9 @@ angular.module('therockbibleApp')
 
         $scope.$watch('profilepic', function(){
             $scope.uploadPic($scope.profilepic);
+            if($scope.profilepic != undefined){
+                $rootScope.$broadcast("BackgroundSettings nuevo",$scope.account);
+            }
         });
 
         $scope.uploadPic = function(file) {

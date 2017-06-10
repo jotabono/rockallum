@@ -11,24 +11,49 @@
 
             <h3 style="color: pink" ng-switch-when="true">Welcome, <a style="color:#b3d2f2" href="/#/settings">{{account.login}}!</a></h3><br/>
 
-            <div ng-switch-when="true" class="container container-table">
+            <div ng-switch-when="true">
                 <div class="row vertical-center-row">
                     <div class="text-center">
-                        <form name="searchForm" class="form-inline">
                             <div class="input-group pull-right" >
-                                <input type="text" class="form-control buscadorindex" ng-mel="searchQuery" id="searchQuery"
-                                       placeholder="Search a band by name" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Search a band by name'">
+                                <input type="text" class="form-control buscadorindex" ng-model="query" ng-change="search(query)" id="searchQuery"
+                                       placeholder="Search" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Search'" autocomplete="off">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info buscadorindexbutton" ng-click="search()">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
                             </div>
-                        </form>
+                    </div>
+
+                    <div ng-if="query.length > 0" class="results">
+                        <div class="thumbnail bandthumbs">
+                            <div class="col-sm-6 col-md-2 bands" ng-repeat="result in results.Bands">
+                                <div  ui-sref="band.detail({id:result.id})"  style="height: 150px;"><img ng-src="/uploads/{{result.picture}}.jpg" style="height: 90px; width: 100%; object-fit: cover;"/>
+
+                            <div ui-sref="band.detail({id:result.id})" class="caption">
+                                <h3>{{ result.name }}</h3>
+                            </div>
+
+                            <!--<div class="resultdiv" ui-sref="band.detail({id:result.id})">{{result.name}}</div>-->
+                        </div>
+                        </div>
+                        <div ng-repeat="result in results.Artists">
+                            <div class="resultdiv" ui-sref="artist.detail({id:result.id})">{{result.name}}</div>
+                        </div>
+                        <div ng-repeat="result in results.Labels">
+                            <div class="resultdiv" ui-sref="label.detail({id:result.id})">{{result.name}}</div>
+                        </div>
+                        <div ng-repeat="result in results.Albums">
+                            <div class="resultdiv" ui-sref="album.detail({id:result.id})">{{result.title}}</div>
+                        </div>
+                        <div ng-repeat="result in results.Songs">
+                            <div class="resultdiv" ui-sref="song.detail({id:result.id})">{{result.title}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <a type="button" class="btn btn-default misbutons" style="margin-right:10px;" ng-switch-when="false"
                class="alert-link" href="#/login">
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
@@ -68,7 +93,7 @@
         <h1 unselectable="on" class="titleindex">Lastest bands added</h1>
         <div class="row">
             <div class="col-sm-6 col-md-4 bands" ng-repeat="bandDTO in bands | limitTo:6">
-                <div class="thumbnail bandthumbs">
+                    <div class="thumbnail bandthumbs">
 
                     <div  ui-sref="band.detail({id:bandDTO.band.id})"  style="height: 200px;"><img ng-src="/uploads/{{bandDTO.band.picture}}.jpg" style="height: 200px; width: 100%; object-fit: cover;" ng-if="bandDTO.band.picture"/>
                         <img ui-sref="band.detail({id:bandDTO.band.id})" ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!bandDTO.band.picture"/></div>

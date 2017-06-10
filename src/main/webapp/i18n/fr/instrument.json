@@ -1,0 +1,24 @@
+{
+    "therockbibleApp": {
+        "instrument" : {
+            "home": {
+                "title": "Instruments",
+                "createLabel": "Créer un nouveau Instrument",
+                "createOrEditLabel": "Créer ou éditer un Instrument",
+                "search": "Search for Instrument"
+            },
+            "created": "Un nouveau Instrument a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Instrument avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Instrument avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Instrument {{ id }} ?"
+            },
+            "detail": {
+                "title": "Instrument"
+            },
+            "instrument": "Instrument",
+            "artist": "Artist"
+        }
+    }
+}
+
