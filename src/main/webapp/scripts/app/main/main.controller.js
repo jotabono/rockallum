@@ -9,6 +9,7 @@ angular.module('therockbibleApp')
 
         $scope.results = [];
         $scope.query = "";
+        $scope.searchStatus = "";
 
         $scope.search = function (query) {
             $http({
@@ -21,6 +22,9 @@ angular.module('therockbibleApp')
             });
         }
 
+        $scope.changeSearchStatus = function (entity) {
+            $scope.searchStatus = entity;
+        }
 
         $scope.bands = [];
         $scope.predicate = 'id';

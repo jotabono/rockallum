@@ -1,134 +1,360 @@
+<div class="detail">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-sm-12 col-md-12 bands">
 
-<div>
-    <h2><span translate="therockbibleApp.label.detail.title">Label</span> {{label.id}}</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="entity.detail.field">Field</th>
-                <th translate="entity.detail.value">Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.name">Name</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.name}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.foundingDate">FoundingDate</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.foundingDate}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.location">Location</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.location}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.status">Status</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.status}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.genres">Genres</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.genres}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.description">Description</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.description}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.addNotes">AddNotes</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.addNotes}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.links">Links</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.links}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.phone">Phone</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.phone}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.address">Address</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.address}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.onlineshop">Onlineshop</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.onlineshop}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.picture">Picture</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{label.picture}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.user">user</span>
-                </td>
-                <td>
-                    {{label.user.email}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="therockbibleApp.label.country">country</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="country.detail({id:label.country.id})">{{label.country.name}}</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                <div class="thumbnail bandthumbs detailthumb">
+                    <img ng-src="/uploads/labels/{{label.picture}}.jpg" style="height:500px;width: 100%; object-fit: cover;"
+                         ng-if="label.picture"/>
+                    <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!label.picture"/>
+
+                    <div class="caption">
+
+                        <div class="row-fluid">
+                            <div class="col-lg-12 col-lg-12">
+                                <h1>{{label.name}}</h1>
+                            </div>
+                        </div>
+                        <hr class="infowrapper">
+                        <!--                        <div class="mapdetail">
+                                                <p><b>Location:</b> {{band.location}}</p>
+                                                    <ng-map zoom="10" center="{{band.latitude}}, {{band.longitude}}">
+                                                        <marker position="{{band.location}}"></marker>
+                                                    </ng-map>
+                                                </div>-->
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p><b>Address:</b> {{label.address}}</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Father:</b> {{label.father}}</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Sublabels:</b> {{label.sublabels.name}}</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Founding date: </b><span class="year"> {{ label.foundingDate |  date:"yyyy/MM/dd" }} </span>
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Country:</b> {{label.country.name}}</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Phone number:</b> {{label.phone}}</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Status:</b> {{label.status}}</p>
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Specialized in:</b> {{label.specialized}}</p>
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Online shop:</b> {{label.isOnlineShop}}</p>
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p><b>Web page:</b> {{label.webPage}}</p>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="text-justify">
+                            <hm-read-more
+                                hm-text="{{ label.bio }}"
+                                hm-limit="500"
+                                hm-more-text="read more"
+                                hm-less-text="read less"
+                                hm-dots-class="dots"
+                                hm-link-class="buttonreadmore">
+                            </hm-read-more>
+                        </div>
+                        <hr class="infowrapper">
+                        <p style="margin-bottom:20px;"></p>
+
+                        <div ng-cloak class="tabmenu">
+                            <md-content>
+                                <md-tabs md-dynamic-height md-border-bottom>
+                                    <md-tab label="Current roster">
+                                        <md-content class="md-padding">
+                                            <md-content class="nobar">
+                                                <md-tabs md-dynamic-height md-border-bottom>
+                                                    <md-tab label="All">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="albumDTO in band.albums">
+                                                                    <div
+                                                                        style="display:inline-block; margin:5px; font-size:14px;"
+                                                                        class="thumbnail bandthumbs albumthumbs">
+                                                                        <img ui-sref="album.detail({id:albumDTO.id})"
+                                                                             style="height: 200px; width: 100%; object-fit: cover;"
+                                                                             ng-src="/uploads/albums/{{albumDTO.picture}}.jpg"/>
+
+                                                                        <a ng-click="like(albumDTO.id)"
+                                                                           aria-label="More">
+                                                                            <md-button
+                                                                                ng-class="{true: 'fav2disc', false: 'favdisc'}[albumDTO.liked == true]"
+                                                                                icon="favorite-border"
+                                                                                style="float: right; top: -30px; right: 18px; background:rgba(255,192,203,0.1); padding-top:7px;"
+                                                                                class="md-fab">
+                                                                                <i class="material-icons">bookmark</i>
+                                                                            </md-button>
+                                                                        </a>
+
+                                                                        <div ui-sref="album.detail({id:albumDTO.id})"
+                                                                             class="caption">
+                                                                            <h3 class="responsivetitle">
+                                                                                {{albumDTO.title}}</h3>
+                                                                            <h4> {{albumDTO.releaseDate | date:"yyyy"
+                                                                                }}</h4>
+                                                                            <h5> {{albumDTO.albumTypes.name}}</h5></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Main">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | albumType:'Full length' | orderBy:'releaseDate' ">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate | date:"yyyy" }}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
+                                                            </p>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Lives">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | liveAlbum:'Live album':'Video' | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate | date:"yyyy" }}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
+                                                            </p>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Demos">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | albumType:'Demo' | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate | date:"yyyy" }}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
+                                                            </p>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Misc">
+                                                        <!--  filter:{y.albumTypes.name}:'Full length' -->
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.albums | miscAlbum:'Single':'EP':'Boxed set':'Split':'Compilation':'Split video':'Collaboration' | orderBy:'releaseDate'">
+                                                                    <div ui-sref="album.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs">
+                                                                        <img
+                                                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                                                            ng-src="/uploads/albums/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.title}}</h3>
+                                                                        <h4> {{y.releaseDate | date:"yyyy" }}</h4>
+                                                                        <h5> {{y.albumTypes.name}}</h5></div>
+                                                                </div>
+                                                            </div>
+                                                            </p>
+                                                        </md-content>
+                                                    </md-tab>
+                                                </md-tabs>
+                                            </md-content>
+                                        </md-content>
+                                    </md-tab>
+                                    <md-tab label="Past rooster">
+                                        <md-content class="md-padding">
+                                            <md-content class="nobar">
+                                                <md-tabs md-dynamic-height md-border-bottom>
+                                                    <md-tab label="Current lineup">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | memberStill:true | orderBy:'yearsActive'">
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Past members">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | orderBy:'yearsActive'"
+                                                                     ng-if="!y.stillInBand">
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Live musicians">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | isLiveMusician:true | orderBy:'yearsActive'"
+                                                                >
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <label ng-if="y.stillInBand"
+                                                                               style="color:greenyellow">Still in the
+                                                                            band</label>
+                                                                        <label ng-if="!y.stillInBand"
+                                                                               style="color:indianred">No longer in the
+                                                                            band</label>
+                                                                        <p/>
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
+                                                        </md-content>
+                                                    </md-tab>
+                                                    <md-tab label="Complete lineup">
+                                                        <md-content class="md-padding">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3 albumsdiv"
+                                                                     ng-repeat="y in band.artists | orderBy:'stillInBand'">
+                                                                    <div ui-sref="artist.detail({id:y.id})"
+                                                                         style="display:inline-block; margin:5px; font-size:14px;"
+                                                                         class="thumbnail bandthumbs albumthumbs"
+                                                                    >
+                                                                        <label
+                                                                            ng-if="y.stillInBand"
+                                                                            style="color:greenyellow">Still in the
+                                                                            band</label>
+                                                                        <label
+                                                                            ng-if="!y.stillInBand"
+                                                                            style="color:indianred">No longer in the
+                                                                            band</label>
+                                                                        <p/>
+
+                                                                        <img
+                                                                            style="height: 200px; width:100%; object-fit: cover;"
+                                                                            ng-src="/uploads/artists/{{y.picture}}.jpg"/>
+                                                                        <h3 class="responsivetitle"> {{y.name}}</h3>
+                                                                        <h4 ng-repeat="z in y.instruments">
+                                                                            {{z.instrument}}{{$last ? '' : ', '}}</h4>
+                                                                        <h6> {{y.yearsActive}}</h6></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </md-content>
+                                                    </md-tab>
+                                                </md-tabs>
+                                            </md-content>
+                                        </md-content>
+                                    </md-tab>
+                                    <md-tab label="Releases">
+                                        <md-content class="md-padding">
+                                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum
+                                                tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis
+                                                rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu
+                                                fermentum nunc. Sed id ante eu orci commodo volutpat non ac est.
+                                                Praesent ligula diam, congue eu enim scelerisque, finibus commodo
+                                                lectus.</p>
+                                        </md-content>
+                                    </md-tab>
+                                    <md-tab label="Links">
+                                        <md-content class="md-padding">
+                                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum
+                                                tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis
+                                                rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu
+                                                fermentum nunc. Sed id ante eu orci commodo volutpat non ac est.
+                                                Praesent ligula diam, congue eu enim scelerisque, finibus commodo
+                                                lectus.</p>
+                                        </md-content>
+                                    </md-tab>
+                                </md-tabs>
+                            </md-content>
+                        </div>
+                        <p>
+                            <button class="detailbutton" ui-sref="bands">
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                            </button>
+                            <button class="detailbutton" ui-sref="band.edit({id:band.id})">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button class="detailbutton" ui-sref="band.delete({id:band.id})">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                            <button class="detailbutton" ui-sref="album.new" data-toggle="popover" data-placement="top"
+                                    data-trigger="hover" data-content="Add a new album">
+                                <span class="glyphicon glyphicon-cd"></span>
+                            </button>
+                            <button class="detailbutton" ui-sref="artist.new" data-toggle="popover" data-placement="top"
+                                    data-trigger="hover" data-content="Add a new member">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
+                            <script>
+                                $(document).ready(function () {
+                                    $('[data-toggle="popover"]').popover();
+                                });
+                            </script>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
 </div>

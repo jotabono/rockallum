@@ -14,45 +14,45 @@
             <div ng-switch-when="true">
                 <div class="row vertical-center-row">
                     <div class="text-center">
-                            <div class="input-group pull-right" >
+                            <div class="input-group pull-right">
                                 <input type="text" class="form-control buscadorindex" ng-model="query" ng-change="search(query)" id="searchQuery"
-                                       placeholder="Search" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Search'" autocomplete="off">
-                        <span  class="input-group-btn width-min" >
+                                       placeholder="Search {{searchStatus}}" autocomplete="off"> <!--ng-blur="this.query=''"-->
+
+                                <span  class="input-group-btn width-min">
                             <button class="btn btn-info buscadorindexbutton" ng-click="search()">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
                             </div>
+                        <span style="font-size:11px;">Write your query and click on the search icon to view all the results. If you want to find a band, artist, label, album or song specifically, click on the suitable button..</span>
                     </div>
 
                     <div ng-if="query.length > 0" class="results">
-                        <div class="thumbnail bandthumbs">
-                            <div class="col-sm-6 col-md-2 bands" ng-repeat="result in results.Bands">
-                                <div  ui-sref="band.detail({id:result.id})"  style="height: 150px;"><img ng-src="/uploads/{{result.picture}}.jpg" style="height: 90px; width: 100%; object-fit: cover;"/>
-
-                            <div ui-sref="band.detail({id:result.id})" class="caption">
-                                <h3>{{ result.name }}</h3>
-                            </div>
-
-                            <!--<div class="resultdiv" ui-sref="band.detail({id:result.id})">{{result.name}}</div>-->
+                        <div ng-if="searchStatus == 'bands'" ng-repeat="result in results.Bands">
+                            <div ng-click="query=result.name" class="resultdiv" ui-sref="band.detail({id:result.id})">{{result.name}} <span style="font-size:10px">({{result.country.name}}, {{result.foundingDate}})</span></div>
                         </div>
-                        </div>
-                        <div ng-repeat="result in results.Artists">
+                        <div ng-if="searchStatus == 'artists'" ng-repeat="result in results.Artists">
                             <div class="resultdiv" ui-sref="artist.detail({id:result.id})">{{result.name}}</div>
                         </div>
-                        <div ng-repeat="result in results.Labels">
+                        <div ng-if="searchStatus == 'labels'" ng-repeat="result in results.Labels">
                             <div class="resultdiv" ui-sref="label.detail({id:result.id})">{{result.name}}</div>
                         </div>
-                        <div ng-repeat="result in results.Albums">
+                        <div ng-if="searchStatus == 'albums'" ng-repeat="result in results.Albums">
                             <div class="resultdiv" ui-sref="album.detail({id:result.id})">{{result.title}}</div>
                         </div>
-                        <div ng-repeat="result in results.Songs">
+                        <div ng-if="searchStatus == 'songs'" ng-repeat="result in results.Songs">
                             <div class="resultdiv" ui-sref="song.detail({id:result.id})">{{result.title}}</div>
                         </div>
                     </div>
-                </div>
             </div>
+
+                <div class="col-md-12" style="margin-top:50px;">
+                    <button ng-click="changeSearchStatus('bands')" class="seemore buttonsSearch">Bands</button>
+                    <button ng-click="changeSearchStatus('artists')" class="seemore buttonsSearchArtist">Artists</button>
+                    <button ng-click="changeSearchStatus('labels')" class="seemore buttonsSearchLabel">Labels</button>
+                    <button ng-click="changeSearchStatus('albums')" class="seemore buttonsSearchAlbum">Albums</button>
+                    <button ng-click="changeSearchStatus('songs')" class="seemore buttonsSearch">Songs</button>
+                </div>
 
             <a type="button" class="btn btn-default misbutons" style="margin-right:10px;" ng-switch-when="false"
                class="alert-link" href="#/login">
@@ -118,4 +118,5 @@
         </div>
         <div style="text-align:center; margin-top:10px;"><button class="seemore" ui-sref="bands">See more bands</button></div>
     </div>
+</div>
 </div>
