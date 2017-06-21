@@ -31,7 +31,7 @@ $(document).ready(function() {
         });
 
         if(openedMenuIcon){
-            $('.barralateral').html("<i style='color:black' class='material-icons closeicon'>close</i>");
+            $('.barralateral').html("<i style='color:white' class='material-icons closeicon'>close</i>");
             openedMenuIcon = false;
         }
         else{

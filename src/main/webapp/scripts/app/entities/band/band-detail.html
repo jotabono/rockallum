@@ -200,7 +200,8 @@
                                                         <md-content class="md-padding">
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-md-3 albumsdiv"
-                                                                     ng-repeat="y in band.artists | memberStill:true | orderBy:'yearsActive'">
+                                                                     ng-repeat="y in band.artists | orderBy:'yearsActive'"
+                                                                     ng-if="y.stillInBand">
                                                                     <div ui-sref="artist.detail({id:y.id})"
                                                                          style="display:inline-block; margin:5px; font-size:14px;"
                                                                          class="thumbnail bandthumbs albumthumbs"
