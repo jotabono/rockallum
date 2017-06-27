@@ -6,11 +6,11 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A AlbumTypes.
@@ -28,7 +28,7 @@ public class AlbumTypes implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @OneToMany(mappedBy = "albumTypes")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -45,7 +45,7 @@ public class AlbumTypes implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }

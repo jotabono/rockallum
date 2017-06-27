@@ -8,8 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Genre.
@@ -26,7 +26,7 @@ public class Genre implements Serializable {
 
     @Column(name = "name")
     private String name;
-    
+
     @ManyToMany(mappedBy = "genres")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -43,7 +43,7 @@ public class Genre implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }

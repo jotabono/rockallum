@@ -7,7 +7,6 @@ import com.mycompany.myapp.repository.AlbumRepository;
 import com.mycompany.myapp.repository.FavouriteAlbumRepository;
 import com.mycompany.myapp.repository.search.AlbumSearchRepository;
 import com.mycompany.myapp.web.rest.dto.AlbumDTO;
-import com.mycompany.myapp.web.rest.dto.BandDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -35,7 +34,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * REST controller for managing Album.

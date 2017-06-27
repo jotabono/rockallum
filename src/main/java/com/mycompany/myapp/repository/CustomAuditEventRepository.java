@@ -2,7 +2,6 @@ package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.config.audit.AuditEventConverter;
 import com.mycompany.myapp.domain.PersistentAuditEvent;
-
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.context.annotation.Bean;

@@ -7,7 +7,6 @@ import com.mycompany.myapp.repository.search.FavouriteLabelSearchRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * REST controller for managing FavouriteLabel.
@@ -31,13 +30,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class FavouriteLabelResource {
 
     private final Logger log = LoggerFactory.getLogger(FavouriteLabelResource.class);
-        
+
     @Inject
     private FavouriteLabelRepository favouriteLabelRepository;
-    
+
     @Inject
     private FavouriteLabelSearchRepository favouriteLabelSearchRepository;
-    
+
     /**
      * POST  /favouriteLabels -> Create a new favouriteLabel.
      */

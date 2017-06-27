@@ -7,7 +7,6 @@ import com.mycompany.myapp.repository.search.AlbumTypesSearchRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * REST controller for managing AlbumTypes.
@@ -32,13 +31,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class AlbumTypesResource {
 
     private final Logger log = LoggerFactory.getLogger(AlbumTypesResource.class);
-        
+
     @Inject
     private AlbumTypesRepository albumTypesRepository;
-    
+
     @Inject
     private AlbumTypesSearchRepository albumTypesSearchRepository;
-    
+
     /**
      * POST  /albumTypess -> Create a new albumTypes.
      */

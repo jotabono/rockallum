@@ -1,8 +1,8 @@
 package com.mycompany.myapp.web.rest.dto;
 
-import java.time.ZonedDateTime;
-
 import com.mycompany.myapp.domain.User;
+
+import java.time.ZonedDateTime;
 
 /**
  * A DTO extending the UserDTO, which is meant to be used in the user management UI.

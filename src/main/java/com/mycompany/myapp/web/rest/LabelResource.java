@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * REST controller for managing Label.
@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class LabelResource {
 
     private final Logger log = LoggerFactory.getLogger(LabelResource.class);
-        
+
     @Inject
     private LabelRepository labelRepository;
-    
+
     @Inject
     private LabelSearchRepository labelSearchRepository;
-    
+
     /**
      * POST  /labels -> Create a new label.
      */
@@ -90,7 +90,7 @@ public class LabelResource {
     public ResponseEntity<List<Label>> getAllLabels(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Labels");
-        Page<Label> page = labelRepository.findAll(pageable); 
+        Page<Label> page = labelRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/labels");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

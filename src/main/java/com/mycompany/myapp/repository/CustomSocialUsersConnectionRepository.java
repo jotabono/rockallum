@@ -1,7 +1,6 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.SocialUserConnection;
-
 import org.springframework.social.connect.*;
 
 import java.util.List;

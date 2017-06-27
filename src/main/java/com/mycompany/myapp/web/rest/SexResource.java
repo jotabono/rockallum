@@ -7,7 +7,6 @@ import com.mycompany.myapp.repository.search.SexSearchRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * REST controller for managing Sex.
@@ -31,13 +30,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SexResource {
 
     private final Logger log = LoggerFactory.getLogger(SexResource.class);
-        
+
     @Inject
     private SexRepository sexRepository;
-    
+
     @Inject
     private SexSearchRepository sexSearchRepository;
-    
+
     /**
      * POST  /sexs -> Create a new sex.
      */

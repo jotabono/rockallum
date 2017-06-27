@@ -6,8 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -25,7 +23,7 @@ public class Collection implements Serializable {
 
     @Column(name = "catched")
     private Boolean catched;
-    
+
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Band album;
@@ -45,7 +43,7 @@ public class Collection implements Serializable {
     public Boolean getCatched() {
         return catched;
     }
-    
+
     public void setCatched(Boolean catched) {
         this.catched = catched;
     }

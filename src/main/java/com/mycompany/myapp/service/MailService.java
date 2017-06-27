@@ -2,8 +2,8 @@ package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.config.JHipsterProperties;
 import com.mycompany.myapp.domain.User;
-
 import org.apache.commons.lang.CharEncoding;
+import org.apache.commons.lang.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -13,8 +13,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.apache.commons.lang.WordUtils;
-
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
@@ -104,7 +102,7 @@ public class MailService {
         String subject = messageSource.getMessage("email.reset.title", null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);
     }
-    
+
     @Async
     public void sendSocialRegistrationValidationEmail(User user, String provider) {
         log.debug("Sending social registration validation e-mail to '{}'", user.getEmail());

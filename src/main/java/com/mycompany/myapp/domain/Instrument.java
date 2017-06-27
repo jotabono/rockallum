@@ -8,8 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Instrument.
@@ -26,7 +26,7 @@ public class Instrument implements Serializable {
 
     @Column(name = "instrument")
     private String instrument;
-    
+
     @ManyToMany(mappedBy = "instruments")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -43,7 +43,7 @@ public class Instrument implements Serializable {
     public String getInstrument() {
         return instrument;
     }
-    
+
     public void setInstrument(String instrument) {
         this.instrument = instrument;
     }

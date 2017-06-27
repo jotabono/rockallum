@@ -1,7 +1,6 @@
 package com.mycompany.myapp;
 
 import com.mycompany.myapp.config.Constants;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.builder.SpringApplicationBuilder;

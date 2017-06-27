@@ -3,15 +3,15 @@ package com.mycompany.myapp.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Album.
@@ -29,32 +29,32 @@ public class Album implements Serializable {
     @NotNull
     @Column(name = "title", nullable = false)
     private String title;
-    
+
     @NotNull
     @Column(name = "release_date", nullable = false)
     private LocalDate releaseDate;
-    
+
     @Column(name = "catalog_id")
     private String catalogId;
-    
+
     @Column(name = "num_copies")
     private String numCopies;
-    
+
     @Column(name = "format")
     private String format;
-    
+
     @Column(name = "add_notes")
     private String addNotes;
-    
+
     @Column(name = "rec_info")
     private String recInfo;
-    
+
     @Column(name = "independent")
     private Boolean independent;
-    
+
     @Column(name = "picture")
     private String picture;
-    
+
     @OneToMany(mappedBy = "album")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -89,7 +89,7 @@ public class Album implements Serializable {
     public String getTitle() {
         return title;
     }
-    
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -97,7 +97,7 @@ public class Album implements Serializable {
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
-    
+
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
@@ -105,7 +105,7 @@ public class Album implements Serializable {
     public String getCatalogId() {
         return catalogId;
     }
-    
+
     public void setCatalogId(String catalogId) {
         this.catalogId = catalogId;
     }
@@ -113,7 +113,7 @@ public class Album implements Serializable {
     public String getNumCopies() {
         return numCopies;
     }
-    
+
     public void setNumCopies(String numCopies) {
         this.numCopies = numCopies;
     }
@@ -121,7 +121,7 @@ public class Album implements Serializable {
     public String getFormat() {
         return format;
     }
-    
+
     public void setFormat(String format) {
         this.format = format;
     }
@@ -129,7 +129,7 @@ public class Album implements Serializable {
     public String getAddNotes() {
         return addNotes;
     }
-    
+
     public void setAddNotes(String addNotes) {
         this.addNotes = addNotes;
     }
@@ -137,7 +137,7 @@ public class Album implements Serializable {
     public String getRecInfo() {
         return recInfo;
     }
-    
+
     public void setRecInfo(String recInfo) {
         this.recInfo = recInfo;
     }
@@ -145,7 +145,7 @@ public class Album implements Serializable {
     public Boolean getIndependent() {
         return independent;
     }
-    
+
     public void setIndependent(Boolean independent) {
         this.independent = independent;
     }
@@ -153,7 +153,7 @@ public class Album implements Serializable {
     public String getPicture() {
         return picture;
     }
-    
+
     public void setPicture(String picture) {
         this.picture = picture;
     }

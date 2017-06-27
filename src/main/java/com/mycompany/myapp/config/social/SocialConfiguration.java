@@ -1,9 +1,8 @@
 package com.mycompany.myapp.config.social;
 
-import com.mycompany.myapp.repository.SocialUserConnectionRepository;
 import com.mycompany.myapp.repository.CustomSocialUsersConnectionRepository;
+import com.mycompany.myapp.repository.SocialUserConnectionRepository;
 import com.mycompany.myapp.security.social.CustomSignInAdapter;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -22,9 +21,10 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
-// jhipster-needle-add-social-connection-factory-import-package
 
 import javax.inject.Inject;
+
+// jhipster-needle-add-social-connection-factory-import-package
 
 /**
  * Basic Spring Social configuration.

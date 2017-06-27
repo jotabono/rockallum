@@ -1,7 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mycompany.myapp.domain.Album;
 import com.mycompany.myapp.domain.Band;
 import com.mycompany.myapp.domain.FavouriteBand;
 import com.mycompany.myapp.domain.User;
@@ -11,7 +10,6 @@ import com.mycompany.myapp.repository.ReviewRepository;
 import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.search.BandSearchRepository;
 import com.mycompany.myapp.security.SecurityUtils;
-import com.mycompany.myapp.web.rest.dto.AlbumDTO;
 import com.mycompany.myapp.web.rest.dto.BandDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -25,7 +23,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sun.jvm.hotspot.memory.Space;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -35,11 +32,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * REST controller for managing Band.

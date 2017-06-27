@@ -8,8 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Social.
@@ -26,16 +26,16 @@ public class Social implements Serializable {
 
     @Column(name = "url")
     private String url;
-    
+
     @Column(name = "official")
     private Boolean official;
-    
+
     @Column(name = "merchandising")
     private Boolean merchandising;
-    
+
     @Column(name = "tabs")
     private Boolean tabs;
-    
+
     @ManyToMany(mappedBy = "socials")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -52,7 +52,7 @@ public class Social implements Serializable {
     public String getUrl() {
         return url;
     }
-    
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -60,7 +60,7 @@ public class Social implements Serializable {
     public Boolean getOfficial() {
         return official;
     }
-    
+
     public void setOfficial(Boolean official) {
         this.official = official;
     }
@@ -68,7 +68,7 @@ public class Social implements Serializable {
     public Boolean getMerchandising() {
         return merchandising;
     }
-    
+
     public void setMerchandising(Boolean merchandising) {
         this.merchandising = merchandising;
     }
@@ -76,7 +76,7 @@ public class Social implements Serializable {
     public Boolean getTabs() {
         return tabs;
     }
-    
+
     public void setTabs(Boolean tabs) {
         this.tabs = tabs;
     }

@@ -6,11 +6,11 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Label.
@@ -28,40 +28,40 @@ public class Label implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @Column(name = "founding_date")
     private String foundingDate;
-    
+
     @Column(name = "location")
     private String location;
-    
+
     @Column(name = "status")
     private String status;
-    
+
     @Column(name = "genres")
     private String genres;
-    
+
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "add_notes")
     private String addNotes;
-    
+
     @Column(name = "links")
     private String links;
-    
+
     @Column(name = "phone")
     private String phone;
-    
+
     @Column(name = "address")
     private String address;
-    
+
     @Column(name = "onlineshop")
     private String onlineshop;
-    
+
     @Column(name = "picture")
     private String picture;
-    
+
     @OneToMany(mappedBy = "label")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -91,7 +91,7 @@ public class Label implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -99,7 +99,7 @@ public class Label implements Serializable {
     public String getFoundingDate() {
         return foundingDate;
     }
-    
+
     public void setFoundingDate(String foundingDate) {
         this.foundingDate = foundingDate;
     }
@@ -107,7 +107,7 @@ public class Label implements Serializable {
     public String getLocation() {
         return location;
     }
-    
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -115,7 +115,7 @@ public class Label implements Serializable {
     public String getStatus() {
         return status;
     }
-    
+
     public void setStatus(String status) {
         this.status = status;
     }
@@ -123,7 +123,7 @@ public class Label implements Serializable {
     public String getGenres() {
         return genres;
     }
-    
+
     public void setGenres(String genres) {
         this.genres = genres;
     }
@@ -131,7 +131,7 @@ public class Label implements Serializable {
     public String getDescription() {
         return description;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -139,7 +139,7 @@ public class Label implements Serializable {
     public String getAddNotes() {
         return addNotes;
     }
-    
+
     public void setAddNotes(String addNotes) {
         this.addNotes = addNotes;
     }
@@ -147,7 +147,7 @@ public class Label implements Serializable {
     public String getLinks() {
         return links;
     }
-    
+
     public void setLinks(String links) {
         this.links = links;
     }
@@ -155,7 +155,7 @@ public class Label implements Serializable {
     public String getPhone() {
         return phone;
     }
-    
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -163,7 +163,7 @@ public class Label implements Serializable {
     public String getAddress() {
         return address;
     }
-    
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -171,7 +171,7 @@ public class Label implements Serializable {
     public String getOnlineshop() {
         return onlineshop;
     }
-    
+
     public void setOnlineshop(String onlineshop) {
         this.onlineshop = onlineshop;
     }
@@ -179,7 +179,7 @@ public class Label implements Serializable {
     public String getPicture() {
         return picture;
     }
-    
+
     public void setPicture(String picture) {
         this.picture = picture;
     }

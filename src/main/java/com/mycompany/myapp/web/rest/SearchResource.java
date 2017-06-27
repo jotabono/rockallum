@@ -3,7 +3,6 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.*;
 import com.mycompany.myapp.repository.*;
-import com.sun.org.glassfish.gmbal.ManagedData;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController

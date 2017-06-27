@@ -8,8 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Status.
@@ -26,7 +26,7 @@ public class Status implements Serializable {
 
     @Column(name = "status")
     private String status;
-    
+
     @OneToMany(mappedBy = "status")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -48,7 +48,7 @@ public class Status implements Serializable {
     public String getStatus() {
         return status;
     }
-    
+
     public void setStatus(String status) {
         this.status = status;
     }

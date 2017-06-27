@@ -1,16 +1,15 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.service.AuditEventService;
-
-import java.time.LocalDate;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 import java.util.List;
 
 /**

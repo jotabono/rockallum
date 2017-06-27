@@ -1,10 +1,9 @@
 package com.mycompany.myapp.web.rest;
 
-import com.mycompany.myapp.web.rest.dto.LoggerDTO;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.web.rest.dto.LoggerDTO;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

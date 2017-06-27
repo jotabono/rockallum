@@ -1,9 +1,9 @@
 package com.mycompany.myapp.config;
 
-import javax.validation.constraints.NotNull;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.cors.CorsConfiguration;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Properties specific to JHipster.

@@ -1,4 +1,4 @@
-<svg width="180" height="88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="test">
+<svg width="180" height="88" xmlns="http://www.w3.org/2000/svg" class="test">
 
     <script>
       // use eval so that when functions are executed in this context

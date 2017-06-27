@@ -1,8 +1,8 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.SocialUserConnection;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 import java.util.Set;
 

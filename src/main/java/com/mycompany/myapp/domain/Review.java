@@ -2,14 +2,12 @@ package com.mycompany.myapp.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -28,18 +26,18 @@ public class Review implements Serializable {
     @NotNull
     @Column(name = "title", nullable = false)
     private String title;
-    
+
     @NotNull
     @Column(name = "mark", nullable = false)
     private Integer mark;
-    
+
     @Column(name = "review_date")
     private ZonedDateTime reviewDate;
-    
+
     @NotNull
     @Column(name = "review_text", nullable = false)
     private String reviewText;
-    
+
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
@@ -63,7 +61,7 @@ public class Review implements Serializable {
     public String getTitle() {
         return title;
     }
-    
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -71,7 +69,7 @@ public class Review implements Serializable {
     public Integer getMark() {
         return mark;
     }
-    
+
     public void setMark(Integer mark) {
         this.mark = mark;
     }
@@ -79,7 +77,7 @@ public class Review implements Serializable {
     public ZonedDateTime getReviewDate() {
         return reviewDate;
     }
-    
+
     public void setReviewDate(ZonedDateTime reviewDate) {
         this.reviewDate = reviewDate;
     }
@@ -87,7 +85,7 @@ public class Review implements Serializable {
     public String getReviewText() {
         return reviewText;
     }
-    
+
     public void setReviewText(String reviewText) {
         this.reviewText = reviewText;
     }

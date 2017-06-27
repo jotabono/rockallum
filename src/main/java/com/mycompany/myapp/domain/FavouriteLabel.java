@@ -6,8 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -25,7 +23,7 @@ public class FavouriteLabel implements Serializable {
 
     @Column(name = "liked")
     private Boolean liked;
-    
+
     @ManyToOne
     @JoinColumn(name = "label_id")
     private Band label;
@@ -45,7 +43,7 @@ public class FavouriteLabel implements Serializable {
     public Boolean getLiked() {
         return liked;
     }
-    
+
     public void setLiked(Boolean liked) {
         this.liked = liked;
     }
