@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -35,13 +36,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SongResource {
 
     private final Logger log = LoggerFactory.getLogger(SongResource.class);
-        
+
     @Inject
     private SongRepository songRepository;
-    
+
     @Inject
     private SongSearchRepository songSearchRepository;
-    
+
     /**
      * POST  /songs -> Create a new song.
      */
@@ -90,7 +91,7 @@ public class SongResource {
     public ResponseEntity<List<Song>> getAllSongs(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Songs");
-        Page<Song> page = songRepository.findAll(pageable); 
+        Page<Song> page = songRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/songs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -139,5 +140,19 @@ public class SongResource {
         return StreamSupport
             .stream(songSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+    /**
+     * GET  /songs/:id -> get the "id" song.
+     */
+    @Transactional
+    @RequestMapping(value = "/album/{id}/songs",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Song>> getSongByAlbum(@PathVariable Long id) {
+        log.debug("REST request to get Song : {}", id);
+        List<Song> song = songRepository.findSongsByAlbum(id);
+        return new ResponseEntity<>(song, HttpStatus.OK);
     }
 }

@@ -25,6 +25,7 @@
     <include file="classpath:config/liquibase/changelog/20160413173900_added_entity_FavouriteLabel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173901_added_entity_FavouriteSong.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173902_added_entity_Collection.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170621181947_changelog.xml"/>
 <!--
     <include file="classpath:config/liquibase/changelog/20160606233202_editedartist.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160608024958_addstillinband.xml" relativeToChangelogFile="false"/>
