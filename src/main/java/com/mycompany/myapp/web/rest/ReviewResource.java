@@ -161,6 +161,17 @@ public class ReviewResource {
         return reviewRepository.findByUserIsCurrentUserAndBand();
     }
 
+/*    *//**
+     * GET  /reviews -> get all the reviews.
+     *//*
+    @RequestMapping(value = "/reviewsbyalbum",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Review> getAllReviewsByAlbum() {
+        log.debug("REST request to get all Reviews");
+        return reviewRepository.findByUserIsCurrentUserAndAlbum();
+    }*/
 
     /**
      * GET  /reviews/:id -> get the "id" review.
@@ -219,6 +230,20 @@ public class ReviewResource {
     public ResponseEntity<List<Review>> getReviewByBand(@PathVariable Long id) {
         log.debug("REST request to get Review : {}", id);
         List<Review> review = reviewRepository.findReviewsByBand(id);
+        return new ResponseEntity<>(review, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /reviews/:id -> get the "id" review.
+     */
+    @Transactional
+    @RequestMapping(value = "/album/{id}/reviews",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Review>> getReviewByAlbum(@PathVariable Long id) {
+        log.debug("REST request to get Review : {}", id);
+        List<Review> review = reviewRepository.findReviewsByAlbum(id);
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 }

@@ -12,7 +12,7 @@
     <include file="classpath:config/liquibase/changelog/20160413173903_added_entity_AlbumTypes.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173904_added_entity_Label.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173905_added_entity_Album.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160413173906_added_entity_Song.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160420113503_added_entity_Song.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160610164212_added_entity_Instrument.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160610164714_added_entity_Social.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160420113505_added_entity_Artist.xml" relativeToChangelogFile="false"/>
@@ -25,8 +25,8 @@
     <include file="classpath:config/liquibase/changelog/20160413173900_added_entity_FavouriteLabel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173901_added_entity_FavouriteSong.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160413173902_added_entity_Collection.xml" relativeToChangelogFile="false"/>
-    <!--<include file="classpath:config/liquibase/changelog/20170621181947_changelog.xml"/>-->
 
+   <!-- <include file="classpath:config/liquibase/changelog/20170621181947_changelog.xml"/>-->
     <!--
     <include file="classpath:config/liquibase/changelog/20160606233202_editedartist.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160608024958_addstillinband.xml" relativeToChangelogFile="false"/>

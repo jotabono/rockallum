@@ -18,6 +18,12 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     @Query("select review from Review review where review.band.user.login = ?#{principal.username}")
     List<Review> findByUserIsCurrentUserAndBand();
 
+/*    @Query("select review from Review review where review.album.user.login = ?#{principal.username}")
+    List<Review> findByUserIsCurrentUserAndAlbum();*/
+
     @Query("select review from Review review where review.band.id = :band_id")
     List<Review> findReviewsByBand(@Param("band_id") Long id);
+
+    @Query("select review from Review review where review.album.id = :album_id")
+    List<Review> findReviewsByAlbum(@Param("album_id") Long id);
 }

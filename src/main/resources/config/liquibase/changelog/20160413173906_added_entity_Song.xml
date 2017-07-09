@@ -24,17 +24,22 @@
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+
             <column name="duration" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+
             <column name="lyrics" type="varchar(255)"/>
-            
+
             <column name="album_id" type="bigint"/>
+
+            <column name="player" type="varchar(255)"/>
+
+            <column name="track_number" type="integer"/>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
         <addForeignKeyConstraint baseColumnNames="album_id"
                                  baseTableName="song"
                                  constraintName="fk_song_album_id"

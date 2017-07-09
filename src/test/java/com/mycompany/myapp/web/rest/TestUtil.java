@@ -1,19 +1,15 @@
 package com.mycompany.myapp.web.rest;
 
-import com.mycompany.myapp.domain.util.JSR310DateTimeSerializer;
-import com.mycompany.myapp.domain.util.JSR310LocalDateDeserializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.mycompany.myapp.domain.util.JSR310DateTimeSerializer;
+import com.mycompany.myapp.domain.util.JSR310LocalDateDeserializer;
 import org.springframework.http.MediaType;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 
 /**
  * Utility class for testing REST controllers.

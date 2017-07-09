@@ -9,7 +9,7 @@ angular.module('therockbibleApp')
 
         $scope.results = [];
         $scope.query = "";
-        $scope.searchStatus = "";
+        $scope.searchStatus = 'bands';
 
         $scope.search = function (query) {
             $http({

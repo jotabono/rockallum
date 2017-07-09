@@ -4,9 +4,26 @@
             <div class="col-sm-12 col-md-12 bands">
 
                 <div class="thumbnail bandthumbs detailthumb">
-                    <img ng-src="/uploads/albums/{{album.picture}}.jpg" style="height:500px;width: 100%; object-fit: cover;"
+
+                    <div style="position:relative; overflow: hidden">
+                    <img class="blurBackground" ng-src="/uploads/albums/{{album.picture}}.jpg" style="height:500px;width: 100%; object-fit: cover;"
                          ng-if="album.picture"/>
+
                     <img ng-src="/media/stage.jpg" style="max-height: 100px; min-width: 100%;" ng-if="!album.picture"/>
+
+                        <img ng-src="/uploads/resources/vinyl.png" style="z-index: 1; position:absolute; height:350px;width:350px;left:60%;top:50%;transform:translate(-50%, -50%);" ng-if="album.picture"/>
+                        <img ng-src="/uploads/albums/{{album.picture}}.jpg" style="z-index: 2; position:absolute; height:350px;width:350px;left:50%;top:50%;transform:translate(-50%, -50%);" ng-if="album.picture"/>
+                    </div>
+
+                    <style>
+                        .blurBackground{
+                            -webkit-filter: blur(15px);
+                            -moz-filter: blur(15px);
+                            -o-filter: blur(15px);
+                            -ms-filter: blur(15px);
+                            filter: blur(15px);
+                        }
+                    </style>
 
                     <div class="caption">
 
@@ -84,16 +101,16 @@
                                     <md-tab label="Reviews">
                                         <md-content class="md-padding">
                                             <div class="col-lg-6"
-                                                 ng-repeat="reviewByCurrentBand in reviewsByCurrentBand">
+                                                 ng-repeat="reviewByCurrentAlbum in reviewsByCurrentAlbum">
                                                 <div class="thumbnail bandthumbs reviewthumbs">
-                                                    <span class="title">{{reviewByCurrentBand.title}}</span>
-                                                    <div class="markstyle"><span>{{reviewByCurrentBand.mark}}</span>
+                                                    <span class="title">{{reviewByCurrentAlbum.title}}</span>
+                                                    <div class="markstyle"><span>{{reviewByCurrentAlbum.mark}}</span>
                                                     </div>
                                                     <hr class="review infowrapper">
                                                     <div class="text-justify" style="padding:10px;">
                                                     <span class="text">
                                                     <hm-read-more
-                                                        hm-text="{{ reviewByCurrentBand.reviewText }}"
+                                                        hm-text="{{ reviewByCurrentAlbum.reviewText }}"
                                                         hm-limit="35"
                                                         hm-more-text="read more"
                                                         hm-less-text="read less"
@@ -105,16 +122,16 @@
                                                     <div class="infouserreview">
                                                         <img
                                                             style="vertical-align:middle; height:40px;width:40px; border-radius:50%; margin:5px;"
-                                                            ng-src="/uploads/{{reviewByCurrentBand.user.userPicture}}.jpg">
-                                                        <span style="margin-left:5px;" class="name">{{reviewByCurrentBand.user.login}}</span>
+                                                            ng-src="/uploads/{{reviewByCurrentAlbum.user.userPicture}}.jpg">
+                                                        <span style="margin-left:5px;" class="name">{{reviewByCurrentAlbum.user.login}}</span>
                                                         <span
                                                             style="float:right; vertical-align:middle; line-height:50px; margin-right: 5px;"
-                                                            class="time">{{reviewByCurrentBand.reviewDate | date:"MM/dd/yy 'at' h:mma"}}</span>
+                                                            class="time">{{reviewByCurrentAlbum.reviewDate | date:"MM/dd/yy 'at' h:mma"}}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
-                                                <form ng-hide="test" ng-submit="addReview()">
+                                                <form ng-hide="test" ng-submit="addReviewAlbum()">
                                                     <div class="input-group" style="width:100%;">
                                                         <md-input-container class="md-block" flex-gt-sm>
                                                             <input ng-model="text1" type="number"

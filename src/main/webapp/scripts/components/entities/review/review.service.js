@@ -18,9 +18,16 @@ angular.module('therockbibleApp')
                 isArray: true,
                 url: 'api/band/:id/reviews'
             },
+            'reviewsByCurrentAlbum': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/album/:id/reviews'
+            },
             'addReview': {
                 method: 'POST', isArray: false, url: 'api/band/:id/reviews'
+            },
+            'addReviewAlbum': {
+                method: 'POST', isArray: false, url: 'api/album/:id/reviews'
             }
-
         });
     });

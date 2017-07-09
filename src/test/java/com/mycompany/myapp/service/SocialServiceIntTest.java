@@ -5,8 +5,6 @@ import com.mycompany.myapp.domain.Authority;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.AuthorityRepository;
 import com.mycompany.myapp.repository.UserRepository;
-import com.mycompany.myapp.service.MailService;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

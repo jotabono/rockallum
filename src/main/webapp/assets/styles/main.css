@@ -316,13 +316,14 @@ Social Buttons
     font-family:Roboto;
     font-size: 20px;
     font-weight: bold;
-    color: pink;
+    color: #ccc;
     height:50px;
     display:block;
-    background:transparent;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 5px !important;
 }
 .buscadorindex:focus{
-    border-color: #ffadf6;
+    border-color: #ffc0cb;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(236, 175, 233, .6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
@@ -1079,14 +1080,15 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input{
 }
 
 .results{
-    position: absolute;
-    /*margin-top:50px;*/
-    width:100%;
+    position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    width:35%;
     background-color:rgba(0,0,0,0.9);
     color: white;
     z-index: 999999;
-    margin-top:-18px;
-    margin-left:-5px;
     border-radius: 5px;
 }
 
@@ -1117,11 +1119,14 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input{
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
-    margin-right:40px !important;
     text-align: center;
 }
 
-.buttonsSearch:active, .buttonsSearch:focus{
+.buttonsSearch:not(:last-child){
+    margin-right:40px !important;
+}
+
+.buttonsSearch:active, .buttonsSearch:focus, .buttonsSearch:visited{
     background-color: rgba(255,64,129,1);
     border-color: #ffadf6;
     outline: 0;
@@ -1208,3 +1213,34 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input{
     -webkit-box-shadow: inset 0 25px 25px rgba(0,0,0,.075), 0 0 35px rgba(236, 175, 233, .6);
     box-shadow: inset 0 25px 25px rgba(0,0,0,.075), 0 0 35px rgba(102, 175, 233, .6);
 }
+
+.input-home{
+    width:35%;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 12px;
+    pointer-events: none;
+    font-size:22px;
+    background-color: transparent;
+    border:0;
+    z-index: 999;
+    color: rgba(255, 192, 203,0.8);
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
